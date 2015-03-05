@@ -10,7 +10,7 @@
 	\begin{quotation}
 		\noindent 
 The purpose of this bachelor project is to improve the Pharo enviroment by making it more unit test friendly. 
-Instead of writing a new system browser we chose to realise this in the form of a Nautilus plugin since this makes it easy to set up and builds on an established part of the Pharo enviroment. Our plugin's functions includes making it easier to creating new tests for a given method. Specifically being able to see a method and the test that is currently being written side by side and a fast way to create new tests with if necessary new test classes and packages. The second provided functionality is a search for existing tests corresponding to the currently selected method. The search takes in to account if the methods are similarly named, if the supposed test method is a subclass of TestCase and if it contains the selector of the original method. The user can then add and remove elements from the resulting collection of tests to ensure that only acctual tests are shown. These features not only facilitate test driven development but can also be used to help understanding methods by looking at their tests.  
+Instead of writing a new system browser we chose to realise this in the form of a Nautilus plugin since this makes it easy to set up and builds on an established part of the Pharo enviroment. Our plugin's functions includes making it easier to creating new tests for a given method. Specifically being able to see a method and the test that is currently being written side by side and a fast way to create new tests with if necessary new test classes and packages. The second provided functionality is a search for existing tests corresponding to the currently selected method. The search takes in to account if the methods are similarly named, if the supposed test method is a subclass of TestCase and if it contains the selector of the original method. The user can then add and remove elements from the resulting collection of tests to ensure that only acctual tests are shown. These features not only facilitate unit testing but can also be used to help understanding methods by looking at their tests.  
 	\end{quotation}
 \clearpage
 
@@ -27,6 +27,7 @@ Instead of writing a new system browser we chose to realise this in the form of 
 
 \section{Unit Testing}
 	\label{sec:Unit Testing}
+The TestView plugin was designed with this approach to testing in mind. Unit testing follows the paradigm of isolation the smallest inseparable part of a programm and testing it. In smalltalk these units are often methods since the language heavily relies on sending messages between object. Also implied with this approach is that the programm is already written when the tests are written. The plugin helps during the creation of each test since the user can easily view the the tested method as well as the test that is being written. Further it creates templates that the user can alter to make writting tests faster. I also helps finding existing test and thus finding methods without tests. This functionaly however is at the moment not automated and the user will have to select method after method to find those without tests.  
 	\begin{enumerate}
 		\item Designed with this in mind
 		\item Method first, test later
@@ -41,20 +42,28 @@ Instead of writing a new system browser we chose to realise this in the form of 
 		\item Test first, method later
 		\item Search mechanism searches tests for methods
 		\item When creating a test it can not be linked to a class since the class doesn't exist yet 
-		\item Helps adapting tests to methods if requirements change or during development problems with the orignal tests show up		s
+		\item Helps adapting tests to methods if requirements change or during development problems with the orignal tests show up		
 	\end{enumerate}
 
 \section{The Nautilus Plugin Framework}
 	\label{sec:The Nautilus Plugin Framework}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Introduction %%%%%%%%%%%%%%%%%%%%%
+%%%% Related work %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Related Work}
 	\label{cha:Related Work}
 In which we learn what have other done to address similar problems. For example, the work of Star \cite{Star89}
+\\eclipse
+\\-easy to view multiple methods at once
+\\-no automated testsearch
+\\Nautilus/pharo
+\\-automated testsearch is a bit lacking but exists (doesn't support multiple tests for one method<-check if true)
+\\-no easy way to view multiple methods
+\\--history droplist can't be used when user klicks on too many classes/methods
+\\--could open another Nautilus window but dublicate package tree takes up a lot of space
+\\--best solution so far: lock method, then navigate to testmethod or write new test (but multipleMethodEditor is kinda broken)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +71,17 @@ In which we learn what have other done to address similar problems. For example,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{The Problem}
 	\label{cha:The Problem}
-In which we understand what the problem is in detail.
+%put some direct references to problems in the environments mentioned above
+As seen in the examples many current development environments are not optimized for unit testing. The search for unit tests to a specific method is often lacking meaning not present or simplistic and not able to recognize multiple tests for one method. Important features for unit test friendly environments are automated test searching, the ability to view tests and methods side by side and the ability to easily create new tests. Since not many environments were created with specificaly unit testing in mind there are often some of these features missing. To compensate for this the user is required to manualy execute many tasks like for example navigating back and forth between method and test and creating new classes and packages for new tests. This repeatedly breaks the programmers flow and in effect discourages them from writting tests. \\ \par
+
+Taking a closer look at the tasks involved in different goals will help understanding the problem of those missing functionalities and exactly at which point they are needed. A very important feature for unit testing is the ability to see which methods are currently untested. This has to be as easy to see as possible to be really beneficial. The user should be able to determine with one glance which methods have no tests. If this feature is not implemented the user has to switch back and forth between a class and all its test classes to check. If the test classes are not known to them they even have to find them first. Both of those tasks can take alot of effort. \\ \par
+
+Similarly the user might want too see all the tests that have been written for a method and not just if it has tests at all. This not only helps the user decide if it is necessary to write a specific test or if a very similar test has already been created but also lets them view how methods work by looking at all their tests. \\ \par
+
+Another reoccuring goal is the creation of new test for methods with no or too less tests. 
+While creating a new test the user first has to decide in which package and class the new test will be added. In many cases it is already clear where the test will be located since other tests corresponding to the same method are already there. If there are no already existing tests or if for any reason the existing test classes do not fit the new test then the user has to create a new test. In this case the test package name and the test class name are often derived from the original package and class. Both of those should be set as default values for the new class and package to save some time. When writting the actual code for the test it is beneficial for the user to be able to see test and method side by side. With this it the user is able to easily do white-box testing. For black-box testing this feature is less important but if it can be easily turned off it should not interfere. Similarly as above this helps preventing the user switching back and forth between methods.\\  \par
+ 
+These examples show where problems can occour that hinder the user while doing unit testing. They increase the time and effort needed and to create unit tests and thus make writing tests a chore. By facilitating this process on the other hand the user is encouraged to write tests and hopefully increase the quality of the software that is being written.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The TestView Plugin %%%%%%%%%%%%%%%%%%%%%
