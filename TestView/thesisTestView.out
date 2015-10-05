@@ -1,14 +1,16 @@
 \BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{1.1 Unit Testing}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{1.2 Test-driven Development}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{1.3 The Nautilus Plugin Framework}{chapter.1}% 4
-\BOOKMARK [0][-]{chapter.2}{2 Related Work}{}% 5
-\BOOKMARK [0][-]{chapter.3}{3 The Problem}{}% 6
-\BOOKMARK [0][-]{chapter.4}{4 The TestView Plugin}{}% 7
-\BOOKMARK [1][-]{section.4.1}{4.1 Installation and activation}{chapter.4}% 8
-\BOOKMARK [1][-]{section.4.2}{4.2 Basic Components}{chapter.4}% 9
-\BOOKMARK [1][-]{section.4.3}{4.3 The search Algorithm}{chapter.4}% 10
-\BOOKMARK [1][-]{section.4.4}{4.4 Creating new Tests}{chapter.4}% 11
-\BOOKMARK [0][-]{chapter.5}{5 The Validation}{}% 12
-\BOOKMARK [0][-]{chapter.6}{6 Conclusion and Future Work}{}% 13
-\BOOKMARK [0][-]{chapter.7}{7 Anleitung zu wissenschaftlichen Arbeiten}{}% 14
+\BOOKMARK [1][-]{section.1.3}{1.3 Blackbox and Whitebox Testing}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{1.4 The Nautilus Plugin Framework}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{2 The Problem}{}% 6
+\BOOKMARK [0][-]{chapter.3}{3 Related Work}{}% 7
+\BOOKMARK [0][-]{chapter.4}{4 The TestView Plugin}{}% 8
+\BOOKMARK [0][-]{chapter.5}{5 The Validation}{}% 9
+\BOOKMARK [0][-]{chapter.6}{6 Conclusion and Future Work}{}% 10
+\BOOKMARK [0][-]{chapter.7}{7 Anleitung zu wissenschaftlichen Arbeiten}{}% 11
+\BOOKMARK [1][-]{section.7.1}{7.1 Installation and activation}{chapter.7}% 12
+\BOOKMARK [1][-]{section.7.2}{7.2 Basic Components}{chapter.7}% 13
+\BOOKMARK [1][-]{section.7.3}{7.3 The search Algorithm}{chapter.7}% 14
+\BOOKMARK [1][-]{section.7.4}{7.4 Creating new Tests}{chapter.7}% 15
+\BOOKMARK [0][-]{chapter.8}{8 User Guide}{}% 16
