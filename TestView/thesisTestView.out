@@ -1,27 +1,34 @@
 \BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{1.1 Unit Testing}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{1.2 Test-driven Development}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{1.3 Blackbox and Whitebox Testing}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.4}{1.4 The Nautilus Plugin Framework}{chapter.1}% 5
-\BOOKMARK [0][-]{chapter.2}{2 The Problem}{}% 6
-\BOOKMARK [0][-]{chapter.3}{3 Related Work}{}% 7
-\BOOKMARK [1][-]{section.3.1}{3.1 BS:new section}{chapter.3}% 8
-\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 BS:new section}{section.3.1}% 9
-\BOOKMARK [1][-]{section.3.2}{3.2 BS:new section}{chapter.3}% 10
-\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 BS:new section}{section.3.2}% 11
-\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 BS:new section}{section.3.2}% 12
-\BOOKMARK [1][-]{section.3.3}{3.3 BS:new section}{chapter.3}% 13
-\BOOKMARK [2][-]{subsection.3.3.1}{3.3.1 BS:new section}{section.3.3}% 14
-\BOOKMARK [2][-]{subsection.3.3.2}{3.3.2 BS:new section}{section.3.3}% 15
-\BOOKMARK [2][-]{subsection.3.3.3}{3.3.3 BS:new section}{section.3.3}% 16
-\BOOKMARK [0][-]{chapter.4}{4 The TestView Plugin}{}% 17
-\BOOKMARK [1][-]{section.4.1}{4.1 BS:new section}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.2}{4.2 BS:new section}{chapter.4}% 19
-\BOOKMARK [0][-]{chapter.5}{5 The Validation}{}% 20
-\BOOKMARK [0][-]{chapter.6}{6 Conclusion and Future Work}{}% 21
-\BOOKMARK [0][-]{chapter.7}{7 Anleitung zu wissenschaftlichen Arbeiten}{}% 22
-\BOOKMARK [1][-]{section.7.1}{7.1 Installation and activation}{chapter.7}% 23
-\BOOKMARK [1][-]{section.7.2}{7.2 Basic Components}{chapter.7}% 24
-\BOOKMARK [1][-]{section.7.3}{7.3 The search Algorithm}{chapter.7}% 25
-\BOOKMARK [1][-]{section.7.4}{7.4 Creating new Tests}{chapter.7}% 26
-\BOOKMARK [0][-]{chapter.8}{8 User Guide}{}% 27
+\BOOKMARK [0][-]{chapter.2}{2 A Closer Look at Testing}{}% 2
+\BOOKMARK [1][-]{section.2.1}{2.1 Unit Testing}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{2.2 Test-driven Development}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{2.3 Blackbox and Whitebox Testing}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{2.4 The Nautilus Plugin Framework}{chapter.2}% 6
+\BOOKMARK [0][-]{chapter.3}{3 The Problem}{}% 7
+\BOOKMARK [0][-]{chapter.4}{4 Related Work}{}% 8
+\BOOKMARK [1][-]{section.4.1}{4.1 BS:new section}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 BS:new section}{section.4.1}% 10
+\BOOKMARK [1][-]{section.4.2}{4.2 BS:new section}{chapter.4}% 11
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 BS:new section}{section.4.2}% 12
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 BS:new section}{section.4.2}% 13
+\BOOKMARK [1][-]{section.4.3}{4.3 BS:new section}{chapter.4}% 14
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 BS:new section}{section.4.3}% 15
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 BS:new section}{section.4.3}% 16
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 BS:new section}{section.4.3}% 17
+\BOOKMARK [0][-]{chapter.5}{5 The TestView Plugin}{}% 18
+\BOOKMARK [1][-]{section.5.1}{5.1 BS:new section}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.2}{5.2 BS:new section}{chapter.5}% 20
+\BOOKMARK [1][-]{section.5.3}{5.3 BS:new section}{chapter.5}% 21
+\BOOKMARK [0][-]{chapter.6}{6 The Validation}{}% 22
+\BOOKMARK [0][-]{chapter.7}{7 Conclusion and Future Work}{}% 23
+\BOOKMARK [0][-]{chapter.8}{8 Anleitung zu wissenschaftlichen Arbeiten}{}% 24
+\BOOKMARK [1][-]{section.8.1}{8.1 What's the TestView Plugin?}{chapter.8}% 25
+\BOOKMARK [1][-]{section.8.2}{8.2 Installation and activation}{chapter.8}% 26
+\BOOKMARK [1][-]{section.8.3}{8.3 Adding a new test inside a new test class}{chapter.8}% 27
+\BOOKMARK [1][-]{section.8.4}{8.4 Adding a new to an existing test class}{chapter.8}% 28
+\BOOKMARK [1][-]{section.8.5}{8.5 Linking an existing test class}{chapter.8}% 29
+\BOOKMARK [1][-]{section.8.6}{8.6 Unlinking an existing test class}{chapter.8}% 30
+\BOOKMARK [1][-]{section.8.7}{8.7 Basic Components}{chapter.8}% 31
+\BOOKMARK [1][-]{section.8.8}{8.8 The search Algorithm}{chapter.8}% 32
+\BOOKMARK [1][-]{section.8.9}{8.9 Creating new Tests}{chapter.8}% 33
+\BOOKMARK [0][-]{chapter.9}{9 User Guide}{}% 34

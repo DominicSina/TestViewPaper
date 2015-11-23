@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{Beck98a}
+Kent Beck and Erich Gamma.
+\newblock Test infected: Programmers love writing tests.
+\newblock {\em Java Report}, 3(7):51--56, 1998.
+
+\bibitem{Dijk72b}
+E.~W. Dijkstra.
+\newblock Notes on structured programming.
+\newblock In E.~Dijkstra, O-J. Dahl, and C.~A.~R. Hoare, editors, {\em
+  Structured Programming}, pages 1--82. Academic Press, Inc., New York, NY,
+  1972.
+
+\bibitem{Mars05a}
+Philippe Marschall.
+\newblock Detecting the methods under test in {Java}.
+\newblock Informatikprojekt, University of Bern, April 2005.
+
+\bibitem{Pres14a}
+Roger~S. Pressman.
+\newblock {\em Software Engineering: A Practitioner's Approach}.
+\newblock McGraw-Hill, 2014.
+
+\bibitem{Saff03b}
+David Saff and Michael~D. Ernst.
+\newblock Reducing wasted development time via continuous testing.
+\newblock In {\em Fourteenth International Symposium on Software Reliability
+  Engineering ISSRE 2003}. IEEE, November 2003.
+
+\bibitem{Well13a}
+Don Wells.
+\newblock Unit tests.
+\newblock \url{http://www.extremeprogramming.org/rules/unittests.html}.
+\newblock Accessed: 2015-11-18.
+
+\end{thebibliography}
