@@ -29,7 +29,11 @@
 \contentsline {section}{\numberline {8.4}Adding a new to an existing test class}{27}{section.8.4}
 \contentsline {section}{\numberline {8.5}Linking an existing test class}{28}{section.8.5}
 \contentsline {section}{\numberline {8.6}Unlinking an existing test class}{29}{section.8.6}
-\contentsline {section}{\numberline {8.7}Basic Components}{30}{section.8.7}
-\contentsline {section}{\numberline {8.8}The search Algorithm}{31}{section.8.8}
-\contentsline {section}{\numberline {8.9}Creating new Tests}{31}{section.8.9}
-\contentsline {chapter}{\numberline {9}User Guide}{33}{chapter.9}
+\contentsline {section}{\numberline {8.7}Troubleshooting}{30}{section.8.7}
+\contentsline {subsection}{\numberline {8.7.1}Tests are not found by the TVPlugin}{31}{subsection.8.7.1}
+\contentsline {subsection}{\numberline {8.7.2}Tests that do not test the currently selected method are shown}{31}{subsection.8.7.2}
+\contentsline {subsection}{\numberline {8.7.3}Adding and removing individual tests to the tests found by the TVPlugin}{31}{subsection.8.7.3}
+\contentsline {section}{\numberline {8.8}Basic Components}{32}{section.8.8}
+\contentsline {section}{\numberline {8.9}The search Algorithm}{32}{section.8.9}
+\contentsline {section}{\numberline {8.10}Creating new Tests}{33}{section.8.10}
+\contentsline {chapter}{\numberline {9}User Guide}{34}{chapter.9}

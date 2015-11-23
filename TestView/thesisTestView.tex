@@ -313,7 +313,6 @@ In which we step back, have a critical look at the entire work, then conclude, a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter {Anleitung zu wissenschaftlichen Arbeiten}
 	\label{cha:Anleitung zu wissenschaftlichen Arbeiten}
-\todo{just dont forget}
 \section{What's the TestView Plugin?}
 	\label{sec:What's a TestView Plugin?}
 Nautilus is the default system browser in current Pharo versions. The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
@@ -501,17 +500,53 @@ In case the TVPlugin shows you tests from a test class that you do not recognize
 \section{Troubleshooting}
 	\label{sec:Troubleshooting}
 	
-	%tests are missing in the found tests droplist
-	%%%link your desired tests class
-	%%%your tests do not conform to the rules, change them
+	In this section some possible problems with the TVPlugin are listed and possible solutions to them outlined.
+
+	\subsection{Tests are not found by the TVPlugin}
+		\label{subsec:Tests are not found by the TVPlugin}
+\meta{tests are missing in the found tests droplist}
+	\meta{link your desired tests class}
+	\meta{if this does not work your tests do not conform to the criteria, change them}
+In case all tests from one or multiple tests classes are missing in the found test droplist you can add those test classes manually. If you want to add individual tests from a test class where already some tests are found then continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}. 
+
+First make sure that your test classes are subclasses of "TestCase". If they are not the plugin will not consider them to be test classes. Simply go to the definition of your test classes and change the first line to "[YourClassName] subclass: \#TestCase". Check again if now the tests you from your test classes now are found.
+
+If this does not help you can force the plugin to recognize your classes as test classes by linking the missing test classes to the currently selected class in the Nautilus class hierarchy. To do this follow the steps in \autoref{sec:Linking an existing test class}. Recheck if your tests are found. If this does not work either then your tests themselves are written in a way that the TVPlugin does not recognize. You will have to change them so that they fulfill certain criteria. In this case also continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}.
+
+\subsection{Tests that do not test the currently selected method are shown}
+		\label{subsec:Tests that do not test the currently selected method are shown}
+If the classes that contains these wrongly indentified tests do not contain any tests for the currently selected class then you can simply unlink these classes. Follow the steps outlined in \autoref{sec:Unlinking an existing test class}. All the tests from these classes should new be gone from the found tests droplist.
+
+If you want to remove only some tests from the found tests droplist then continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}. 
+
+\subsection{Adding and removing individual tests to the tests found by the TVPlugin}
+		\label{subsec:Add and remove individual tests from the corresponding test list to the selected method}
+Both adding and removing an indiviual test from the tests that the TVPlugin finds are not a features that are directly supported. It is still possible to make these adjustments although likely not for all projects and not without changing your tests. The way the TVPlugin identifies individual tests as corresponding to the selected method has two components. The first one is soley based on the name of your test and the name of the method that it is supposed to test. The second one is if the test calls a method with the same name as the method that it supposedly tests.
+
+\meta{naming criterium explained}
+The name based criterium is a check if your test contains the full name of your method under test with at least one additonal time the substring "test". Examples of what is recognized as a test and what not based on this criterium are shown in \autoref{tab:name criterium examples}. This check is not case sensitive. And ":" from methods names with parameters will be ignored when looking for a test.
+
+\begin{table}
+   \begin{tabular}{| l || c | r |}
+     \hline
+     Original method name & Test names & Not test names \\ \hline
+     doStuff & doStuffTest, testDoStuff, TestdosTuff & doSomething, doTestSomething, testSomething \\ \hline
+     do:on: & testDoOn, doOnTest & testDo:On:, do:testOn:  \\
+     \hline
+   \end{tabular}
+	\caption{Test naming criterium}
+\label{tab:name criterium examples}
+\end{table}
+
+\meta{cotains method selecor the of the original method criterium}
+The second criterium is if a method call is done inside of the possible test method to a method with the same name as the in the Nautils class hierachy selected method. This time the ":" are not removed from the check. If the supposed test method to a method named "do:on:" does call "doOn" then it will still not count as a test.
+
+\meta{fulfill any criterium to add test to the testlist, break both to remove it from the list}
+A test is recognized as such if either or both of these criteria are fulfilled. Conversely if neither is then the test is not considered a test to the selected method.
+Adding a specific method to the tests found for a certain method can thus be done in two ways. Either make the name of the test contain the full name of the method in addition to "test" or call the method you want to test directly in the test. To remove a method from the found tests you have to make sure that the test name does not contain "test" and the full method name, and that inside of the test never a method with the same name as the supposed method under test is called. 
 	
-	%too many tests are shown in the found tests droplist
-	%%%unlink the wrongly identified test classes
-	
-	%I only some tests from a method to be removed or added to the shown tests droplist
-	%%%not possible linking and unlinking is currently only possible on a class level
-	
-	
+
+%%%%%%%%%%%%%%%%%%
 \section{Basic Components}
 	\label{sec:Basic Components}
 \brs{if you are talking about GUI components say so in section title, components can be anything}Here is a quick overview of all the visual elements can be found\brs{passive again}. The TVPlugin adds 3 buttons and one droplist to your Nautilus windows. The "TestView" button toggles the search for test methods to the currently selected method. If it is toggled on a second source code editor will appear at the bottom where the test methods will be displayed.\brs{pic, or did not happen} This list will change whenever a new method is selected in the Nautilus window.
@@ -523,11 +558,12 @@ In this section I will provide a detailed explanation how corresponding tests to
 \ugh{In the first stage all test classes are determined}\brs{what does this even mean?}. \ugh{For this all classes in the your environment are taken into consideration in the beginning. By the end of the first stage only those classes that inherit from "TestCase" as well as pass a substring search \brs{the what now?} in the class name are then passed over to the next step.} The substring search requires the name of the class in question to contain both "test" and the name of the selected class.\brs{oh... well, say this up front, don't make me guess what you mean by sub-string search}  If those two conditions are met then the class in question \ugh{is} \brs{is it really? how can you be so sure? if you are not 100\% sure, you need to say ``We consider it'' or something similar. } a test class of the selected class. The substring search is not case sensitive and the matches for "test" as well as the selected method can't overlap, meaning one letter can only be used to match partially either "test" or the selected class name.\brs{split the two conditions in two separate subsections or paragraphs and explain them in detail with either code, block diagram algorithms, math or something to help the reader understand}\\ \par
 
 \begin{center}
-   \begin{tabular}{| l || c | r |}
+   \begin{tabular}{| l | c | r |}
      \hline
-     Original class name & Possible class names & Not a test class name \\ \hline \hline
+     Original class name & Possible class names & Not a test class name \\ \hline
      String & StringTest, stringtest, TestString & String, Test, StrinTgEST \\ \hline
      Protest & ProtestTest & Protest \\
+
      \hline
    \end{tabular}
 \end{center}

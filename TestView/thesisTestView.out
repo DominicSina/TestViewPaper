@@ -28,7 +28,11 @@
 \BOOKMARK [1][-]{section.8.4}{8.4 Adding a new to an existing test class}{chapter.8}% 28
 \BOOKMARK [1][-]{section.8.5}{8.5 Linking an existing test class}{chapter.8}% 29
 \BOOKMARK [1][-]{section.8.6}{8.6 Unlinking an existing test class}{chapter.8}% 30
-\BOOKMARK [1][-]{section.8.7}{8.7 Basic Components}{chapter.8}% 31
-\BOOKMARK [1][-]{section.8.8}{8.8 The search Algorithm}{chapter.8}% 32
-\BOOKMARK [1][-]{section.8.9}{8.9 Creating new Tests}{chapter.8}% 33
-\BOOKMARK [0][-]{chapter.9}{9 User Guide}{}% 34
+\BOOKMARK [1][-]{section.8.7}{8.7 Troubleshooting}{chapter.8}% 31
+\BOOKMARK [2][-]{subsection.8.7.1}{8.7.1 Tests are not found by the TVPlugin}{section.8.7}% 32
+\BOOKMARK [2][-]{subsection.8.7.2}{8.7.2 Tests that do not test the currently selected method are shown}{section.8.7}% 33
+\BOOKMARK [2][-]{subsection.8.7.3}{8.7.3 Adding and removing individual tests to the tests found by the TVPlugin}{section.8.7}% 34
+\BOOKMARK [1][-]{section.8.8}{8.8 Basic Components}{chapter.8}% 35
+\BOOKMARK [1][-]{section.8.9}{8.9 The search Algorithm}{chapter.8}% 36
+\BOOKMARK [1][-]{section.8.10}{8.10 Creating new Tests}{chapter.8}% 37
+\BOOKMARK [0][-]{chapter.9}{9 User Guide}{}% 38
