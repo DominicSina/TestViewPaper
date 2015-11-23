@@ -313,8 +313,11 @@ In which we step back, have a critical look at the entire work, then conclude, a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter {Anleitung zu wissenschaftlichen Arbeiten}
 	\label{cha:Anleitung zu wissenschaftlichen Arbeiten}
-\section{What's the TestView Plugin?}
-	\label{sec:What's a TestView Plugin?}
+\section {User Guide}
+	\label{sec:User Guide}
+\subsection{What's the TestView Plugin?}
+	\label{subsec:What's a TestView Plugin?}
+
 Nautilus is the default system browser in current Pharo versions. The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
 
 Let us take look at how the TVPlugin looks and and what basic features it provides.
@@ -329,16 +332,16 @@ The \textbf{``TestView''} button toggles the additional code panel to the right 
 
 The \textbf{selected method} is a central part of the plugin. All funtions the plugin provides are relative to what you have selected in the Nautilus window. Whenever you select a Method in the Nautilus class hierarchy the plugin will automatically search for tests corresponding it.
 
-In the \textbf{found tests dropview} every test corresponding to the selected method is shown. The first element in this list is special and will always be there independantly from which method you have selected in the Nautilus window. Click this element to create a new test in a possibly new test class. How to do this is explained in detail in \autoref{sec:Creating a new test inside a new test class}. 
+In the \textbf{found tests dropview} every test corresponding to the selected method is shown. The first element in this list is special and will always be there independantly from which method you have selected in the Nautilus window. Click this element to create a new test in a possibly new test class. How to do this is explained in detail in \autoref{subsec:Creating a new test inside a new test class}. 
 The remaining items in the list are all existing tests that are corresponding to the method you selected in the Nautilus window. By clicking on one of these the right code panel will display the selected test.
 
 The \textbf{additional code panel} to the right of the original code panel will always show the test that has been selected in the found tests droplist. With this it becomes possible to look at the implemented method and at the tests for it inside of the same Nautilus window.
 
 You can use the \textbf{``Link Class''} and \textbf{``Unlink Class'' buttons} if the found tests for the method you selected in the Nautilus window that are displayed in the found tests droplist are incomplete or show methods that are not tests to what you selected. You can use both these buttons to influence the automated test search that gets performed whenever you select a different method in the Nautilus class hierarchy. With the ``Link Class'' buttons you can specify a test class that is not found by the automated test search. The plugin will then redo the test search and include the newly linked class as a possible source for tests on every search for tests to the class of the selected method.
-With the ``Unlink Class'' button you can exclude classes from being searched for tests. Like the ``Link Class'' button this exclusion will only count for the class of the method that you have currently selected in the Nautilus class hierarchy. Detailed instructions on how to use these functionalities are found in \autoref{sec:Linking an existing test class} and \autoref{sec:Unlinking an existing test class}.
+With the ``Unlink Class'' button you can exclude classes from being searched for tests. Like the ``Link Class'' button this exclusion will only count for the class of the method that you have currently selected in the Nautilus class hierarchy. Detailed instructions on how to use these functionalities are found in \autoref{subsec:Linking an existing test class} and \autoref{subsec:Unlinking an existing test class}.
 
-\section{Installation and activation}
-	\label{sec:Installation and activation}
+\subsection{Installation and activation}
+	\label{subsec:Installation and activation}
 To install and activate the TVPlugin\brs{what's a TVPlugin?}\dos{see new section above} follow the steps listed bellow:
 	
 	\begin{enumerate}
@@ -370,9 +373,9 @@ Once this is finished the Nautilus Plugins Manager will open.
 
 	\end{enumerate}
 
-\section{Adding a new test inside a new test class}
-	\label{sec:Creating a new test inside a new test class}
-So now that the plugin is set up after following the steps in \autoref{sec:Installation and activation} let us add a new test to a method. It is assumed here that you already have a method to test named ``doSomething'' inside of a class named ``MyClass'' and a package called ``MyPackage''.
+\subsection{Adding a new test inside a new test class}
+	\label{subsec:Creating a new test inside a new test class}
+So now that the plugin is set up after following the steps in \autoref{subsec:Installation and activation} let us add a new test to a method. It is assumed here that you already have a method to test named ``doSomething'' inside of a class named ``MyClass'' and a package called ``MyPackage''.
 	
 \begin{enumerate}
 \item Turn the TVPlugin on by clicking on the ``TestView'' button. Once this is done a second code panel will appear besides the code panel that shows the method do something.
@@ -419,9 +422,9 @@ So now that the plugin is set up after following the steps in \autoref{sec:Insta
 
 \end{enumerate}
 
-\section{Adding a new to an existing test class}
-	\label{sec:Adding a new to an existing test class}
-	In this section we will take a look at how to add a new test to an existing class. It is assumed that the plugin is activated. To do this you have to follow the steps outlined in \autoref{sec:Installation and activation}.
+\subsection{Adding a new to an existing test class}
+	\label{subsec:Adding a new to an existing test class}
+	In this section we will take a look at how to add a new test to an existing class. It is assumed that the plugin is activated. To do this you have to follow the steps outlined in \autoref{subsec:Installation and activation}.
 	
 \begin{enumerate}
 	\item First make sure that the plugin is toggled on. If it is the Nautilus window has two code panels in the bottom. If it is not activate it by clicking the ``TestView'' button. See \autoref{fig:toggleButton} on how to toggle the plugin on.
@@ -447,8 +450,8 @@ So now that the plugin is set up after following the steps in \autoref{sec:Insta
 	}	
 \end{enumerate}
 
-\section{Linking an existing test class}
-	\label{sec:Linking an existing test class}
+\subsection{Linking an existing test class}
+	\label{subsec:Linking an existing test class}
 When the TVPlugin does not find tests that you have created then this might be because it does not recognize the your test class as a possible source for tests to the class of the method that you currently have selected in the Nautilus class hierarchy. Here you find a step by step list of how to add your test class to the considered test classes.
 
 \begin{enumerate}
@@ -472,8 +475,8 @@ When the TVPlugin does not find tests that you have created then this might be b
 
 \end{enumerate}
 	
-\section{Unlinking an existing test class}
-	\label{sec:Unlinking an existing test class}
+\subsection{Unlinking an existing test class}
+	\label{subsec:Unlinking an existing test class}
 In case the TVPlugin shows you tests from a test class that you do not recognize as a test class for the currently selected class you can remove this class from consideration by using the ``Unlink class'' button.
 
 \begin{enumerate}
@@ -497,56 +500,55 @@ In case the TVPlugin shows you tests from a test class that you do not recognize
 
 \end{enumerate}
 
-\section{Troubleshooting}
-	\label{sec:Troubleshooting}
+\subsection{Troubleshooting}
+	\label{subsec:Troubleshooting}
 	
 	In this section some possible problems with the TVPlugin are listed and possible solutions to them outlined.
 
-	\subsection{Tests are not found by the TVPlugin}
-		\label{subsec:Tests are not found by the TVPlugin}
+	\subsubsection{Tests are not found by the TVPlugin}
+		\label{subsubsec:Tests are not found by the TVPlugin}
 \meta{tests are missing in the found tests droplist}
 	\meta{link your desired tests class}
 	\meta{if this does not work your tests do not conform to the criteria, change them}
-In case all tests from one or multiple tests classes are missing in the found test droplist you can add those test classes manually. If you want to add individual tests from a test class where already some tests are found then continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}. 
+In case all tests from one or multiple tests classes are missing in the found test droplist you can add those test classes manually. If you want to add individual tests from a test class where already some tests are found then continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}. 
 
 First make sure that your test classes are subclasses of "TestCase". If they are not the plugin will not consider them to be test classes. Simply go to the definition of your test classes and change the first line to "[YourClassName] subclass: \#TestCase". Check again if now the tests you from your test classes now are found.
 
-If this does not help you can force the plugin to recognize your classes as test classes by linking the missing test classes to the currently selected class in the Nautilus class hierarchy. To do this follow the steps in \autoref{sec:Linking an existing test class}. Recheck if your tests are found. If this does not work either then your tests themselves are written in a way that the TVPlugin does not recognize. You will have to change them so that they fulfill certain criteria. In this case also continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}.
+If this does not help you can force the plugin to recognize your classes as test classes by linking the missing test classes to the currently selected class in the Nautilus class hierarchy. To do this follow the steps in \autoref{subsec:Linking an existing test class}. Recheck if your tests are found. If this does not work either then your tests themselves are written in a way that the TVPlugin does not recognize. You will have to change them so that they fulfill certain criteria. In this case also continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}.
 
-\subsection{Tests that do not test the currently selected method are shown}
-		\label{subsec:Tests that do not test the currently selected method are shown}
-If the classes that contains these wrongly indentified tests do not contain any tests for the currently selected class then you can simply unlink these classes. Follow the steps outlined in \autoref{sec:Unlinking an existing test class}. All the tests from these classes should new be gone from the found tests droplist.
+\subsubsection{Tests that do not test the currently selected method are shown}
+		\label{subsubsec:Tests that do not test the currently selected method are shown}
+If the classes that contains these wrongly indentified tests do not contain any tests for the currently selected class then you can simply unlink these classes. Follow the steps outlined in \autoref{subsec:Unlinking an existing test class}. All the tests from these classes should new be gone from the found tests droplist.
 
-If you want to remove only some tests from the found tests droplist then continue with \autoref{subsec:Add and remove individual tests from the corresponding test list to the selected method}. 
+If you want to remove only some tests from the found tests droplist then continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}. 
 
-\subsection{Adding and removing individual tests to the tests found by the TVPlugin}
-		\label{subsec:Add and remove individual tests from the corresponding test list to the selected method}
+\subsubsection{Adding and removing individual tests to the tests found by the TVPlugin}
+		\label{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}
 Both adding and removing an indiviual test from the tests that the TVPlugin finds are not a features that are directly supported. It is still possible to make these adjustments although likely not for all projects and not without changing your tests. The way the TVPlugin identifies individual tests as corresponding to the selected method has two components. The first one is soley based on the name of your test and the name of the method that it is supposed to test. The second one is if the test calls a method with the same name as the method that it supposedly tests.
 
-\meta{naming criterium explained}
-The name based criterium is a check if your test contains the full name of your method under test with at least one additonal time the substring "test". Examples of what is recognized as a test and what not based on this criterium are shown in \autoref{tab:name criterium examples}. This check is not case sensitive. And ":" from methods names with parameters will be ignored when looking for a test.
+\meta{naming criterion explained}
+The name based criterion is a check if your test contains the full name of your method under test with at least one additonal time the substring "test". Examples of what is recognized as a test and what not based on this criterion are shown in \autoref{tab:name criterion examples}. This check is not case sensitive. And ":" from methods names with parameters will be ignored when looking for a test.
 
-\begin{table}
-   \begin{tabular}{| l || c | r |}
+\begin{table}[h]
+   \begin{tabular}{| c | c | c |}
      \hline
-     Original method name & Test names & Not test names \\ \hline
-     doStuff & doStuffTest, testDoStuff, TestdosTuff & doSomething, doTestSomething, testSomething \\ \hline
-     do:on: & testDoOn, doOnTest & testDo:On:, do:testOn:  \\
-     \hline
-   \end{tabular}
-	\caption{Test naming criterium}
-\label{tab:name criterium examples}
-\end{table}
+     \emph{Original method name} & \emph{Test names} & \emph{Not test names} \\ \hline
+     doStuff & doStuffTest, testDoStuff, TestdosTuff & doStuff, doTestStuff, testStuff \\ 
+     do:on: & testDoOn, testDoOn2, doOnTest & testDo:On:, do:testOn: \\ \hline
+   \end{tabular} 
+\end{table} 
+\captionof{table}{Test naming criterion} 
+\label{tab:name criterion examples}
 
-\meta{cotains method selecor the of the original method criterium}
-The second criterium is if a method call is done inside of the possible test method to a method with the same name as the in the Nautils class hierachy selected method. This time the ":" are not removed from the check. If the supposed test method to a method named "do:on:" does call "doOn" then it will still not count as a test.
+\meta{cotains method selector the of the original method criterion}
+The second criterion is if a method call is done inside of the possible test method to a method with the same name as the in the Nautils class hierachy selected method. This time the ":" are not removed from the check. If the supposed test method to a method named "do:on:" does call "doOn" then it will still not count as a test.
 
-\meta{fulfill any criterium to add test to the testlist, break both to remove it from the list}
+\meta{fulfill any criterion to add test to the testlist, break both to remove it from the list}
 A test is recognized as such if either or both of these criteria are fulfilled. Conversely if neither is then the test is not considered a test to the selected method.
 Adding a specific method to the tests found for a certain method can thus be done in two ways. Either make the name of the test contain the full name of the method in addition to "test" or call the method you want to test directly in the test. To remove a method from the found tests you have to make sure that the test name does not contain "test" and the full method name, and that inside of the test never a method with the same name as the supposed method under test is called. 
 	
-
-%%%%%%%%%%%%%%%%%%
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 \section{Basic Components}
 	\label{sec:Basic Components}
 \brs{if you are talking about GUI components say so in section title, components can be anything}Here is a quick overview of all the visual elements can be found\brs{passive again}. The TVPlugin adds 3 buttons and one droplist to your Nautilus windows. The "TestView" button toggles the search for test methods to the currently selected method. If it is toggled on a second source code editor will appear at the bottom where the test methods will be displayed.\brs{pic, or did not happen} This list will change whenever a new method is selected in the Nautilus window.
@@ -588,7 +590,7 @@ A faster way to create a new test is to select an existing test from the droplis
 
 \chapter{User Guide}
 	\label{cha:User Guide}
-	
+\end{comment}
 
 %END Doc
 %-------------------------------------------------------
