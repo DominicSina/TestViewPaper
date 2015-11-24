@@ -12,10 +12,20 @@ E.~W. Dijkstra.
   Structured Programming}, pages 1--82. Academic Press, Inc., New York, NY,
   1972.
 
+\bibitem{Ghez02a}
+Carlo Ghezzi, Mehdi Jazayeri, and Dino Mandrioli.
+\newblock {\em Fundamentals of Software Engineering}.
+\newblock Prentice Hall PTR, Upper Saddle River, NJ, USA, 2nd edition, 2002.
+
 \bibitem{Mars05a}
 Philippe Marschall.
 \newblock Detecting the methods under test in {Java}.
 \newblock Informatikprojekt, University of Bern, April 2005.
+
+\bibitem{Mart09a}
+Robert Martin.
+\newblock What killed {Smalltalk} could kill {Ruby}, too.
+\newblock (RailsConf 09 -- http://blip.tv/file/2089545).
 
 \bibitem{Pres14a}
 Roger~S. Pressman.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.3.12)  23 NOV 2015 06:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdflatex 2015.3.12)  24 NOV 2015 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -968,7 +968,7 @@ LaTeX Info: Redefining \nameref on input line 236.
 
 LaTeX Info: Redefining \Ref on input line 236.
 
-<images/logos/UNI_Bern.png, id=144, 258.2448pt x 199.4652pt>
+<images/logos/UNI_Bern.png, id=152, 258.2448pt x 199.4652pt>
 File: images/logos/UNI_Bern.png Graphic file (type png)
 
 <use images/logos/UNI_Bern.png>
@@ -1050,11 +1050,7 @@ Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 7.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 8.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 9.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 10.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 10.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 11.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 11.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 12.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
  input line 12.
@@ -1077,17 +1073,21 @@ Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 18.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
  input line 18.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 19.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 19.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 20.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
  input line 20.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 21.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 21.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 22.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
  input line 22.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 23.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 23.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 24.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 24.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 25.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 26.
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 27.
@@ -1104,6 +1104,8 @@ Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 35.
 
 ]
 Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 36.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 37.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 38.
 )
 \tf@toc=\write4
 \openout4 = `thesisTestView.toc'.
@@ -1145,336 +1147,313 @@ Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
 [6
 
 ]
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 62.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 62.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 62.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 62.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 62.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 62.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
  line 65.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
  line 66.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 67.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 70.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 71.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
  line 71.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 72.
+ line 71.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 72.
+ line 71.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 72.
+ line 71.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 72.
+ line 71.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 72.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 72.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 72.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 73.
-
-Overfull \hbox (70.88026pt too wide) in paragraph at lines 71--74
-[]|   [][]$\OMS/cmsy/m/n/10 !$[]|   [][] \OT1/ptm/m/n/10 (-20) are writ-ten be-
-fore the []|   [][]$\OMS/cmsy/m/n/10 !$[]|   [][] \OT1/ptm/m/n/10 (-20) it-self
-. Af-ter-wards the []|   [][]$\OMS/cmsy/m/n/10 !$[]|   [][]
- []
-
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 75.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 76.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 76.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 76.
+ line 80.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
  line 82.
-[7]
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 83.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 86.
+ line 83.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 89.
+ [7]
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 92.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 94.
  [8]
 Chapter 3.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 96.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 102.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 104.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 106.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 106.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 107.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 108.
+0.6,0.6}' on input line 104.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
  line 110.
-
-LaTeX Warning: Reference `sec:unit testing' on page 9 undefined on input line 1
-11.
-
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 113.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 113.
+ line 112.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 113.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 114.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 119.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 113.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 113.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 113.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 113.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 113.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 113.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 113.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 115.
-[9
-
-]
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 122.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 124.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 125.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 125.
+ line 123.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 124.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
  line 127.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 130.
- [10]
+ line 127.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 136.
+ line 127.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 127.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 127.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 127.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 127.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 127.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 127.
+[9
+
+]
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 131.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 132.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 141.
+Package xcolor Info: Setting color `{}{0 0 1 0 k 0 0 1 0 K}{cmyk}{0,0,1,0}' on 
+input line 142.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 146.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 147.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 147.
+ [10]
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 155.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 158.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 160.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 166.
  [11]
 Chapter 4.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 142.
+0.6,0.6}' on input line 172.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 148.
+ input line 178.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 148.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 150.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 178.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 180.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 153.
+ input line 183.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 155.
-<images/screenshots/eclipseIntro.png, id=256, 1028.34187pt x 578.16pt>
+ input line 185.
+<images/screenshots/eclipseIntro.png, id=273, 1028.34187pt x 578.16pt>
 File: images/screenshots/eclipseIntro.png Graphic file (type png)
 
 <use images/screenshots/eclipseIntro.png>
 Package pdftex.def Info: images/screenshots/eclipseIntro.png used on input line
- 158.
+ 188.
 (pdftex.def)             Requested size: 411.32947pt x 231.2599pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 192.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 162.
+ input line 192.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 162.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 192.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 163.
+ line 193.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 164.
+ line 194.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 164.
+ line 194.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 164.
-<images/screenshots/eclipseSplitscreen.png, id=257, 1028.34187pt x 578.16pt>
+ line 194.
+<images/screenshots/eclipseSplitscreen.png, id=274, 1028.34187pt x 578.16pt>
 File: images/screenshots/eclipseSplitscreen.png Graphic file (type png)
 
 <use images/screenshots/eclipseSplitscreen.png>
 Package pdftex.def Info: images/screenshots/eclipseSplitscreen.png used on inpu
-t line 169.
+t line 199.
 (pdftex.def)             Requested size: 411.32947pt x 231.2599pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 205.
 [12
 
 ]
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 175.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 176.
+ input line 206.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 177.
+ line 207.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 177.
+ line 207.
  [13 <./images/screenshots/eclipseIntro.png> <./images/screenshots/eclipseSplit
 screen.png>]
-<images/screenshots/EclipseMclEmma.png, id=269, 1028.34187pt x 578.16pt>
+<images/screenshots/EclipseMclEmma.png, id=287, 1028.34187pt x 578.16pt>
 File: images/screenshots/EclipseMclEmma.png Graphic file (type png)
 
 <use images/screenshots/EclipseMclEmma.png>
 Package pdftex.def Info: images/screenshots/EclipseMclEmma.png used on input li
-ne 182.
+ne 212.
 (pdftex.def)             Requested size: 411.32947pt x 231.2599pt.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 186.
+ input line 216.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 187.
+ line 217.
 Package xcolor Info: Setting color `{}{0 1 0 rg 0 1 0 RG}{rgb}{0,1,0}' on input
- line 188.
+ line 218.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 190.
+ line 220.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 190.
+ line 220.
  [14 <./images/screenshots/EclipseMclEmma.png>]
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 192.
+ input line 222.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 193.
+ line 223.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 196.
+ input line 226.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 198.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 199.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 199.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 199.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 201.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 202.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 207.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 209.
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 210.
-Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 211.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 213.
- [15]
-Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
  line 228.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 233.
-Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 235.
+ line 229.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 236.
+ line 229.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 229.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 231.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 232.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 237.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 239.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 240.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 241.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 243.
+ [15]
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 258.
+Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
+ line 263.
+Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
+ input line 265.
+Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
+ line 266.
  [16]
 Chapter 5.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 244.
+0.6,0.6}' on input line 274.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 246.
+ line 276.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 247.
+ line 277.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 248.
+ line 278.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 248.
+ input line 278.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 249.
+ line 279.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 249.
+ input line 279.
 
-LaTeX Warning: Reference `cha:User Guide' on page 17 undefined on input line 24
+LaTeX Warning: Reference `cha:User Guide' on page 17 undefined on input line 27
 9.
 
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 252.
+ input line 282.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 253.
+ line 283.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 255.
+ line 285.
 [17
 
 ]
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 259.
+ input line 289.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 260.
+ line 290.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 261.
+ line 291.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 263.
+ input line 293.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 263.
+ line 293.
 
 
-LaTeX Warning: Reference `cha:User Guide' on page 18 undefined on input line 26
+LaTeX Warning: Reference `cha:User Guide' on page 18 undefined on input line 29
 3.
 
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 266.
+ input line 296.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 267.
+ line 297.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 268.
+ line 298.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 269.
+ line 299.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 270.
+ line 300.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 271.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 274.
+ line 301.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 304.
 [18]
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 280.
+ line 310.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 283.
+ line 313.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 284.
+ line 314.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 286.
+ line 316.
  [19]
 Chapter 6.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 298.
+0.6,0.6}' on input line 328.
 [20
 
 ]
 Chapter 7.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 306.
+0.6,0.6}' on input line 336.
 [21
 
 ]
 Chapter 8.
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
-0.6,0.6}' on input line 314.
-<images/screenshots/tvPluginOverView.png, id=308, 639.89063pt x 451.6875pt>
+0.6,0.6}' on input line 344.
+<images/screenshots/tvPluginOverView.png, id=326, 639.89063pt x 451.6875pt>
 File: images/screenshots/tvPluginOverView.png Graphic file (type png)
 
 <use images/screenshots/tvPluginOverView.png>
 Package pdftex.def Info: images/screenshots/tvPluginOverView.png used on input 
-line 326.
+line 356.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 Package xcolor Info: Setting color `{}{1 0 0 rg 1 0 0 RG}{rgb}{1,0,0}' on input
- line 329.
+ line 359.
  [22
 
  <./images/screenshots/tvPluginOverView.png>]
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 335.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 341.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 341.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 365.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 371.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 371.
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 345.
+ input line 375.
 Package xcolor Info: Setting color `{}{0 0 1 0 k 0 0 1 0 K}{cmyk}{0,0,1,0}' on 
-input line 345.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 349.
+input line 375.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 379.
 
  (c:/texlive/2014/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -1484,20 +1463,20 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
+79.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-49.
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 351.
+79.
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 381.
 
 
 (c:/texlive/2014/texmf-dist/tex/latex/psnfss/ts1pcr.fd
@@ -1508,258 +1487,255 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-55.
+85.
 Package xcolor Info: Setting color `{}{0.9 g 0.9 G}{gray}{0.9}' on input line 3
-55.
+85.
 
-<images/screenshots/pluginManager.png, id=317, 376.40625pt x 301.125pt>
+<images/screenshots/pluginManager.png, id=335, 376.40625pt x 301.125pt>
 File: images/screenshots/pluginManager.png Graphic file (type png)
 
 <use images/screenshots/pluginManager.png>
 Package pdftex.def Info: images/screenshots/pluginManager.png used on input lin
-e 364.
+e 394.
 (pdftex.def)             Requested size: 150.55983pt x 120.44786pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 364.
+(caption)                particular \caption on input line 394.
 See the caption package documentation for explanation.
 
 [23]
 Package xcolor Info: Setting color `{}{1 0.5 0 rg 1 0.5 0 RG}{rgb}{1,0.5,0}' on
- input line 367.
+ input line 397.
 
-<images/screenshots/activatedPlugin.png, id=332, 640.64343pt x 451.6875pt>
+<images/screenshots/activatedPlugin.png, id=350, 640.64343pt x 451.6875pt>
 File: images/screenshots/activatedPlugin.png Graphic file (type png)
 
 <use images/screenshots/activatedPlugin.png>
 Package pdftex.def Info: images/screenshots/activatedPlugin.png used on input l
-ine 372.
+ine 402.
 (pdftex.def)             Requested size: 320.32092pt x 225.84319pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 372.
+(caption)                particular \caption on input line 402.
 See the caption package documentation for explanation.
 
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 378.
-<images/screenshots/toggleButton.png, id=334, 639.89063pt x 451.6875pt>
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 408.
+<images/screenshots/toggleButton.png, id=352, 639.89063pt x 451.6875pt>
 File: images/screenshots/toggleButton.png Graphic file (type png)
 
 <use images/screenshots/toggleButton.png>
 Package pdftex.def Info: images/screenshots/toggleButton.png used on input line
- 387.
+ 417.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 387.
+(caption)                particular \caption on input line 417.
 See the caption package documentation for explanation.
 
 [24 <./images/screenshots/pluginManager.png> <./images/screenshots/activatedPlu
 gin.png>]
-<images/screenshots/dropListNewTest.png, id=344, 639.89063pt x 451.6875pt>
+<images/screenshots/dropListNewTest.png, id=362, 639.89063pt x 451.6875pt>
 File: images/screenshots/dropListNewTest.png Graphic file (type png)
 
 <use images/screenshots/dropListNewTest.png>
 Package pdftex.def Info: images/screenshots/dropListNewTest.png used on input l
-ine 396.
+ine 426.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 396.
+(caption)                particular \caption on input line 426.
 See the caption package documentation for explanation.
 
-<images/screenshots/nameTestClass.png, id=345, 639.89063pt x 451.6875pt>
+<images/screenshots/nameTestClass.png, id=363, 639.89063pt x 451.6875pt>
 File: images/screenshots/nameTestClass.png Graphic file (type png)
 
 <use images/screenshots/nameTestClass.png>
 Package pdftex.def Info: images/screenshots/nameTestClass.png used on input lin
-e 407.
+e 437.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 407.
+(caption)                particular \caption on input line 437.
 See the caption package documentation for explanation.
 
 [25 <./images/screenshots/toggleButton.png> <./images/screenshots/dropListNewTe
 st.png>]
-<images/screenshots/nameTestPackage.png, id=357, 639.89063pt x 451.6875pt>
+<images/screenshots/nameTestPackage.png, id=375, 639.89063pt x 451.6875pt>
 File: images/screenshots/nameTestPackage.png Graphic file (type png)
 
 <use images/screenshots/nameTestPackage.png>
 Package pdftex.def Info: images/screenshots/nameTestPackage.png used on input l
-ine 414.
+ine 444.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 414.
+(caption)                particular \caption on input line 444.
 See the caption package documentation for explanation.
 
-<images/screenshots/confirmNaming.png, id=358, 639.89063pt x 451.6875pt>
+<images/screenshots/confirmNaming.png, id=376, 639.89063pt x 451.6875pt>
 File: images/screenshots/confirmNaming.png Graphic file (type png)
 
 <use images/screenshots/confirmNaming.png>
 Package pdftex.def Info: images/screenshots/confirmNaming.png used on input lin
-e 421.
+e 451.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 421.
+(caption)                particular \caption on input line 451.
 See the caption package documentation for explanation.
 
 [26 <./images/screenshots/nameTestClass.png> <./images/screenshots/nameTestPack
 age.png>]
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 427.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 430.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 457.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 460.
 
-<images/screenshots/dropListExistingTestClass.png, id=369, 639.89063pt x 451.68
+<images/screenshots/dropListExistingTestClass.png, id=387, 639.89063pt x 451.68
 75pt>
 File: images/screenshots/dropListExistingTestClass.png Graphic file (type png)
  <use images/screenshots/dropListExistingTestClass.png>
 Package pdftex.def Info: images/screenshots/dropListExistingTestClass.png used 
-on input line 439.
+on input line 469.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 439.
+(caption)                particular \caption on input line 469.
 See the caption package documentation for explanation.
 
 [27 <./images/screenshots/confirmNaming.png> <./images/screenshots/dropListExis
 tingTestClass.png>]
-<images/screenshots/VerifyNewTestIsThere.png, id=380, 639.89063pt x 451.6875pt>
+<images/screenshots/VerifyNewTestIsThere.png, id=398, 639.89063pt x 451.6875pt>
 File: images/screenshots/VerifyNewTestIsThere.png Graphic file (type png)
 <use images/screenshots/VerifyNewTestIsThere.png>
 Package pdftex.def Info: images/screenshots/VerifyNewTestIsThere.png used on in
-put line 450.
+put line 480.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 450.
+(caption)                particular \caption on input line 480.
 See the caption package documentation for explanation.
 
-<images/screenshots/linkClassButton.png, id=381, 639.89063pt x 451.6875pt>
+<images/screenshots/linkClassButton.png, id=399, 639.89063pt x 451.6875pt>
 File: images/screenshots/linkClassButton.png Graphic file (type png)
 
 <use images/screenshots/linkClassButton.png>
 Package pdftex.def Info: images/screenshots/linkClassButton.png used on input l
-ine 465.
+ine 495.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 465.
+(caption)                particular \caption on input line 495.
 See the caption package documentation for explanation.
 
 [28 <./images/screenshots/VerifyNewTestIsThere.png>]
-<images/screenshots/linkClassName.png, id=392, 639.89063pt x 451.6875pt>
+<images/screenshots/linkClassName.png, id=410, 639.89063pt x 451.6875pt>
 File: images/screenshots/linkClassName.png Graphic file (type png)
 
 <use images/screenshots/linkClassName.png>
 Package pdftex.def Info: images/screenshots/linkClassName.png used on input lin
-e 472.
+e 502.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 472.
+(caption)                particular \caption on input line 502.
 See the caption package documentation for explanation.
 
-<images/screenshots/unlinkClassButton.png, id=393, 639.89063pt x 451.6875pt>
+<images/screenshots/unlinkClassButton.png, id=411, 639.89063pt x 451.6875pt>
 File: images/screenshots/unlinkClassButton.png Graphic file (type png)
 
 <use images/screenshots/unlinkClassButton.png>
 Package pdftex.def Info: images/screenshots/unlinkClassButton.png used on input
- line 490.
+ line 520.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 490.
+(caption)                particular \caption on input line 520.
 See the caption package documentation for explanation.
 
 [29 <./images/screenshots/linkClassButton.png> <./images/screenshots/linkClassN
 ame.png>]
-<images/screenshots/unlinkClassName.png, id=404, 639.89063pt x 451.6875pt>
+<images/screenshots/unlinkClassName.png, id=423, 639.89063pt x 451.6875pt>
 File: images/screenshots/unlinkClassName.png Graphic file (type png)
 
 <use images/screenshots/unlinkClassName.png>
 Package pdftex.def Info: images/screenshots/unlinkClassName.png used on input l
-ine 497.
+ine 527.
 (pdftex.def)             Requested size: 255.9517pt x 180.67178pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 497.
+(caption)                particular \caption on input line 527.
 See the caption package documentation for explanation.
 
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 510.
+ line 540.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 511.
+ line 541.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 512.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 513.
+ line 542.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 543.
 [30 <./images/screenshots/unlinkClassButton.png> <./images/screenshots/unlinkCl
 assName.png>]
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 517.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 517.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 521.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 523.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 547.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 547.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 551.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 553.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 529.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 530.
+ line 559.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 560.
 
 
 Package caption Warning: \captionsetup{type*=...} or \captionof
-(caption)                outside box or environment on input line 540.
+(caption)                outside box or environment on input line 570.
 See the caption package documentation for explanation.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 540.
+(caption)                particular \caption on input line 570.
 See the caption package documentation for explanation.
 
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 543.
+ line 573.
 Package xcolor Info: Setting color `{}{0 0 1 rg 0 0 1 RG}{rgb}{0,0,1}' on input
- line 546.
+ line 576.
 (./thesisTestView.bbl [31] [32]
 Package xcolor Info: Setting color `{}{0.6 0.6 0.6 rg 0.6 0.6 0.6 RG}{rgb}{0.6,
 0.6,0.6}' on input line 1.
-Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 34.
+Package xcolor Info: Setting color `{}{0 g 0 G}{gray}{0}' on input line 44.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 603.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 633.
  [33
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 603.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 633.
  (./thesisTestView.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 603.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 603.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 633.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 633.
 Package rerunfilecheck Info: File `thesisTestView.out' has not changed.
-(rerunfilecheck)             Checksum: 48DE843091DE815AC77B90FE92C3E050;2659.
+(rerunfilecheck)             Checksum: A69B5C5B39E6B0BD3E95190725D2B993;2798.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 603.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 633.
  ) 
 Here is how much of TeX's memory you used:
- 20730 strings out of 493109
- 353040 string characters out of 6138587
- 472705 words of memory out of 5000000
- 23538 multiletter control sequences out of 15000+600000
- 47236 words of font info for 164 fonts, out of 8000000 for 9000
+ 20748 strings out of 493109
+ 353278 string characters out of 6138587
+ 469828 words of memory out of 5000000
+ 23548 multiletter control sequences out of 15000+600000
+ 47553 words of font info for 167 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,8n,92p,10476b,1326s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2014/texm
@@ -1771,10 +1747,10 @@ be/utopia/putb8a.pfb><c:/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrr8a
 014/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2014/texmf-dist/fo
 nts/type1/urw/times/utmr8a.pfb><c:/texlive/2014/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb><c:/texlive/2014/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesisTestView.pdf (34 pages, 1427910 bytes).
+Output written on thesisTestView.pdf (34 pages, 1428766 bytes).
 PDF statistics:
- 503 PDF objects out of 1000 (max. 8388607)
- 434 compressed objects within 5 object streams
- 131 named destinations out of 1000 (max. 500000)
- 26483 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 522 PDF objects out of 1000 (max. 8388607)
+ 453 compressed objects within 5 object streams
+ 135 named destinations out of 1000 (max. 500000)
+ 26499 words of extra memory for PDF output out of 29859 (max. 10000000)
 
