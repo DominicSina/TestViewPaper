@@ -51,7 +51,7 @@ Breaking out of this circle can require an outside influence \cite{Beck98a}. Whi
 \todo{automated test vs manualy tests in active development}
 \meta{content:unit testing, definition of scope, independant tests}
 Unit testing follows the paradigm of isolating the smallest inseparable parts of a program and testing them independently of each other. Each of these tests is done as low level as possible. System wide tests are generally not a part of unit testing. 
-This means that the scope of each test is very small and consequently many tests are needed to cover \chg{a}{the} whole implementation. By making unit tests one ensures that the tested method behave as expected.\rm{and also speeds up development since these automated test are very fast to execute.} \brs{writing tests speeds up development(not true) because tests are fast to execute(makes no sense)} 
+This means that the scope of each test is very small and consequently many tests are needed to cover \chg{a}{the} whole implementation. By making unit tests one ensures that the tested method behave as expected.\del{and also speeds up development since these automated test are very fast to execute.} \brs{writing tests speeds up development(not true) because tests are fast to execute(makes no sense)} 
 
 \meta{u.t. in smalltalk->methods->preconditions, mocks->postconditions after method invoc, mocks}
 In Smalltalk these smallest units are often methods since the language heavily relies on sending messages (what roughly translates to a method invocation in other languages) between objects. 
@@ -80,7 +80,7 @@ Third Law: You may not write more production code than is sufficient to pass the
 While it might seem tedious this repeated careful planning is \del{also} the biggest advantage of this approach. Applications developed with Test-driven Development have to be very thought-out and every requirement has to be clear since those are required to begin writing the the production code.
 
 \meta{facilitating unit testing in ttd is different since no data can be gathered from the implemented method at first}
-As shown in \autoref{sec:Unit Testing} it is fair to look at testing on a method level when discussing unit testing. Since in Test-driven Development the methods may not have been written when the test\ins{s} are created the method declarations and the method locations in the class hierarchy can not always be used to make certain assumptions that could be used to facilitate creating new tests. For example before a method in the production code is written it needs to have a failing tests that checks if this method exists. Only for subsequent tests to the same method can the method declaration and the method location in the class hierarchy be found in the production code.
+As shown in \autoref{sec:Unit Testing} it is fair to look at testing on a method level when discussing unit testing. Since in Test-driven Development the methods may not have been written when the test\ins{s} are created the method declarations and the method locations in the class hierarchy can not always be used to make certain assumptions that could be used to facilitate creating new tests. For example before a method in the production code is written it needs to have a failing tests. Only for subsequent tests to the same method can the method declaration and the method location in the class hierarchy be found in the production code.
 
 Test-driven Development bears mentioning because it is one of the major paradigms concerned with testing and because in the context of this paper it has to be treated a bit differently. Namely since it is not possible to always get the method declaration and location in the class hierarchy to help generating tests when doing Test-driven Development.
 
@@ -114,57 +114,54 @@ As shown in \autoref{cha:introduction} many current software development paradig
 In this work we assume that important features for unit test friendly environments are a quick way to see if a method is tested, an automated test search, the ability to view tests and methods side by side and an option to easily create new tests. These criteria are based on the definitions of the various testing paradigms previously described in \autoref{cha:Testing}. 
 
 Namely unit testing can be supported by letting the developer see if a method is covered by at least one test, the search for all tests corresponding to a specific method and the ability to create new tests as fast as possible. 
-In whitebox testing it is convenient to see the method under test and the test at the same time without switching between the two. With this it becomes easier to write tests that together cover each path in the decision tree of the method.
+In whitebox testing it is convenient to see the method under test and the test at the same time without switching between the two. With this it becomes easier to write tests that together cover each path in the decision tree of a method.
 
-Since not many environments were created with specifically unit testing in mind there are often some of these features missing. Concrete examples of environments lacking these specific features will be pointed out in \autoref{cha:Related Work}. To compensate for this the user is required to manually execute many tasks like navigating back and forth between method and test and creating new test classes and packages. This repeatedly breaks the programmers flow and in effect discourages them from writing tests. In the following we will take a closer look at the tasks involved in different goals which will help to understand the problem of those missing functionalities and exactly at which point they are needed.
+Since not many environments were created with specifically unit testing in mind there are often some of these features missing. Concrete examples of environments lacking these specific features will be pointed out in \autoref{cha:Related Work}. To compensate for these missing features the user is required to manually execute many tasks like navigating back and forth between method and test and creating new test classes and packages. This repeatedly breaks the programmers flow and in effect discourages them from writing tests. In the following we will take a closer look at the tasks involved in different goals arising from unit testing which will help to understand the problem of those missing functionalities and exactly at which point they are needed.
 
 \section{Is a method tested?}
 \label{sec:Is a method tested?}
 \meta{check if a method is covered by a test}
 In unit testing it is important that each method is tested. As discussed in \autoref{sec:Unit Testing} a method with no tests is unsafe and might even have to be tested manually which is quite slow. Thus a very important feature in unit testing is the ability to check if a method has at least one test. This has to be as easy to see and as uninterruptive as possible. 
 
-If this feature is not implemented the user has to switch back and forth between a class and all its test classes to check manually. If the test classes are not known to them they have to find them first. Both of those tasks can take a lot of effort. 
+If this feature is not implemented users have to switch back and forth between a class and all its test classes to check manually. If the test classes are not known to them they have to find them first. Both of those tasks can take a lot of effort. 
 Luckily code coverage tools also provide this functionality. They allow \del{letting} the user \ins{to} run test suits and then see which part of the implementation were executed. This \ins{will} \del{will} \chg{tell}{show} if a method never got called \del{when running a certain test suit} and \chg{this}{thus} is untested.
 
 \section{Showing all tests to a method}
 \label{sec:Showing all tests to a method}
 \meta{see all tests to a method, combine with functionality above}
-Resulting from unit testing is the requirement to look up a method and all the tests that have been written for it. Just checking if a method is tested at all is not enough, the user wants to see if the method is tested sufficiently. To ensure this multiple test methods are required. Also If at least one test for a method could be found then the method is not untested. This functionality can thus easily substitute the one described in \autoref{sec:Is a method tested?}. The previous ability to see if a method is untested will thus no longer be discussed separately in this paper. 
+Resulting from unit testing is the requirement to look up a method and all the tests that have been written for it. Just checking if a method is tested at all is not enough, the developers might want to see if the method is tested sufficiently. To ensure this multiple test methods are required. Also if at least one test for a method could be found then the method is not untested. This functionality can thus easily substitute the one described in \autoref{sec:Is a method tested?}. The previous ability to see if a method is untested will thus no longer be discussed separately in this paper. 
 
-Similar to showing if a method is tested this helps the user to decide if it is necessary to write a new test. Additionally this functionality helps the user see if a certain test case has already been created and thus is not need again. Further a user could study how a method works by looking at the corresponding tests. 
+Similar to showing if a method is tested this helps the user to decide if it is necessary to write a new test. Further this functionality helps the user to see if a certain test case has already been created and thus is not need again. A user could also study how a method works by looking at the corresponding tests. 
 
-A lack of this test search function will require great effort on part of the user to keep track of  test classes and test methods. If the user decides to add a new test then it is necessary to take a short look at every test to determine if a similar test has not been written. In this case the tester needs to have quick access to all tests of this method. A lack of this feature makes unit testing in anything but the smallest applications very tedious and new testers will have trouble getting an overview of the existing test suit.
+A lack of this test search function will require great effort on part of the user to keep track of  test classes and test methods. If the user decides to add a new test then it is necessary to take a short look at every test to determine if a similar test has not been written. In this case the tester needs to have quick access to all tests of this method. A lack of this feature makes unit testing in anything but the smallest applications and test suits very tedious and new testers will have trouble getting an overview of the existing test suit.
 
-Since this test search relies strongly on the relation between tests and method code coverage tools provide less help. 
+Code coverage tools can not fully substitute an automated test search since it relies strongly on the relation between tests and method. 
 To be useful the code coverage tool would have to save for each method from which test it was called during the execution of a test suit. Also coverage is not necessary a good metric to determine if a tests actually tests a method. Nested method calls might yield a large number of false positives. 
 
 \brs{thus far much talk about a lot of important stuff, not enough about what \emph{exactly} the problem is and why}
-\dos{did breaking it up into sections work?}
+\dos{did breaking it up into sections help?}
 
 \section{Creating new tests}
 \label{sec:Creating new tests}
 \meta{facilitate the creation of new tests}
 As discussed previously it should be as simple as possible to check if a method is not sufficiently tested. Almost as a direct consequence the user has to create these new tests if this is the case. Especially at the start of a project many new tests will have to be created. So it is safe to say that in unit testing another reoccurring user goal is the creation of new tests for methods with no or too \chg{less}{few} tests.
 
-While creating a new test the user first has to decide in which package and class the new test will be added. In many cases the location of this new test has already been decided on since other tests corresponding to the same method are already there. In this case a quick option to specify an existing test class should be offered. If there are no test classes and packages or if the existing ones do not fit the new test then the user has to create new ones. 
+While creating a new test the user first has to decide in which package and class the new test will be added and how the test will be called. In many cases the location of this new test has already been decided on since other tests corresponding to the same method are already there. In this case a quick option to specify an existing test class should be offered. If there are no test classes and packages or if the existing ones do not fit the new test then the user has to create a new test class. 
 
-In this case the test package name and the test class name are often derived from the original package and class names. Both of those derivations should be set as default values for the new class and package to possibly save some time. A slight drawback of the derivation of these default names is that the method that is being tested has to be defined previously. Especially when using Test-driven Development the programming environment can not always make such name derivations. During Test-Driven Development only after the first test that verifies if a method is declared has been satisfied these derivations can be made. Provided that tests to the same class will not go into different test classes these default values will not help the user.
+In this case the test package, test class and test names are often derived from the original package, class and method names. A slight drawback of these default name derivations is that the method that is being tested has to be defined previously. Especially during Test-driven Development the programming environment can not always make such name derivations. In Test-Driven Development these derivations can only be made after the first test to a method has been written since only after this the method is implemented.
 
-As shown it does not matter if the test class and package already exist or if they need to be added. Either way it is possible to support the user during the creation of a new test except during the creation of the first test to a method in Test-Driven development. The creation of new tests can be facilitated by providing a fast way to specify an existing test class and giving default names for new test classes and packages. 
+As shown it does not matter if the test class and package already exist or if they need to be added. Creating new tests can be facilitated either by letting the user quickly specify existing test classes where the test will be added or by making creating new test classes easier. Providing a default name for new tests can help in both cases. Another help would be the ability to let the user create these packages, classes and tests together instead of individually.
 
-While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionalitiy described previously in \autoref{sec:Showing all tests to a method}.
+If the default names are missing the developer has to enter similarly structured names for packages, classes and test over and over. In case test package, classes and methods can not be created together the user will have to click around in the environment multiple times to start the creation of each of these. While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionality described previously in \autoref{sec:Showing all tests to a method}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\todo{continue correcting here}
-%%%%%%%%%%%%%%%%%%%continue making this into a section and proofreading it
+\section{Methods and Tests Side by Side}
+\label{sec:Methods and Tests Side by Side}
 \meta{see method and test side by side}
-Resulting from whitebox testing is the need know a method's inner workings while testing. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. Ways to do this include writing notes or showing selected sections of the tested method but the possibly simplest way is to let the users see the whole method in question at the same time as they are writing the test for it. 
-In Black-box Testing this feature can be counterproductive. If not desired the additional information can spoil blackbox testing and even if completely ignored it still takes up space on the screen. Blackbox testing thus requires that this feature can be turned off. While this feature is not very important in blackbox testing it helps during whitebox testing. 
-Due to the simplicity and effectiveness of the  solution we will focus on letting the user see the method under test and the test that is being written at the same time. It is important not only to provide this functionality but also to optimize it. 
-If no information about a method is provided by the programming environment the users have to make notes for themselves, look things up in design documents or resort to additional analysis tools. This can be very tedious and take a lot of time. By making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again a great deal of repetitive manual tasks that the user has to execute becomes obsolete.
+Resulting from whitebox testing is the need know a method's inner workings while testing. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. The possibly simplest way is to let the users see the whole method in question at the same time as they are writing a test for it.
 
-\meta{use the discussed functionalities to help analyzing existing environments}
-These basic features that a unit test friendly environment should have will be used in the next chapter as a starting point to critically analyze existing environments. If some of these are missing then the user often might have to do simple but also quite repetitive tasks to compensate. This increases the time and effort needed to create unit tests and thus make writing tests a chore. By automating those minor tasks on the other hand various use cases involving unit tests can be simplified. In turn the user is encouraged to write tests what will hopefully increase the quality of the software that is being written.
+In Black-box Testing this feature can be counterproductive by distracting the users from the method specifications. The additional information can thus spoil blackbox testing and even if completely ignored still takes up space on the screen. Blackbox testing thus requires that this feature can be turned off. 
+
+If during whitebox testing no information about a method is provided by the programming environment the users have to make notes for themselves, switch back and forth between method and tests, look things up in design documents or resort to additional analysis tools with every new test. This can be very tedious and take a lot of time. Making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again can save valuable time and effort.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Related work %%%%%%%%%%%%%%%%%%%%%
@@ -174,6 +171,10 @@ These basic features that a unit test friendly environment should have will be u
 %view test and method side by side
 %ability to find all tests to a certain method
 %facilitating adding of tests
+
+%%%%%%%%%%%%
+\todo{continue reading through this}
+%%%%%%%%%%%
 
 \section{\brs{new section}}
 %take a look at existing environments
@@ -264,6 +265,8 @@ Luckily the Pharo environment provides \todo{code coverage tool is already given
 
 \subsection{\brs{new section}}
 \meta{creation of new tests}
+%Both of those derivations should be set as default values for the new class and package to possibly save some time. In Java these name derivations are often quite easy to make\cite[p.~19]{Mars05a}. It can be assumed that in many other languages this will be the same.
+
 The creation of new tests to a method is slightly easier than in Eclipse but has certain drawbacks. Similarly to Eclipse with a right-click on a class the option "Generate test and jump" is given. 
 An improvement compared to Eclipse is that the new test will automatically be add to a certain test class in a specific package (both of which will be created if needed). Using these predefined locations is a bit faster but robs the user of the ability to specify different containers. An advantage is that tests created in this manner confirm to the naming standards imposed by Nautilus. 
 Similarly as in Eclipse only one test per method can be created in this way.  Eclipse's and Nautilus' way of adding new tests are very comparable. A case could be made for both versions of this feature.
@@ -281,6 +284,7 @@ In this section we will comment on the same three functionalities discussed in t
 
 \section{\brs{new section}}
 \meta{view test and method at the same time}
+\todo{descibe how this feature is optimized by combining it with the automated test search, move this section down}
 As stated one of the bigger drawbacks concerning unit testing that Nautilus has is that it is hard to view tests and methods at the same time. Whitebox testing becomes very cumbersome through this. Seeing both method and test together should be quick and not introduce too much redundancy that might clutter the environment. 
 Following this the TestView Plugin allows to split the code editor panel of the Nautilus window vertically into two parts. With this approach the unneeded redundancy of opening two Nautilus windows is eliminated.\ins{ }The file hierarchy for example will not be displayed a second time and less screen space will be occupied. 
 Unlike in Eclipse the user has no absolute control over this additional code editor but on the other hand only methods of interest are shown there and the user does not have to manage what should be displayed there. This is possible due to the fact that some assumptions can be made about what code the user wants to see if this code editor is only used during unit testing. The left code editor will be displaying the in the file hierarchy selected method and the right code editor will show the corresponding test method. The user might still choose to open two Nautilus windows due to the need to view methods together that are not method and corresponding test. 

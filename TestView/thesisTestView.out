@@ -7,31 +7,32 @@
 \BOOKMARK [1][-]{section.3.1}{3.1 Is a method tested?}{chapter.3}% 7
 \BOOKMARK [1][-]{section.3.2}{3.2 Showing all tests to a method}{chapter.3}% 8
 \BOOKMARK [1][-]{section.3.3}{3.3 Creating new tests}{chapter.3}% 9
-\BOOKMARK [0][-]{chapter.4}{4 Related Work}{}% 10
-\BOOKMARK [1][-]{section.4.1}{4.1 BS:new section}{chapter.4}% 11
-\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 BS:new section}{section.4.1}% 12
-\BOOKMARK [1][-]{section.4.2}{4.2 BS:new section}{chapter.4}% 13
-\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 BS:new section}{section.4.2}% 14
-\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 BS:new section}{section.4.2}% 15
-\BOOKMARK [1][-]{section.4.3}{4.3 BS:new section}{chapter.4}% 16
-\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 BS:new section}{section.4.3}% 17
-\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 BS:new section}{section.4.3}% 18
-\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 BS:new section}{section.4.3}% 19
-\BOOKMARK [0][-]{chapter.5}{5 The TestView Plugin}{}% 20
-\BOOKMARK [1][-]{section.5.1}{5.1 BS:new section}{chapter.5}% 21
-\BOOKMARK [1][-]{section.5.2}{5.2 BS:new section}{chapter.5}% 22
-\BOOKMARK [1][-]{section.5.3}{5.3 BS:new section}{chapter.5}% 23
-\BOOKMARK [0][-]{chapter.6}{6 The Validation}{}% 24
-\BOOKMARK [0][-]{chapter.7}{7 Conclusion and Future Work}{}% 25
-\BOOKMARK [0][-]{chapter.8}{8 Anleitung zu wissenschaftlichen Arbeiten}{}% 26
-\BOOKMARK [1][-]{section.8.1}{8.1 User Guide}{chapter.8}% 27
-\BOOKMARK [2][-]{subsection.8.1.1}{8.1.1 What's the TestView Plugin?}{section.8.1}% 28
-\BOOKMARK [2][-]{subsection.8.1.2}{8.1.2 Installation and activation}{section.8.1}% 29
-\BOOKMARK [2][-]{subsection.8.1.3}{8.1.3 Adding a new test inside a new test class}{section.8.1}% 30
-\BOOKMARK [2][-]{subsection.8.1.4}{8.1.4 Adding a new to an existing test class}{section.8.1}% 31
-\BOOKMARK [2][-]{subsection.8.1.5}{8.1.5 Linking an existing test class}{section.8.1}% 32
-\BOOKMARK [2][-]{subsection.8.1.6}{8.1.6 Unlinking an existing test class}{section.8.1}% 33
-\BOOKMARK [2][-]{subsection.8.1.7}{8.1.7 Troubleshooting}{section.8.1}% 34
-\BOOKMARK [3][-]{subsubsection.8.1.7.1}{8.1.7.1 Tests are not found by the TVPlugin}{subsection.8.1.7}% 35
-\BOOKMARK [3][-]{subsubsection.8.1.7.2}{8.1.7.2 Tests that do not test the currently selected method are shown}{subsection.8.1.7}% 36
-\BOOKMARK [3][-]{subsubsection.8.1.7.3}{8.1.7.3 Adding and removing individual tests to the tests found by the TVPlugin}{subsection.8.1.7}% 37
+\BOOKMARK [1][-]{section.3.4}{3.4 Methods and Tests Side by Side}{chapter.3}% 10
+\BOOKMARK [0][-]{chapter.4}{4 Related Work}{}% 11
+\BOOKMARK [1][-]{section.4.1}{4.1 BS:new section}{chapter.4}% 12
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 BS:new section}{section.4.1}% 13
+\BOOKMARK [1][-]{section.4.2}{4.2 BS:new section}{chapter.4}% 14
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 BS:new section}{section.4.2}% 15
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 BS:new section}{section.4.2}% 16
+\BOOKMARK [1][-]{section.4.3}{4.3 BS:new section}{chapter.4}% 17
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 BS:new section}{section.4.3}% 18
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 BS:new section}{section.4.3}% 19
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 BS:new section}{section.4.3}% 20
+\BOOKMARK [0][-]{chapter.5}{5 The TestView Plugin}{}% 21
+\BOOKMARK [1][-]{section.5.1}{5.1 BS:new section}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.2}{5.2 BS:new section}{chapter.5}% 23
+\BOOKMARK [1][-]{section.5.3}{5.3 BS:new section}{chapter.5}% 24
+\BOOKMARK [0][-]{chapter.6}{6 The Validation}{}% 25
+\BOOKMARK [0][-]{chapter.7}{7 Conclusion and Future Work}{}% 26
+\BOOKMARK [0][-]{chapter.8}{8 Anleitung zu wissenschaftlichen Arbeiten}{}% 27
+\BOOKMARK [1][-]{section.8.1}{8.1 User Guide}{chapter.8}% 28
+\BOOKMARK [2][-]{subsection.8.1.1}{8.1.1 What's the TestView Plugin?}{section.8.1}% 29
+\BOOKMARK [2][-]{subsection.8.1.2}{8.1.2 Installation and activation}{section.8.1}% 30
+\BOOKMARK [2][-]{subsection.8.1.3}{8.1.3 Adding a new test inside a new test class}{section.8.1}% 31
+\BOOKMARK [2][-]{subsection.8.1.4}{8.1.4 Adding a new to an existing test class}{section.8.1}% 32
+\BOOKMARK [2][-]{subsection.8.1.5}{8.1.5 Linking an existing test class}{section.8.1}% 33
+\BOOKMARK [2][-]{subsection.8.1.6}{8.1.6 Unlinking an existing test class}{section.8.1}% 34
+\BOOKMARK [2][-]{subsection.8.1.7}{8.1.7 Troubleshooting}{section.8.1}% 35
+\BOOKMARK [3][-]{subsubsection.8.1.7.1}{8.1.7.1 Tests are not found by the TVPlugin}{subsection.8.1.7}% 36
+\BOOKMARK [3][-]{subsubsection.8.1.7.2}{8.1.7.2 Tests that do not test the currently selected method are shown}{subsection.8.1.7}% 37
+\BOOKMARK [3][-]{subsubsection.8.1.7.3}{8.1.7.3 Adding and removing individual tests to the tests found by the TVPlugin}{subsection.8.1.7}% 38

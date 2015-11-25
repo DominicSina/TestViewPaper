@@ -8,6 +8,7 @@
 \contentsline {section}{\numberline {3.1}Is a method tested?}{9}{section.3.1}
 \contentsline {section}{\numberline {3.2}Showing all tests to a method}{10}{section.3.2}
 \contentsline {section}{\numberline {3.3}Creating new tests}{10}{section.3.3}
+\contentsline {section}{\numberline {3.4}Methods and Tests Side by Side}{11}{section.3.4}
 \contentsline {chapter}{\numberline {4}Related Work}{12}{chapter.4}
 \contentsline {section}{\numberline {4.1}\leavevmode {\color {orange}\textbf {\textit {BS:}}new section}}{12}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}\leavevmode {\color {orange}\textbf {\textit {BS:}}new section}}{12}{subsection.4.1.1}
