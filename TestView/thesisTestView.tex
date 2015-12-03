@@ -113,7 +113,7 @@ A lack of this test search function will require great effort on part of the use
 
 Code coverage tools can not fully substitute an automated test search since it relies strongly on the relation between tests and method. 
 To be useful the code coverage tool would have to save for each method from which test it was called during the execution of a test suit. Also coverage is not necessary a good metric to determine if a tests actually tests a method. Nested method calls might yield a large number of false positives. 
-\brs{here}
+
 \section{Creating new tests}
 \label{sec:Creating new tests}
 As discussed previously it should be as simple as possible to check if a method is not sufficiently tested. Almost as a direct consequence the user has to create these new tests if this is the case. Especially at the start of a project many new tests will have to be created. So it is safe to say that in unit testing another reoccurring user goal is the creation of new tests for methods with no or too few tests.
@@ -122,17 +122,17 @@ While creating a new test the user first has to decide in which package and clas
 
 In this case the test package, test class and test names are often derived from the original package, class and method names. A slight drawback of these default name derivations is that the method that is being tested has to be defined previously. Especially during Test-driven Development the programming environment can not always make such name derivations. In Test-Driven Development these derivations can only be made after the first test to a method has been written since only after this the method is implemented.
 
-As shown it does not matter if the test class and package already exist or if they need to be added. Creating new tests can be facilitated either by letting the user quickly specify existing test classes where the test will be added or by making creating new test classes easier. Providing a default name for new tests can help in both cases. Another help would be the ability to let the user create these packages, classes and tests together instead of individually.
+\ugh{As shown}\brs{as shown where?} it does not matter if the test class and package already exist or if they need to be added. Creating \ins{and placing} new tests can be facilitated either by letting the user quickly specify existing test classes \del{where the test will be added} or by making creating new test classes easier. Providing a default name for new tests can help in both cases. Another help\ins{ful feature} would be the ability to let the user create these packages, classes and tests together instead of individually.
 
-If the default names are missing the developer has to enter similarly structured names for packages, classes and test over and over. In case test package, classes and methods can not be created together the user will have to click around in the environment multiple times to start the creation of each of these. While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionality described previously in \autoref{sec:Showing all tests to a method}.
+If the default names are missing the developer has to enter similarly structured names for packages, classes and test over and over. In case \ins{that} test package\ins{s}, classes and methods can not be created together the user will have to click around in the environment multiple times to start the creation of each of these. While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionality described previously in \autoref{sec:Showing all tests to a method}.
 
 \section{Methods and Tests Side by Side}
 \label{sec:Methods and Tests Side by Side}
-Resulting from whitebox testing is the need know a method's inner workings while testing. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. The possibly simplest way is to let the users see the whole method in question at the same time as they are writing a test for it.
+\ugh{Resulting from whitebox testing}\brs{don't start like this} is the need know a method's inner workings while testing. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. The possibly simplest way is to let the users see the whole method in question at the same time as they are writing a test for it.
 
 In Black-box Testing this feature can be counterproductive by distracting the users from the method specifications. The additional information can thus spoil blackbox testing and even if completely ignored still takes up space on the screen. Blackbox testing thus requires that this feature can be turned off. 
 
-If during whitebox testing no information about a method is provided by the programming environment the users have to make notes for themselves, switch back and forth between method and tests, look things up in design documents or resort to additional analysis tools with every new test. This can be very tedious and take a lot of time. Making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again can save valuable time and effort.
+If during whitebox testing no information about a method is provided by the programming environment the users have to make notes for themselves, switch back and forth between method and tests, look things up in design documents or resort to additional analysis tools with every new test\brs{really? They cannot just open another window and open the method there? also, if they have code then they don't need design docs, analysis tools etc?}. This can be very tedious and take a lot of time. Making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again can save valuable time and effort.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Related work %%%%%%%%%%%%%%%%%%%%%
@@ -376,16 +376,17 @@ In which we step back, have a critical look at the entire work, then conclude, a
 \subsection{What's the TestView Plugin?}
 	\label{subsec:What's a TestView Plugin?}
 
-Nautilus is the default system browser in current Pharo versions. The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
+Nautilus is the default system browser in current Pharo versions\brs{there are multiple current versions?}. The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
 
-Let us take look at how the TVPlugin looks and and what basic features it provides.
+Let us take look at how the TVPlugin looks \del{and} and what basic features it provides.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{screenshots/tvPluginOverView.png}
 	\caption{TVPlugin overview}
 \end{figure}
+\brs{make photos slightly bigger, and every figure must be referenced in text \ie ``\autoref{TVPlugin overview} shows the general layout of Nautilus with the TVP installed. '', also, didn't we agree that you would put red rectangles around important parts of the pictures. also, the picture sizes are quite inconsistent and that is annoying. With all this in mind I think I'll skip reading this part until you fix the images.}
 
-The \textbf{``TestView''} button toggles the additional code panel to the right of the original code panel on and off. All features described here require that the plugin is turned on.
+The \textbf{``TestView''} button toggles the additional code panel to the right of the original code panel on and off. All features described here require that the plugin is turned on\brs{show Nautilus without TVP as well}.
 
 The \textbf{selected method} is a central part of the plugin. All funtions the plugin provides are relative to what you have selected in the Nautilus window. Whenever you select a Method in the Nautilus class hierarchy the plugin will automatically search for tests corresponding it.
 
