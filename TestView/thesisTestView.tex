@@ -25,15 +25,19 @@ Before explaining the plug-in and its functionalities in more detail we will tak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 	\label{cha:introduction}
-Testing has become a very important part of software development. The reason for this is that testing is useful to validate a project. While it is true that ``\ugh{[p]rogram} testing can be used to show the presence of bugs, but never to show their absence!'' \cite[p.~6]{Dijk72b}\brs{No need for pages in citations, ever} testing still helps to validate at least parts of the functionality of a program. Tests are for example useful to determine if newly written code behaves as expected and can also be used to detect if recent changes break previously working code (regression errors).
+Testing has become a very important part of software development. The reason for this is that testing is useful to validate a project. While it is true that ``Program testing can be used to show the presence of bugs, but never to show their absence!'' \cite{Dijk72b} testing still helps to validate at least parts of the functionality of a program. Tests are for example useful to determine if newly written code behaves as expected and can also be used to detect if recent changes break previously working code (regression errors).
  
-User studies indicate that about 10-15\% of the development time is spend waiting for tests to finish executing and fixing regression errors, and simply increasing the frequency with which the tests are performed reduces this wasted time by 31-81\% \cite[p.~1]{Saff03b}. This also means that the additional time it takes to execute tests more frequently is less than the time saved by fixing regression errors early.
+User studies indicate that about 10-15\% of the development time is spend waiting for tests to finish executing and fixing regression errors, and simply increasing the frequency with which the tests are performed reduces this wasted time by 31-81\% \cite{Saff03b}. This also means that the additional time it takes to execute tests more frequently is less than the time saved by fixing regression errors early.
 
-Since testing provides these benefits it has become a key feature of many current software engineering paradigms like for example extreme programing (XP) \cite[p.~1]{Pres14a}. Together with the other features of these development methods testing helps to speed up the development and increase the quality of the software being developed. Additionally for example in XP the time that is spent writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during the life of a project an automated test can save you a hundred times the cost to create it... ''. This is done by guarding against bugs and regression errors. Since this guard is in place "refactoring" and "frequent integration" of new code become possible. 
+Since testing provides these benefits it has become a key feature of many current software engineering paradigms like for example extreme programing (XP) \cite{Pres14a}. Together with the other features of these development methods testing helps to speed up the development and increase the quality of the software being developed. Additionally for example in XP the time that is spent writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during the life of a project an automated test can save you a hundred times the cost to create it... ''. This is done by guarding against bugs and regression errors. Since this guard is in place "refactoring" and "frequent integration" of new code become possible. 
 
-This brings us the problem that\ins{,} while testing clearly has its benefits\ins{,} it is still seen as optional or too time consuming. /ugh{That many developers underestimate the difference that unit tests can make becomes evident in that even when there are tests they are not executed as often as they should be.}\brs{pls rephrase. Starting a sentence with ``That many developers'' is really ugly.} In their case studies Pressman and Ernst found that \chg{the}{a} 31-82\%  reduction of waisted time can be achieved by simply running the same tests two to five times as often\cite[p.~1]{Pres14a}. The reason \del{why} the effect of testing is underestimated is that \ugh{often under stress the more direct and optimistic way of implementing more features instead of testing seems faster}\brs{Does not parse}. This will in the long run slow down the development process since all the previously discussed benefits of testing are missing. So there might be no time for testing in the future as well. \brs{this paragraph is problematic, it's a big jumble of thoughts, try to refactor}
+This brings us the problem that, while testing clearly has its benefits, it is still seen as optional or too time consuming. 
+Often tests they are not executed as often as they should be which indicates that the use of unit tests is underestimated.
+In their case studies Pressman and Ernst found that a 31-82\%  reduction of waisted time can be achieved by simply running the same tests two to five times as often\cite{Pres14a}. Especially under pressure unit testing is often deemed to time consuming. 
 
-Breaking out of this circle can require an outside influence \cite{Beck98a}. While certainly some developers have no problem writing tests no matter the situation a little encouragement might be need\ins{ed} for others. In this bachelor thesis we attempt to provide another one of those outside influences by making testing easier and faster.
+Not testing properly will in the long run slow down the development process since all the previously discussed benefits of testing are missing. So there might be no time for testing in the future as well.
+
+Breaking out of this circle can require an outside influence \cite{Beck98a}. While certainly some developers have no problem writing tests no matter the situation a little encouragement might be needed for others. In this bachelor thesis we attempt to provide another one of those outside influences by making testing easier and faster.
 
 \chapter{A Closer Look at Testing}
 	\label{cha:Testing}
@@ -43,19 +47,34 @@ In this chapter we will take a look at different testing paradigms in order to s
 \section{Unit Testing}
 	\label{sec:Unit Testing}
 Unit testing follows the paradigm of isolating the smallest inseparable parts of a program and testing them independently of each other. Each of these tests is done as low level as possible. System wide tests are generally not a part of unit testing. 
-This means that the scope of each test is very small and consequently many tests are needed to cover the whole implementation. By making unit tests one ensures that the tested method\brs{Who said anything about methods? I thought it was ``the smallest inseparable part''} behave as expected.
+This means that the scope of each test is very small and consequently many tests are needed to cover the whole implementation. By making unit tests one ensures that the tested parts behave as expected. In Smalltalk these smallest units are often methods since the language heavily relies on sending messages (what roughly translates to a method invocation in other languages) between objects.
 
-In Smalltalk these smallest units are often methods since the language heavily relies on sending messages (what roughly translates to a method invocation in other languages) between objects\brs{oh, now you mention methods}. 
-\ugh{To start testing an instance of the object providing the method} \brs{this makes it seem like we are testing the instance and not creating it} under test is created and brought into a state where a set of preconditions is met. An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled.
+To start testing a method an instance of the class under test is created and brought into a state where a set of preconditions is met. 
+An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled.
 
-To illustrate this let us examine how unit tests for a simple stack might work. The stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named "push(x)" which adds an element "x" on top of the stack and  a method named "pop()" which removes and returns the element that was added last to the stack. Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by "pop()" and not some other object. The preconditions need to make sure that the stack is initialized with a capacity bigger than zero. If no stack is created or if its size is smaller than one then the stack can return nothing even if everything is correctly implemented. After this precondition the test will now call "push(x)" and then "pop()". Now we need to make sure that operations work as expected or in other word we need to check our postconditions. In this case if the object returned by "pop()" is the one that we pushed to the stack and that the stack is empty again after the element was popped.\brs{If you give an example, add some code e.q. the example test}
+To illustrate this let us examine how unit tests for a simple stack might work. The stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named "push(x)" which adds an element "x" on top of the stack and  a method named "pop()" which removes and returns the element that was added last to the stack. Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by "pop()" and not some other object. 
+
+The preconditions need to make sure that the stack is initialized with a capacity bigger than zero. If no stack is created or if its size is smaller than one then the stack can return nothing even if everything is correctly implemented. After this precondition the test will now call "push(x)" and then "pop()". 
+
+Now we need to make sure that operations work as expected or in other word we need to check our postconditions. In this case if the object returned by "pop()" is the one that we pushed to the stack and that the stack is empty again after the element was popped. Below is an example in SmallTalk of how such a test could look like. To check if the stack is empty again after calling pop() a separate test could be written.
+\begin{code}
+testPopReturnedElement
+| stack |
+
+stack:=Stack withCapacity: 2
+stack push: 5
+
+self assert: (stack pop=5)\end{code} 
 
 For the purpose of this paper two features of unit testing are important to keep in mind. The first one is that unit testing takes place at a method level and the second one is that the narrow scope of unit tests requires many tests to cover multiple methods. Further, due to how it is recommended to keep each test as small as possible even a single method is likely to require multiple corresponding tests since every path in the decision tree of the method should be covered.
 
 \section{Test-driven Development}
 	\label{sec:Test-driven Development}
-In Test-driven Development the tests for a functionality are written \ugh{slightly}\brs{does it have to be slightly?} before the functionality itself. Afterwards the functionality is implemented until those tests are satisfied. After this more tests are added to test additional functionality. This process is repeated until the feature is working. Test-driven development thus requires the developers to regularly determine the requirements for a functionality.\brs{I really don't like to word ``functionality''. can you find a synonym?}
-A comprehensive overview of the most important rules in Test-driven Development can be found here \cite[p.~122]{Mart09a} \brs{this makes it seem like the citation is a part of the text. It is not, citations are annotations}:
+In Test-driven Development the tests for an implementation are written before the implementation itself. 
+Afterwards the implementation is written and improved until those tests are satisfied. 
+After this more tests are added to test additional features. This process is repeated until the implementation is sufficiently working. 
+Test-driven development thus requires the developers to regularly determine the requirements for a feature.
+Below are some basic rules of Test-Driven Development as laid out by Martin\cite{Mart09b}.
 \begin{quote}
 First Law: You may not write production code until you have written a failing unit test.
 
@@ -63,7 +82,7 @@ Second Law: You many not write a more of a unit test than is sufficient to fail,
 
 Third Law: You may not write more production code than is sufficient to pass the currently failing test.
 \end{quote}
-While it might seem tedious this repeated careful planning is the biggest advantage of this approach. Applications developed with Test-driven Development have to be very thought-out and every requirement has to be clear since those are required to begin writing the \del{the} production code.
+While it might seem tedious this repeated careful planning is the biggest advantage of this approach. Applications developed with Test-driven Development have to be very thought-out and every requirement has to be clear since those are required to begin writing the production code.
 
 As shown in \autoref{sec:Unit Testing} it is fair to look at testing on a method level when discussing unit testing. Since in Test-driven Development the methods may not have been written when the tests are created the method declarations and the method locations in the class hierarchy can not always be used to make certain assumptions that could be used to facilitate creating new tests. For example before a method in the production code is written it needs to have a failing tests. Only for subsequent tests to the same method can the method declaration and the method location in the class hierarchy be found in the production code.
 
@@ -73,22 +92,15 @@ Test-driven Development bears mentioning because it is one of the major paradigm
 	\label{sec:Blackbox and Whitebox Testing}
 Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method. Especially interesting are worst case scenarios that can be found by examining the code and method invocations that result in as much executed lines as possible.
 
-Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "[t]est sets are developed and their results evaluated solely on the basis of the specifications" \cite[p.~282]{Ghez02a}. This means that the tests have to be made so that they return the right value for all tested input values. Since it might be unfeasible to test all values it is necessary to choose the critical input values where an error might occur.
-
-\ugh{For the purpose of this paper it is important to remember that depending on which one of those paradigms is used it is necessary to have in depth knowledge of the method being tested in order to write a test for it.}\brs{does not parse. Depending on which X is used it is important to know Y. o\_O}  Namely while doing whitebox testing. On the other hand when doing blackbox testing it is discouraged to look at the implemented method, provided it has already been written.\brs{This section does not add anything, it repeats the previous section in a more confusing way}
-
-%\section{The Nautilus Plugin Framework}
-	%\label{sec:The Nautilus Plugin Framework}
-%TODO, or leave it out? probably yes, I have enough to write about
+Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "[t]est sets are developed and their results evaluated solely on the basis of the specifications" \cite{Ghez02a}. This means that the tests have to be made so that they return the right value for all tested input values. Since it might be unfeasible to test all values it is necessary to choose the critical input values where an error might occur.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The Problem %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{The Problem}
 	\label{cha:The Problem}
-As shown in \autoref{cha:introduction} many current software development paradigms rely on unit testing \brs{I really don't think that was shown in the introduction} but as important as unit testing is not all current development environments are optimized for it. For example\ins{,} the search for unit tests to a specific method is often lacking or not present at all. 
+As shown in \autoref{cha:introduction} some current software development paradigms include unit testing but as important as unit testing is not all current development environments are optimized for it. For example, the search for unit tests to a specific method is often lacking or not present at all. 
 
-\brs{new paragraph}
 In this work we assume that important features for unit test friendly environments are a quick way to see if a method is tested, an automated test search, the ability to view tests and methods side by side and an option to easily create new tests. These criteria are based on the definitions of the various testing paradigms previously described in \autoref{cha:Testing}. 
 
 Namely unit testing can be supported by letting the developer see if a method is covered by at least one test, the search for all tests corresponding to a specific method and the ability to create new tests as fast as possible. 
@@ -105,7 +117,8 @@ Luckily code coverage tools also provide this functionality. They allow the user
 
 \section{Showing all tests to a method}
 \label{sec:Showing all tests to a method}
-\ugh{Resulting from unit testing is the requirement to look up a method and all the tests that have been written for it.}\brs{don't start sentences like this} Just checking if a method is tested at all is not enough, the developers might want to see if the method is tested sufficiently. To ensure this multiple test methods are required. Also if at least one test for a method could be found then the method is not untested. This functionality can thus easily substitute the one described in \autoref{sec:Is a method tested?}. The previous ability to see if a method is untested will thus no longer be discussed separately in this paper. 
+Unit testing requires to look up a method and all the tests that have been written for it. 
+Just checking if a method is tested at all is not enough, the developers might want to see if the method is tested sufficiently. To ensure this multiple test methods are required. Also if at least one test for a method could be found then the method is not untested. This functionality can thus easily substitute the one described in \autoref{sec:Is a method tested?}. The previous ability to see if a method is untested will thus no longer be discussed separately in this paper. 
 
 Similar to showing if a method is tested this helps the user to decide if it is necessary to write a new test. Further this functionality helps the user to see if a certain test case has already been created and thus is not need again. A user could also study how a method works by looking at the corresponding tests. 
 
@@ -118,21 +131,24 @@ To be useful the code coverage tool would have to save for each method from whic
 \label{sec:Creating new tests}
 As discussed previously it should be as simple as possible to check if a method is not sufficiently tested. Almost as a direct consequence the user has to create these new tests if this is the case. Especially at the start of a project many new tests will have to be created. So it is safe to say that in unit testing another reoccurring user goal is the creation of new tests for methods with no or too few tests.
 
-While creating a new test the user first has to decide in which package and class the new test will be added and how the test will be called. In many cases the location of this new test has already been decided on since other tests corresponding to the same method are already there. In this case a quick option to specify an existing test class should be offered. If there are no test classes and packages or if the existing ones do not fit the new test then the user has to create a new test class. 
+While creating a new test the user first has to decide in which package and class the new test will be added and how the test will be called. In many cases the location of this new test has already been decided on since other tests corresponding to the same method are already there. In this case a quick option to specify an existing test class should be offered.
 
-In this case the test package, test class and test names are often derived from the original package, class and method names. A slight drawback of these default name derivations is that the method that is being tested has to be defined previously. Especially during Test-driven Development the programming environment can not always make such name derivations. In Test-Driven Development these derivations can only be made after the first test to a method has been written since only after this the method is implemented.
+ If there are no test classes and packages or if the existing ones do not fit the new test then the user has to create a new test class. In this case the test package, test class and test names are often derived from the original package, class and method names. A slight drawback of these default name derivations is that the method that is being tested has to be defined previously. Especially during Test-driven Development the programming environment can not always make such name derivations.
 
-\ugh{As shown}\brs{as shown where?} it does not matter if the test class and package already exist or if they need to be added. Creating \ins{and placing} new tests can be facilitated either by letting the user quickly specify existing test classes \del{where the test will be added} or by making creating new test classes easier. Providing a default name for new tests can help in both cases. Another help\ins{ful feature} would be the ability to let the user create these packages, classes and tests together instead of individually.
+As shown in the last two paragraphs it does not matter if the test class and package already exist or if they need to be added. Creating and placing new tests can be facilitated either by letting the user quickly specify existing test classes or by making creating new test classes easier. Another helpful feature is the ability to let the user create these packages, classes and tests together instead of individually.
 
-If the default names are missing the developer has to enter similarly structured names for packages, classes and test over and over. In case \ins{that} test package\ins{s}, classes and methods can not be created together the user will have to click around in the environment multiple times to start the creation of each of these. While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionality described previously in \autoref{sec:Showing all tests to a method}.
+If the default names are missing the developer has to enter similarly structured names for packages, classes and test over and over. In case that test packages, classes and methods can not be created together the user will have to click around in the environment multiple times to start the creation of each of these. While it helps to have these aids a lack of them seems not as bad as a lack of the test search functionality described previously in \autoref{sec:Showing all tests to a method}.
 
 \section{Methods and Tests Side by Side}
 \label{sec:Methods and Tests Side by Side}
-\ugh{Resulting from whitebox testing}\brs{don't start like this} is the need know a method's inner workings while testing. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. The possibly simplest way is to let the users see the whole method in question at the same time as they are writing a test for it.
+In whitebox testing it is required to know a method's inner workings. It is expected that the programmer who writes the test is trying to test every line of code. Thus it is important to provide the user with information on how the method works. The possibly simplest way is to let the users see the whole method in question at the same time as they are writing a test for it.
 
 In Black-box Testing this feature can be counterproductive by distracting the users from the method specifications. The additional information can thus spoil blackbox testing and even if completely ignored still takes up space on the screen. Blackbox testing thus requires that this feature can be turned off. 
 
-If during whitebox testing no information about a method is provided by the programming environment the users have to make notes for themselves, switch back and forth between method and tests, look things up in design documents or resort to additional analysis tools with every new test\brs{really? They cannot just open another window and open the method there? also, if they have code then they don't need design docs, analysis tools etc?}. This can be very tedious and take a lot of time. Making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again can save valuable time and effort.
+If during whitebox testing the environment does not provide information about a method the users have to gather it themselves.
+This can be done by taking notes, switching back and forth between method and tests or opening an additional window to show both at the same time with every new test. 
+
+This can be very tedious and take a lot of time. Making it unnecessary to switch between gathering information about a method, writing tests for it and looking up the same information again can save valuable time and effort.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Related work %%%%%%%%%%%%%%%%%%%%%
@@ -148,7 +164,6 @@ In this section current programming environments, namely Eclipse and Pharo, are 
 
 \section{Unit Testing in Eclipse}
 \label{seg:Unit Testing in Eclipse}
-%eclipse
 We will start by taking a closer look at Eclipse since its use is very widespread and it has many parallels to other programming environments like for example Visual Studio. In \autoref{fig:Eclipse's user interface} you see a Java project opened in Eclipse with a package and two classes.
 
 \begin{figure}[h!]
@@ -158,31 +173,22 @@ We will start by taking a closer look at Eclipse since its use is very widesprea
 	\label{fig:Eclipse's user interface}
 \end{figure}
 
-%%%%
-\todo{continue here}
-%%%
-
 \subsection{Methods and Tests Side by Side}
-Let us start with the discussion of how the users can see the tests that they are currently writing and the methods that are being tested at the same time in Eclipse. In \autoref{fig:Eclipse's user interface} on the left hand side of the window you can see the Package Explorer. In this file hierarchy you can see every project, package and class. 
+Let us start with the discussion of how  in Eclipse the users can see the tests that they are currently writing and the methods that are being tested at the same time. In \autoref{fig:Eclipse's user interface} on the left hand side of the window you can see the Package Explorer. In this file hierarchy you can see every project, package and class in the current workspace. 
 
 Classes that are opened through the Package Explorer will be shown in the middle of the screen and a new tab on top of the code editor will appear.  In \autoref{fig:Eclipse's user interface} there are two tabs "ClassA" and "ClassB". The "ClassB" tab is currently selected and thus the content of "ClassB" is displayed in the code editor. 
 Unless you close these tabs all the classes you opened will be quickly available through their tabs.
 
 A big advantage of this system is that users can create favorites by not closing important tabs. Through this they can switch back and forth between methods and tests. A slight drawback is that the user has to close unneeded tabs from time to time. In most cases the use of these tabs will be smooth enough to allow the programmer to switch uninterrupted between tests and methods via their classes. 
 
-If for some reason this does not suffice then it is also possible to split the code editor multiple times either horizontally or vertically like in top middle of \autoref{fig:eclipseSplitscreen}. Since each code panel is smaller than the original one this splitting can only be done a few times. After this the panels get too small to be useful.
+If for some reason this does not suffice then it is also possible to split the code editor multiple times either horizontally or vertically like in \autoref{fig:eclipseSplitscreen}. Since each code panel is smaller than the original one this splitting can only be done a few times. After this the panels get too small to be useful.
 
-As shown Eclipse provides multiple ways to make information about the tested method easily accessible during testing. 
+As shown Eclipse provides multiple ways to make the tested method easily accessible during testing. 
 
 \subsection{Test Search}
-\todo{test class has to extend TestCase(Junit3), the test method has to start with "test"(Junit3), package and class names containing test class dont matter, @Test (Junit4) annotations are ignored}
+Another feature we discussed in the previous chapter was the ability to find all tests to a certain method. Eclipse provides a good option to search for tests. By pressing "Se\underline{a}rch" from the top menu bar followed by "Referring Tests..." it is possible to find all tests that reference the currently selected method.
 
-Another feature we discussed in the previous chapter was the ability to find all tests to a certain method. Eclipse provides a good option to search for tests. By pressing "Se\underline{a}rch" from the top menu bar followed by "Referring Tests..." it is possible to find all tests that reference the currently selected type. Thus by selecting a method all tests referencing this method can be found. 
-
-Sadly this feature is very badly documented. The requirements for a test to qualify as a test to a certain method also seem to include that the test class extends "TestCase" and that the test name starts with "test". Also "@Test" annotations are ignored by this function. It seems like this test search does not yet support JUnit 4 standards. 
-
-%Code coverage tools can also help to find tests to a method. While Eclipse does not come with a such a tool multiple ones can be found on the Eclipse Marketplace. An example of a code coverage plug-in for Eclipse is EclEmma. When run on a class containing unit tests the coverage of these tests will be computed, the results can be seen in the bottom of \autoref{fig:EclEmma}. With this it is possible to see if a specific method was never executed while the tests were running and thus is untested. 
-%not need every env has coverage tools and they can't replace test search
+Sadly this feature is very badly documented. The requirements for a test to qualify as a test to a certain method seem to include that the test class extends "TestCase" and that the test name starts with "test". "@Test" annotations are ignored by this function. It seems like this test search does not yet support JUnit 4 standards. 
 
 \begin{figure}[h!]
 	\centering
@@ -191,10 +197,8 @@ Sadly this feature is very badly documented. The requirements for a test to qual
 	\label{fig:eclipseSplitscreen}
 \end{figure}
 
-Disadvantages of coverage tools are that tests do not have to call the method under question directly. This can lead to tests covering methods they are not intended to. It also is difficult to tell how many tests for a method have been written depending on how much information the code coverage tool gathers and displays. So while code coverage tools can help managing unit tests their use is limited. In the end a convenient way to find all tests to a given method is missing in Eclipse.
-
 \subsection{Creating new Tests}
-The next feature in Eclipse we now discuss is how the creation of new tests is facilitated. Eclipse has the option to add a new test class by right clicking on the class that will be tested, selecting "New" from the list that is shown and then clicking "JUnit Test Case". There are other ways to do this but by making sure that the right class is selected in the Package Explorer Eclipse is able to better support the user. 
+The next feature in Eclipse we now discuss is how the creation of new tests is facilitated. Eclipse has the option to add a new test class by right clicking on the class that should be tested, selecting "New" from the list that is shown and then clicking "JUnit Test Case". There are other ways to do this but by making sure that the right class is selected in the Package Explorer Eclipse is able to support the user better. 
 
 In the newly open wizard a default name is already created and the selected class is put into the "Class under test" field, see \autoref{fig:eclipseWizard1}. As default package the package of the class under test is used but it can be changed. By clicking on the "Next" button it is possible to select methods of the class under test and create test stubs for every selected method, see \autoref{fig:eclipseWizard2}.
 
@@ -213,21 +217,21 @@ In the newly open wizard a default name is already created and the selected clas
   \end{minipage}
 \end{figure}
 
-On one hand this wizard is very good for creating new test classes but on the other hand Eclipse provides neither ways to add new test methods in an already existing test class nor to create more than one test per method. In both of these cases the only ways to add a new test are to copy and change an existing test or to write the new test and JUnit annotations by hand.s
+On one hand this wizard is very good for creating new test classes but on the other hand Eclipse helps neither to add new test methods in an already existing test class nor to create more than one test per method.
 
 \section{Unit Testing in Pharo}
-Now let us take a look how the Pharo IDE and its system browser Nautilus compare to Eclipse. It is worth mentioning that the Pharo IDE is quite different from Eclipse in that the placement of its visual elements is less rigid. The users are able to customize the appearance of the environment very quickly and adapt it to their wishes. On the other hand Pharo is less wide spread and not as well supported in many ways.
+Now let us take a look how the Pharo IDE and its system browser Nautilus compare to Eclipse. It is worth mentioning that the Pharo IDE is quite different from Eclipse in that the placement of its visual elements is less rigid. The users are able to customize the appearance of the environment very quickly and adapt it to their wishes. On the other hand Pharo is less wide spread and not as well maintained in many ways as Eclipse.
 
-As in \autoref{seg:Unit Testing in Eclipse} the discussed features are viewing test and method side by side, searching all tests to a specified method and facilitating the creation of new tests.
+Like in \autoref{seg:Unit Testing in Eclipse} the discussed features are viewing test and method side by side, searching all tests to a specified method and facilitating the creation of new tests.
 
 \subsection{Methods and Tests Side by Side}
 \label{subsec:Nautilus side by side}
 As with Eclipse the first functionality we will look at is the ability to view tests and methods side by side. The Pharo IDE provides a very customizable environment and it is almost necessary for a user to arrange all windows that are created in a way that is comfortable. It is possible to create multiple Nautilus windows and arrange them so that in one the method and in the other the test for this method is shown. Through this a very similar effect to Eclipse's split code editor is achieved.
 
-The free placement of those Nautilus windows gives the user more freedom to customize the environment but several visual elements will be duplicated which reduces the available space on the screen to arrange these. An example for such a duplicated element is the file hierarchy that takes up the top half of each Nautilus window. 
+The free placement of those Nautilus windows gives the user more freedom to customize the environment but several visual elements will be duplicated which reduces the available space on the screen to arrange these. An example for such a duplicated element is the file hierarchy that takes up the top half of each Nautilus window like for example in \autoref{fig:Locking}. 
 
-A possibility that does not have this drawback is to lock a method or class and then select others inside the same Nautilus window. It is possible to switch between what is shown in the window by using the "All", "Current" and number buttons shown at the bottom of \autoref{fig:Locking}. Through these buttons the users can switch between seeing all locked methods and classes at the same time or each individually. 
-This is very similar to the tabs of recently opened classes that Eclipse has. Although with many locked classes and methods it is hard to remember which number belongs to what.
+A possibility that does not have this drawback is to lock a method or class and then select others inside the same Nautilus window. It is possible to select which of the locked elements is shown in the code panel by using the "All", "Current" and number buttons shown at the bottom of \autoref{fig:Locking}. Through these buttons the users can switch between seeing all locked methods and classes at the same time or each individually. 
+This is very similar to the tabs of opened classes that Eclipse has. Although with many locked classes and methods it is hard to remember which number belongs to what.
 
  \begin{figure}[h!]
 	\centering
@@ -236,14 +240,13 @@ This is very similar to the tabs of recently opened classes that Eclipse has. Al
 	\label{fig:Locking}
 \end{figure}
 
-Apart from this Nautilus also has the History Navigator which allows fast access to all recently viewed methods and classes. The History Navigator can be seen in the middle right in \autoref{fig:Locking}. It can be used to switch between method and test in way that is comparable to Eclipse's tabs of recently opened classes. The drawback here is that only a certain amount of those recently accessed classes and methods is stored and if the user looks at different methods and classes it is quickly necessary to reopen the previous tests and methods to put them back in the History Navigator.
+Apart from this Nautilus also has the History Navigator which allows fast access to all recently viewed methods and classes. The History Navigator can be seen in the middle right in \autoref{fig:Locking}. It can be used to switch between method and test in a way that is comparable to Eclipse's tabs of recently opened classes. The drawback here is that only a certain amount of those recently accessed classes and methods is stored and if the user looks at different methods and classes it is quickly necessary to reopen the previous tests and methods to put them back in the History Navigator.
 
-To conclude in Pharo there are various things a user can do to view multiple pieces of code at the same time. Compared to Eclipse there are more ways to see things side by side but each of these ways has a slight drawback.
+To conclude in the Pharo IDE are various things a user can do to view multiple pieces of code at the same time. Compared to Eclipse there are more ways to see things side by side or to switch between them but each of these ways has a slight drawback.
 
 \subsection{Test Search}
-\todo{also has to subclass testcase}
-\todo{cite marsh here}
-The next functionality discussed is how Pharo finds existing tests to a specified method. Contrary to Eclipse Nautilus has some sort of test search implemented. It is very limited though and only finds tests with a very specific name that are placed in classes with an equally specific name. Examples of found tests for certain methods can be found in \autoref{tab:correspondingMethods}.
+\label{subsec:Test Search}
+The next functionality that will be discussed is how Pharo finds existing tests to a specified method. Like Eclipse Nautilus has some sort of test search implemented. Like using Eclipse's test search only tests with a very specific name are found. Additionally they have to be placed in classes with an equally specific name. Examples of tests corresponding to certain methods can be found in \autoref{tab:correspondingMethods}.
 
 \begin{table}[h!]
 	\centering
@@ -261,38 +264,36 @@ The next functionality discussed is how Pharo finds existing tests to a specifie
 	\label {tab:correspondingMethods}
 \end{table}
 
-Namely test classes and test method have to contain the full name of the original class or respectively method. Additionally the name of the test class has to have the suffix "Test" and the name of the test method has to have the prefix "test". Also tests have no parameters and thus lack all colons in their name.
+Namely test classes and test method have to contain the full name of the original class or respectively method. Additionally the name of the test class has to have the suffix "Test" and the name of the test method has to have the prefix "test". Also tests have no parameters and thus lack all colons in their name.  If anything more is part of the test name then it will not be found. The test classes also have to inherit from TestCase in order to be found by the test search.
 
-Both the restrictions on class names and method names are quite restrictive. From a test class name the class under test can be quite reliably inferred  \cite[p.~19]{Mars05a}. On the other hand Marschall also states that 
+Both the restrictions on class names and method names are quite restrictive. From a test class name the class under test can be quite reliably inferred\cite{Mars05a}. On the other hand Marschall also states that the method name and the corresponding test name for it are less directly related. These restrictive name criteria also lead to the problem that at most only one test per method will be found since others with a slightly different name will not fulfill these naming criteria. 
 
-This also leads to the problem that at most only one test per method will be found since others with a slightly different name will not fulfill these naming criteria. While this is very restrictive it allows Nautilus to add a button to each method where a test has been found which can be pressed to execute the test and shows if this corresponding test was successful.
+This test search function is not directly available to the developers. It is used by Nautilus  in the file hierarchy to add a button to the left of each method where a test has been found. This button can be pressed to execute the test and show if this corresponding test was successful or not.
 
-Similar to Eclipse code coverage tools can be used to determine if a method is untested. Luckily each new Pharo image has the Test Runner included which can be used as a code coverage tool, but as already discussed in \autoref{sec:Showing all tests to a method} code coverage tools can only replace parts of a test search feature. Like Eclipse Nautilus lacks a sufficient, inbuilt function to search for corresponding tests.
+The test search is better in Eclipse since it is not only less restrictive with its name-based criterion but also checks if the test calls the method under test. Eclipse's test search is also able to find more than one test to a method.
+On the other hand in Nautilus the test search is better integrated in the environment. The additional button to execute a corresponding test conveniently allows running the test without navigating to it.
 
 \subsection{Creating new tests}
-With a right click on a method the option "Generate test" is given. The new test will automatically be added to a certain test class in a specific package (both of which will be created if needed). More precisely the test package is named like the original package with the suffix "-Tests". The test class and method will be named like shown in \autoref{tab:correspondingMethods}. All the tests created through this will thus be found by Nautilus's test search function.
+In Nautilus with a right click on a method the option "Generate test" is given. The new test will automatically be added to a certain test class in a specific package (both of which will be created if needed). More precisely the test package is named like the original package with the suffix "-Tests". The test class and method will be named like shown in \autoref{tab:correspondingMethods}. All the tests created through this will thus be found by Nautilus's test search function.
 "Generate test and jump" works very similar but also selects and shows the newly created test so that the user can start implementing.
 
-Using these predefined locations is faster but robs the user of the ability to specify different ones. Another advantage is that tests created in this manner confirm to the naming standards imposed by Nautilus. A very clear drawback is that only one test per method can be created in this manner. All additional tests for the same method will simply overwrite the previous tests.
+Using these predefined package and class names is faster since the user does not need to enter them. Another advantage is that tests created in this manner confirm to the naming standards imposed by Nautilus. Sadly this robs the user of the ability to specify different package and class names. Also only one test per method can be created in this manner. All additional tests for the same method will simply overwrite the previous test.
 
-Eclipse's and Nautilus's way of adding new tests are very comparable. A case could be made for both versions of this feature. Eclipse's version is more customizable but only supports the user when creating a new test class while Nautilus's version is faster but less flexible and supports the user with each new test. An easy way to create multiple tests for one method is not provided by either Nautilus or Eclipse.
+Eclipse's and Nautilus's way of adding new tests are very comparable. A case could be made for both versions of this feature. Eclipse's version is more customizable but only supports the user when creating a new test class while Nautilus's version is faster and supports the user with each new test but is less flexible. An easy way to create multiple tests for one method is not provided by neither Nautilus nor Eclipse.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The TestView Plugin %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter {The TestView Plugin}
 	\label{cha:The TestView Plugin}
-Having discussed some important features of a unit test friendly environment in \autoref{cha:The Problem} and how their implementation is often lacking in \autoref{cha:Related Work} we will now try to present a solution to this problem: the TestView Plugin. 
+Having discussed some important features of a unit test friendly environment in \autoref{cha:The Problem} and where their implementation is lacking in \autoref{cha:Related Work} we will now try to present a solution to this problem: the TestView Plugin. 
 
-Since the lack of unit test supporting features can not be corrected for all environments at once we chose to extend Natilus's functionality. The reasoning behind this was that the inability to view tests and methods side by side in a single Nautilus window was perceived by us as the gravest of these issues and that Eclipse already has a big community which provides many plug-ins. 
-\ugh{Although it is not necessary it is recommended here that the reader quickly familiarizes themselves with the TestView plugin}\brs{well, that is your job as the writer.}. Following the user guide provided in \autoref{sec:User Guide} might be the easiest way to do this.
+Since the lack of unit test supporting features can not be corrected for all environments at once we chose to extend Nautilus's functionality. The reasoning behind this was that the inability to view tests and methods side by side in a single Nautilus window was perceived by us as the gravest of these issues and that Eclipse already has a big community which provides many plug-ins. 
 
-In this section we will comment on the same three functionalities discussed in the last chapters: viewing test and method side by side, finding tests to certain methods and creating new tests. Special focus will be put on improvements compared to Eclipse and Pharo.
+In this section we will comment on the same three functionalities discussed in the last chapters: viewing test and method side by side, finding tests to certain methods and creating new tests. Special focus will be put on improvements compared to Eclipse and the Pharo IDE.
 
 \section{Methods and Tests Side by Side}
-\meta{view test and method at the same time}
-\todo{descibe how this feature is optimized by combining it with the automated test search, move this section down}
-As stated one of the bigger drawbacks concerning unit testing with Nautilus is that it is hard to view tests and methods at the same time. Whitebox testing becomes very cumbersome through this. Seeing both method and test together should be quick, convenient and not introduce too much redundant user interface elements that might clutter the environment. 
+As stated one of the drawbacks concerning unit testing with Nautilus is that it is hard to view tests and methods at the same time. Whitebox testing becomes cumbersome through this. Seeing both method and test together should be quick, convenient and not introduce too much redundant user interface elements that might clutter the environment. 
 
 Following this the TestView Plugin allows to split the code editor panel of a Nautilus window vertically into two parts, the result can be seen in \autoref{fig:Nautilus window with two code editors}. With this approach the need to open two Nautilus windows is eliminated. The file hierarchy for example will not be displayed a second time and less screen space is occupied.
 
@@ -303,52 +304,92 @@ Following this the TestView Plugin allows to split the code editor panel of a Na
 	\label{fig:Nautilus window with two code editors}
 \end{figure}
 
-It also becomes unnecessary to use Nautilus's locking feature or History Navigator to be able to switch fast between methods and tests. Thus it also is not needed anymore to manage the locked or recently viewed classes and methods.
+It also becomes unnecessary to use Nautilus's locking feature or History Navigator to be able to switch fast between methods and tests. Thus it also is not required anymore to manage the locked or recently viewed classes and methods in order to quickly navigate back and forth.
 
-Unlike in Eclipse the user has no absolute control over this additional code editor but on the other hand only methods of interest are shown there and the user does not have to manage what should be displayed there. This is possible due to the fact that some assumptions can be made about what code the user wants to see if this code editor is only used during unit testing. The left code editor will be displaying the in the file hierarchy selected method and the right code editor will show the corresponding test methods.
+Unlike in Eclipse the user has no absolute control over this additional code editor. Only methods of interest are shown there and the user does not have to manage what should be displayed. This is possible due to the fact that some assumptions can be made about what code the user wants to see if this code editor is only used during unit testing. The left code editor will be displaying the in the file hierarchy selected method and the right code editor will show the corresponding tests.
 
-This approach combines the convenience of Eclipse's ability to show code side by side with limited but more focused contend in the right code editor. This results in an easy to use support for whitebox testing. Since it is not possible to view multiple methods in one Nautilus window this is a notable improvement. Since the user does not have to select what will be shown in the second code editor this requires less manual input from the user compared to Eclipse.
+Which test is currently shown can be changed through the drop list that can be seen in \autoref{fig:Nautilus window with two code editors} just below of the Nautilus History Navigator.
 
-%%%%%%%%%%%%%
-\todo{show pic of split code editor}
-\todo{continue here}
-%%%%%%%%%%%%%
+This approach combines the convenience of Eclipse's ability to show code side by side with limited but more focused contend in the right code editor. This results in an easy to use support for whitebox testing. Since it is not possible to view multiple methods in one Nautilus window at the same time this is a notable improvement.
 
-\section{\brs{new section}}
-\meta{test search}
-\todo{describe search criteria}
-As a direct consequence of the heavily selected content of the second code editor it became necessary to implement the functionality to search for tests to a corresponding method. Without this it would be impossible to show a relevant selection. The improvements compared to Nautilus' test search are less restrictive criteria to classify as a corresponding test, that one method can correspond to multiple tests and that the results are customizable on a class level. The user has the ability to choose which element of this search result should be shown in the right code editor. 
-This new search yields better results\brs{says who?}\todo{make a table with some result examples taken from Pharo?} than Nautilus' search and the customization allows to link or unlink test classes whose tests will then be added to the results. This allows the user to use the TestView Plugin even with projects that do not conform to the criteria of the test search described in \autoref{cha:User Guide}. This is especially important to let the user correct the almost inevitably faulty test search if needed. 
-As stated when provided with a list of all corresponding tests the user can quickly decide if a method is untested. If this is the case then the returned list of found test will be empty. Compared to both Eclipse and Pharo this test search should be a significant improvement. Both are lacking this feature or provide only a very basic version of it. 
+\section{Test Search}
+As a direct consequence of the heavily selected content of the second code editor it became necessary to use a test search. Without this it would be impossible to show a relevant selection. As discussed in \autoref{subsec:Test Search} the test search that Nautilus provides is very restrictive and only finds at most one test per method. In order to find better results the TestView Plugin uses its own test search.
 
-\section{\brs{new section}}
-\meta{creation of new tests}
-\todo{write about how tv supports test creation}
-\meta{new test => b)new test class || a)existing test class}
-	\meta{a=>let the user write the test, ask them where to save after}
-	\meta{b=>just save it where other tests for the same class are}
-The purpose of this functionality is to prevent the user from having to repetitively enter similarly structured class and package names and still retain some degree of freedom where it is possible to choose each name if needed. Every time developers start to write a new unit test they have to determine to which test class the new test belongs. Here we can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where there already are similar tests. 
+In this section I will provide a detailed explanation how corresponding tests to a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method.
 
-Firstly let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class. The easiest way to do this is to let the users write the new test and later determine where this test will be put. With this the user is encouraged to immediately start writing a test as soon as a method is created. As soon as the test is saved the plugin will ask the user how the test class should be named and in which package this class should be put. Here default values based on the class name and the package name of the method under test are given which in many cases might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite[p.~19]{Mars05a}. For example if the method under test is contained in a class called ``Queue'' within a package ``Collections'' then the proposed names for the test class and the test package will be ``QueueTest'' and ``Collections-Tests''. This is also what Nautils expects and thus does not break existing conventions. Even though default values are provided the user can still ignore them and use any other names.
+This search is performed every time a different method is selected. This makes it possible that the additional code panel introduced by the plugin always shows a relevant selection.
 
-The second use case is that a user wants to add a test method to a test class where already other tests for the same class under test are. In this case the target test class should already be identified as a corresponding test class. If the plugin has not found the desided test class then it can manually be linked. The users just have to select any test that is in this target test class from the found tests and write their new test over it. When they save the written test gets saved to the selected target class. In this case no package has to be specified.
+\subsection{Corresponding Test Classes}
+\label{subsec:CorrTestClasses}
+A purely name-based search works quite well to find test classes corresponding to a certain class\cite{Mars05a}. This is already used in the Nautilus test search and a similar name based search is also part of the test search in the TestView Plugin. 
 
-One potential problem is how this choice between making new test classes and test packages and using existing ones is communicated to the user. The users have to make their intentions clear to the plugin by selecting a specific item from the list of found tests. When the user saves a test while having selected the first item in the list the plugin will always ask the user give names for the test class and the test package. When the user has any other item selected then the test is saved in the test class that was selected. This might create some confusion but on the other hand with only two clicks(open the list and selecting target class) the user can switch between these options.
+In \autoref{tab:TVTestClassNames} examples of which corresponding test classes that the TestView Plugin finds are shown. All classes with names like in the column of possible class names are considered corresponding test classes if they also inherit from TestCase. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{| c | c | c |}
+     	\hline
+     	\emph{Original Class Name} & \emph{Possible Class Names} &  \emph{Not Test Classes}\\ \hline
+	String & StringTest, stringtest, TestString & String, Test, StrinTgEST \\
+     	Contest & ContestTest, contesttest & Contest \\
+     	\hline
+   	\end{tabular}
+	\caption {TestView name criterion for test classes}
+	\label {tab:TVTestClassNames}
+\end{table}
+
+The name-based criterion requires the name of the class in question to contain both "test" and the name of the selected class.
+The substring search is not case sensitive and the matches for "test" and for the name of the selected class can not overlap. This is why "Contest" is not considered to be a test class to a class that is also named "Contest" even though it contains "test" as well as the full name of the class under test.
+
+Since the results of this search for corresponding classes are used as base for the search for corresponding tests it is important that it works as well as possible. If this search for corresponding test classes is inadequate the developers can use the "Link Class" and "Unlink Class" buttons provided by the TestView Plugin to add and remove test classes from the results.
+
+\subsection{Corresponding Test Methods}
+After some possible test classes have been identified using the criteria described in \autoref{subsec:CorrTestClasses} the results will be searched for corresponding test methods to the currently selected method.
+
+Similar as the name criterion for test classes described in \autoref{subsec:CorrTestClasses} the tests have to contain the full name of the selected method(without colons) as well as "test". Examples can be found in \autoref{tab:testNameCrit}.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{| c | c | c |}
+     	\hline
+     	\emph{Original method name} & \emph{Test names} & \emph{Not test names} \\ \hline
+    	 doStuff & doStuffTest, testDoStuff, TestdosTuff & doStuff, doTestStuff, testStuff \\ 
+    	 do:on: & testDoOn, testDoOn2, doOnTest & testDo:On:, do:testOn: \\ 
+	 attest & attestTest, testAttest & attest \\ 
+	\hline
+   	\end{tabular}
+	\caption {Test naming criterion}
+	\label {tab:testNameCrit}
+\end{table}
+
+The second criterion is that the test contains a method invocation with the same selector as the selected method. If either of those criteria is fulfilled the method is considered a test to the selected method. If just one or both of those criteria is met is used to order the found tests in the drop list that can be seen in \autoref{fig:Nautilus window with two code editors} right below of the Nautilus History Navigator.
+
+This new search should yield better results than Nautilus' search since it allows multiple test classes and methods to a particular method. It works very similar to the test search provided by Eclipse and like Nautilus's search is used directly by the IDE and does not have to be called manually.
+
+\section{Creating new tests}
+The purpose of this functionality is to prevent the users from having to repetitively enter similarly structured class and package names while still letting them retain the freedom to choose each name if needed. 
+
+Every time developers start to write a new unit test they have to determine to which test class the new test belongs. We can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where there already are tests corresponding to the selected method. 
+
+\subsection{Adding a new Test Class}
+First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class. The easiest way to do this is to let the users write the new test and later determine where this test will be put. With this the user is encouraged to immediately start writing a test as soon as a method is created. 
+
+When as the test is saved the plugin will ask the user how the new test class should be named and in which package this class should be put. Here default values based on the class name and the package name of the method under test are given which in many cases might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite{Mars05a}. 
+
+For example if the method under test is contained in a class called ``Queue'' within a package ``Collections'' then the proposed names for the test class and the test package will be ``QueueTest'' and ``Collections-Tests''. The new test class will also automatically subclass TestCase. 
+
+These names and the inheritance from TestCase is also what Nautilus's test search expects and thus this does not break existing conventions. Even though default names are provided the user can still ignore them and specify different ones.
+
+\subsection{Adding a test to an existing Test Class}
+The second use case is that a developer wants to add a test to a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added. No test package has to be specified.
+
+One potential problem is how this choice between making new test classes and test packages and using existing ones is communicated to the user. The users have to make their intentions clear to the plugin by selecting a specific item from the list of found tests. 
+
+When the user saves a test while having selected the first item in the list the plugin will always ask the user to give names for the test class and the test package. When the user has any other item selected then the test is saved in the test class that was selected. This might create some confusion but on the other hand with only two clicks(open the list and selecting target class) the user can specify where the new test should be saved.
  
-\meta{compared to Eclipse}
-Now let us take a look at how this functionality compares to Eclipse and Nautilus. Improvements compared to Eclipse are that the user can add a single new test in an already existing test class. Eclipse has an advantage when creating a new test class and filling it with multiple new tests. Eclipse and the TVPlugin seem to focus on different aspects of unit testing, but Eclipse supports the user only at the start of writing a new test class while the TVPlugin keeps supporting the user during the addition of any new test.
+Now let us take a look at how this functionality compares to Eclipse and Nautilus. Improvements compared to Eclipse are that the user can add a single new test in an already existing test class. Eclipse has an advantage when creating a new test class and filling it with multiple new tests. Eclipse supports the user only at the start of writing a new test class while the TVPlugin keeps supporting the user during the addition of any new test.
 
-\meta{compared to Pharo}
-\meta{add a new test to a method that has tests}
-In Nautilus without the TVplugin the user can extremely quickly create new tests in fixed test packages and test classes but only one test per method can be created that way. If the ``Generate test'' or the ``Generate test and jump'' option is pressed multiple times then the previous test is overwritten. The TVPlugin helps the programmers to add multiple tests to the same method. 
-\meta{add a new test in a new test class}
-While creating a new test package and class through the TVPlugin requires more input from the user than adding it through Nautilus's provided buttons the freedom to choose that the TVPlugin offers should be worth being a bit slower.
-
-
-%For example if we are writing a test for method "methodA" in class "ClassA" and package "packageA" then those default values might be "methodATest" as test method name, "ClassATest" as test class name and "packageATest" as test package name. If the existing tests were written adhering to these conventions or if the the new test will be the first test then these default values might be acceptable.
-%too explicit move to user guide?
-%textdump. In this chapter the TestView plugin is explained\brs{avoid passive! not just avoid, don't use passive! say "In this chapter we present the..." in this sense "we" is the royal we, the union of the author and the reader. try to think in those terms while you write, like you are explaining to someone what you two are doing together}. The first section will show how to install the plugin while the following ones will go over what the visual components do and explain the inner workings of the plugin, namely how test are found and how they can be created using the plugin.
-
+In Nautilus the user can extremely quickly create new tests in fixed test packages and test classes but only one test per method can be created that way. If the ``Generate test'' or the ``Generate test and jump'' option is pressed multiple times then the previous test is overwritten. The TVPlugin helps the programmers to add multiple tests to the same method.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The Validation %%%%%%%%%%%%%%%%%%%%%
@@ -364,6 +405,7 @@ In which you show how well the solution works.
 \chapter {Conclusion and Future Work}
 	\label{cha:Conclusion and Future Work}
 %TODO
+%ideas: lack of large scale test suit support in TV(allan page beatiful testing), creating methods and classes from tests to better support tdd, better tdd support in general, unit testing cant be condensed to these core functionalities(e.g. test result collection and displaying is equaly as important), 
 In which we step back, have a critical look at the entire work, then conclude, and learn what lays beyond this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -376,34 +418,44 @@ In which we step back, have a critical look at the entire work, then conclude, a
 \subsection{What's the TestView Plugin?}
 	\label{subsec:What's a TestView Plugin?}
 
-Nautilus is the default system browser in current Pharo versions\brs{there are multiple current versions?}. The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
-
-Let us take look at how the TVPlugin looks \del{and} and what basic features it provides.
-\begin{figure}[h!]
+Nautilus is the default system browser in the current Pharo version. \autoref{fig:NautilusWindow} shows how a Nautilus window normally looks like.
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.4]{screenshots/tvPluginOverView.png}
-	\caption{TVPlugin overview}
+	\includegraphics[scale=0.5]{screenshots/pharoClassHierarchy.png}
+	\caption{A Nautilus Window}
+	\label{fig:NautilusWindow}
 \end{figure}
-\brs{make photos slightly bigger, and every figure must be referenced in text \ie ``\autoref{TVPlugin overview} shows the general layout of Nautilus with the TVP installed. '', also, didn't we agree that you would put red rectangles around important parts of the pictures. also, the picture sizes are quite inconsistent and that is annoying. With all this in mind I think I'll skip reading this part until you fix the images.}
+ The TestView Plugin (or TVPlugin) is a Nautilus plugin to facilitate unit testing. It provides quick ways to add new test methods and classes, find existing tests and view tests and methods at the same time in a single Nautilus window.
 
-The \textbf{``TestView''} button toggles the additional code panel to the right of the original code panel on and off. All features described here require that the plugin is turned on\brs{show Nautilus without TVP as well}.
 
-The \textbf{selected method} is a central part of the plugin. All funtions the plugin provides are relative to what you have selected in the Nautilus window. Whenever you select a Method in the Nautilus class hierarchy the plugin will automatically search for tests corresponding it.
+Let us take a look at the TVPlugin in \autoref{fig:TVPlugin overview} and discuss the features that it provides.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{screenshots/tvPluginOverView_edited.png}
+	\caption{Nautilus with the TVPlugin}
+	\label{fig:TVPlugin overview}
+\end{figure}
+The \textbf{``TestView''} button toggles the additional code panel to the right of the original code panel on and off. All features described here require that the plugin is turned on.
 
-In the \textbf{found tests dropview} every test corresponding to the selected method is shown. The first element in this list is special and will always be there independantly from which method you have selected in the Nautilus window. Click this element to create a new test in a possibly new test class. How to do this is explained in detail in \autoref{subsec:Creating a new test inside a new test class}. 
+The \textbf{selected method} is a central part of the plugin. All funtions the plugin provides are relative to what you have selected in the Nautilus window. Whenever you select a Method in the Nautilus class hierarchy the plugin will automatically search for corresponding tests.
+
+In the \textbf{found tests droplist} every test corresponding to the selected method is shown. The first element in this list is special and will always be there independently from which method you have selected in the Nautilus window. Click this element to create a new test in a possibly new test class. How to do this is explained in detail in \autoref{subsec:Creating a new test inside a new test class}. 
 The remaining items in the list are all existing tests that are corresponding to the method you selected in the Nautilus window. By clicking on one of these the right code panel will display the selected test.
 
 The \textbf{additional code panel} to the right of the original code panel will always show the test that has been selected in the found tests droplist. With this it becomes possible to look at the implemented method and at the tests for it inside of the same Nautilus window.
 
-You can use the \textbf{``Link Class''} and \textbf{``Unlink Class'' buttons} if the found tests for the method you selected in the Nautilus window that are displayed in the found tests droplist are incomplete or show methods that are not tests to what you selected. You can use both these buttons to influence the automated test search that gets performed whenever you select a different method in the Nautilus class hierarchy. With the ``Link Class'' buttons you can specify a test class that is not found by the automated test search. The plugin will then redo the test search and include the newly linked class as a possible source for tests on every search for tests to the class of the selected method.
-With the ``Unlink Class'' button you can exclude classes from being searched for tests. Like the ``Link Class'' button this exclusion will only count for the class of the method that you have currently selected in the Nautilus class hierarchy. Detailed instructions on how to use these functionalities are found in \autoref{subsec:Linking an existing test class} and \autoref{subsec:Unlinking an existing test class}.
+You can use the \textbf{``Link Class''} and \textbf{``Unlink Class'' buttons} if the found tests for the method you selected in the Nautilus window are incomplete or show methods that are not tests to what you selected. You can use both these buttons to influence the automated test search that gets performed whenever you select a different method in the Nautilus class hierarchy. 
+
+With the ``Link Class'' button you can specify a test class that is not found by the automated test search. The plugin will then redo the test search and include the newly linked class as a possible source for tests on every search to the class of the selected method.
+
+With the ``Unlink Class'' button you can exclude classes from being searched for tests. Like with the ``Link Class'' button this exclusion will only count for the class of the method that you have currently selected in the Nautilus class hierarchy. Detailed instructions on how to use these functionalities are found in \autoref{subsec:Linking an existing test class} and \autoref{subsec:Unlinking an existing test class}.
 
 \subsection{Installation and activation}
 	\label{subsec:Installation and activation}
 To install and activate the TVPlugin follow the steps listed bellow:
 	
 	\begin{enumerate}
-		\item To download the necessary packages simply simply execute the following lines in a Pharo workspace
+		\item To download the necessary packages simply execute the following lines in a Pharo workspace
  \begin{code}
 Gofer new
 url: 'http://smalltalkhub.com/mc/DominicSina/TestView/main';
@@ -414,97 +466,105 @@ NautilusPluginManager new openInWorld\end{code}
 Once this is finished the Nautilus Plugins Manager will open. 	
 	
 		\item
-		Here you click on "TVPlugin" under "Available plugin classes" and then press on the "Add" button. In the "Selected plugins" column you can specify where most visual elements of the TVPlugin will be shown in your Nautilus windows. Click "Ok" to confirm.
+		In the window shown in \autoref{fig:pluginManager} you click on "TVPlugin" under "Available plugin classes" and then press on the "Add" button. Click "Ok" to confirm.
 
 		\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/pluginManager.png}
+        \includegraphics[scale=0.5]{screenshots/pluginManager_edited.png}
         \captionof{figure}{The Nautilus Plugin Manager}
+	\label{fig:pluginManager}
     }
 
 		\item
-		When you open a Nautilus window from now on the plugin will be started until you remove it again using the Nautilus Plugins Manager. To verify if the plugin is activated check if this row is displayed in the position you selected.
+		When you open a Nautilus window from now it should look like in \autoref{fig:activeTVP}. To verify if the plugin is activated check if the highlighted row is displayed in the position that you selected. The plugin will be shown there until you remove it again using the Nautilus Plugins Manager. 
 
 		\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.5]{screenshots/activatedPlugin.png}
-        \captionof{figure}{TestView Plugin once it is active}
+        \includegraphics[scale=0.5]{screenshots/activatedPlugin_edited.png}
+        \captionof{figure}{TestView Plugin once it is activated}
+\label{fig:activeTVP}
     }
 
 	\end{enumerate}
 
 \subsection{Adding a new test inside a new test class}
 	\label{subsec:Creating a new test inside a new test class}
-So now that the plugin is set up after following the steps in \autoref{subsec:Installation and activation} let us add a new test to a method. It is assumed here that you already have a method to test named ``doSomething'' inside of a class named ``MyClass'' and a package called ``MyPackage''.
+So now that the plugin is set up after following the steps in \autoref{subsec:Installation and activation} let us add a new test to a method. In this example it is assumed that you have a method to test named ``doSomething'' inside of a class named ``MyClass'' and a package called ``MyPackage''.
 	
 \begin{enumerate}
-\item Turn the TVPlugin on by clicking on the ``TestView'' button. Once this is done a second code panel will appear besides the code panel that shows the method do something.
+\item Turn the TVPlugin on by clicking on the ``TestView'' button highlighted in \autoref{fig:toggleButton}. Once this is done a second code panel will appear besides the original code panel that shows a new test to your selected method.
 
 		\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/toggleButton.png}
+        \includegraphics[scale=0.5]{screenshots/toggleButton_edited.png}
         \captionof{figure}{Toggle the TVPlugin on}
         \label{fig:toggleButton}
     }
     
-\item Make sure that you have selected the method for which you want to add a test in the Nautilus window. In this example this will be ``doSomething''.
+\item Make sure that in the Nautilus window you have selected the method for which you want to add a test.
 
-\item Now open the dropList showing all the tests that have been found for ``doSomething''. In this case no tests will be found so only ``new Test'' will be selectable. Click on ``new Test''. By doing this you signal to the plugin that you want to add a test in a new test class.
+\item Now open the droplist showing all the tests that have been found for your method. Click on ``new Test'' as shown in \autoref{fig:dropListNewTest}. By doing this you signal to the plugin that you want to add a test in a new test class.
 
 		\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/dropListNewTest.png}
+        \includegraphics[scale=0.5]{screenshots/dropListNewTest_edited.png}
         \captionof{figure}{Signal that you want to save the test in a new test class}
+\label{fig:dropListNewTest}
     }
 
 \item Write your test in the right code panel. A template to start writing is already provided there by the TVPlugin.
 
-\item Make sure the right code panel is still selected by clicking on it and accept your new test by pressing ctrl+s.
+\item Make sure the right code panel is still selected and accept your new test by pressing ctrl+s.
 
-\item Since you previously selected ``new Test'' from the droplist the plugin is not sure in which test class this new test should be saved and will ask for clarification. A default name will already be in there but you can write your own test class name. Click ``OK'' when you have entered the name.
+\item Since you previously selected ``new Test'' from the droplist the plugin is not sure in which test class this new test should be saved and will ask for clarification. As shown in \autoref{fig:newTestClassName} a default name will already be provided but you can write your own test class name. Click ``OK'' when you have entered a name.
  
 		\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/nameTestClass.png}
+        \includegraphics[scale=0.5]{screenshots/nameTestClass_edited.png}
         \captionof{figure}{Name the new test class}
+\label{fig:newTestClassName}
 	}
         
-\item Now you need to name in which package this new test class will be added. Similarly as before a default name will be provided but you can enter your own. Click ``OK'' to confirm the package name. This test package will now be created if it did not exist previously.
+\item Now you need to name in which package this new test class will be added. Similarly as before a default name will be provided but you can enter your own. Click the ``OK'' button highlighted in \autoref{fig:newTestPackage} to confirm the package name. This test package will now be created if it did not exist previously.
 
   	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/nameTestPackage.png}
+        \includegraphics[scale=0.5]{screenshots/nameTestPackage_edited.png}
         \captionof{figure}{Name the new test Package} 
+\label{fig:newTestPackage}
 	}
 	
-\item After the last step you can one last time change your mind and cancel the creation of the new class or enter new class and package names. Once you have finished checking an if necessary making additional changes click on ``OK''. The new test will now be added to the newly created test class and test package.
+\item You will now see a pop-up similar to \autoref{fig:classConfirm} with a class definition according to what you entered in the previous steps. You can one last time change your mind and cancel the creation of the new class or enter new class and package names. Once you have finished checking and if necessary have made additional changes click on ``OK''. The new test will now be added to the newly created test class and test package.
 
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/confirmNaming.png}
+        \includegraphics[scale=0.5]{screenshots/confirmNaming_edited.png}
         \captionof{figure}{Confirm the new test class} 
+\label{fig:classConfirm}
 	}
 
 \end{enumerate}
 
-\subsection{Adding a new to an existing test class}
+\subsection{Adding a new test to an existing test class}
 	\label{subsec:Adding a new to an existing test class}
-	In this section we will take a look at how to add a new test to an existing class. It is assumed that the plugin is activated. To do this you have to follow the steps outlined in \autoref{subsec:Installation and activation}.
+	In this section we will take a look at how to add a new test inside of an existing test class. It is assumed that the plugin is installed and activated. If not follow the steps outlined in \autoref{subsec:Installation and activation}.
 	
 \begin{enumerate}
-	\item First make sure that the plugin is toggled on. If it is the Nautilus window has two code panels in the bottom. If it is not activate it by clicking the ``TestView'' button. See \autoref{fig:toggleButton} on how to toggle the plugin on.
+	\item First make sure that the plugin is toggled on. If it is the Nautilus window has two code panels in the bottom. If it is not turn it on by clicking the ``TestView'' button. See \autoref{fig:toggleButton} if you can not find the button.
 	
-	\item Make sure that you have selected the method for which you want to add a test in the Nautilus window. In this example this will be ``doSomething''.
+	\item Make sure that  in the Nautilus window you have selected the method for which you want to add a test.
 	
-	\item Now expand the droplist with the results and select any test that is contained in the class where you want your new test to be. In our case this is the ``MyClassTest'' so we select ``MyClassTest $>>$\#testDoSomething''.
+	\item Now expand the droplist with the results and select any test that is contained in the class where you want your new test to be. In this example this will be ``MyClassTest'' so we select ``MyClassTest $>>$\#testDoSomething'' as can be seen in \autoref{fig:dropListExistingClass}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/dropListExistingTestClass.png}
-        \captionof{figure}{Select any test in the desired test class} 
+        \includegraphics[scale=0.5]{screenshots/dropListExistingTestClass_edited.png}
+        \captionof{figure}{Select any test in the desired test class}
+\label{fig:dropListExistingClass}
 	}
 	
-	\item The test you selected will now appear in the right code panel. Just write your test over it but make sure to give it a different name or else the test you selected will be overwritten. In our case we chose to name the new test method ``testDoSomethingElse''.
+	\item The test you selected will now appear in the right code panel. Just write your test over it but make sure to give it a different name or else the test you selected will be overwritten.
 	
-	\item Make sure the right code panel is still selected by clicking on it and accept your new test by pressing ctrl+s.
+	\item Make sure the right code panel is still selected and accept your new test by pressing ctrl+s.
 	
-	\item Now your new test will be added to the test class you selected previously. You can verify this by opening the found tests droplist again and checking if your new test is there.
+	\item Now your new test will be added to the test class you selected previously. You can verify this by opening the found tests droplist again and checking if your new test is there as can be seen in \autoref{fig:newTestCheck}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/VerifyNewTestIsThere.png}
-        \captionof{figure}{Check if your new test is shown here} 
+        \includegraphics[scale=0.5]{screenshots/VerifyNewTestIsThere_edited.png}
+        \captionof{figure}{Check if your new test is shown here}
+\label{fig:newTestCheck}
 	}	
 \end{enumerate}
 
@@ -515,18 +575,20 @@ When the TVPlugin does not find tests that you have created then this might be b
 \begin{enumerate}
 	\item First in the Nautilus class hierarchy select the method that is missing tests in the found tests droplist.
 	
-	\item Click the ``Link class' ' button.
+	\item Click the ``Link class'' button highlighted in \autoref{fig:linkClassButton}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/linkClassButton.png}
+        \includegraphics[scale=0.5]{screenshots/linkClassButton_edited.png}
         \captionof{figure}{The ``Link class'' button} 
+\label{fig:linkClassButton}
 	}
 	
-	\item The TVPlugin will now ask which class you want to link as a test class to the class that is currently selected in the Nautilus class hierarchy. Enter the name of the desired test class and click ``OK''.
+	\item The TVPlugin will now ask which class you want to link as a test class to the class that is currently selected. Enter the name of the desired test class and click ``OK'' as shown in \autoref{fig:linkClassName}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/linkClassName.png}
+        \includegraphics[scale=0.5]{screenshots/linkClassName_edited.png}
         \captionof{figure}{Pop-up asking for the test class name} 
+\label{fig:linkClassName}
 	}
 	
 	\item The specified test class is now added to the test classes that will be considered when searching for tests for the currently selected class. You can verify if it now works by opening the found tests dropview.
@@ -540,48 +602,50 @@ In case the TVPlugin shows you tests from a test class that you do not recognize
 \begin{enumerate}
 	\item First in the Nautilus class hierarchy select the method that does show too many tests in the found tests droplist.
 	
-	\item Click the ``Unlink class' ' button.
+	\item Click the ``Unlink class' ' button highlighted in \autoref{fig:unlinkClassName}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/unlinkClassButton.png}
-        \captionof{figure}{The ``Unlink class'' button} 
+        \includegraphics[scale=0.5]{screenshots/unlinkClassButton_edited.png}
+        \captionof{figure}{The ``Unlink class'' button}
+\label{fig:unlinkClassName}
 	}
 	
-	\item The TVPlugin will now ask which class you want to unlink as a test class to the class that is currently selected in the Nautilus class hierarchy. Enter the name of the desired test class and click ``OK''.
+	\item The TVPlugin will now ask which class you want to unlink as a test class to the class that is currently selected. Enter the name of the desired test class and click ``OK'' as shown in \autoref{fig:unlinkClassName}.
 	
 	\parbox{\linewidth}{\centering
-        \includegraphics[scale=0.4]{screenshots/unlinkClassName.png}
+        \includegraphics[scale=0.5]{screenshots/unlinkClassName_edited.png}
         \captionof{figure}{Pop-up asking for the test class name} 
+\label{fig:unlinkClassName}
 	}
 	
-	\item The specified test class is now removed from consideration. All test contained in this class will not be considered to be tests to the currently selected class. You can verify if this now works by opening the found tests dropview. No test contained in the unlinked class should be shown there.
+	\item The specified test class is now removed from consideration. All tests contained in this class will not be considered to be tests to the currently selected class. You can verify if this now works by opening the found tests dropview. No test contained in the unlinked class should be shown there.
 
 \end{enumerate}
 
 \subsection{Troubleshooting}
 	\label{subsec:Troubleshooting}
 	
-	In this section some possible problems with the TVPlugin are listed and possible solutions to them outlined.
+	In this section possible problems with the TVPlugin are listed and possible solutions to them outlined.
 
 	\subsubsection{Tests are not found by the TVPlugin}
 		\label{subsubsec:Tests are not found by the TVPlugin}
-In case all tests from one or multiple tests classes are missing in the found test droplist you can add those test classes manually. If you want to add individual tests from a test class where already some tests are found then continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}. 
+In case all tests from one or multiple tests classes are missing in the found test droplist you can add those test classes manually by following \autoref{subsec:Linking an existing test class}. If you want to add individual tests from a test class where already some tests are found then continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}. 
 
-First make sure that your test classes are subclasses of "TestCase". If they are not the plugin will not consider them to be test classes. Simply go to the definition of your test classes and change the first line to "[YourClassName] subclass: \#TestCase". Check again if now the tests you from your test classes now are found.
+First make sure that your test classes are subclasses of "TestCase". If they are not the plugin will not consider them to be test classes. Simply go to the definition of your test classes and change the first line to "[YourClassName] subclass: \#TestCase". Check again if the tests from your test classes are found now.
 
 If this does not help you can force the plugin to recognize your classes as test classes by linking the missing test classes to the currently selected class in the Nautilus class hierarchy. To do this follow the steps in \autoref{subsec:Linking an existing test class}. Recheck if your tests are found. If this does not work either then your tests themselves are written in a way that the TVPlugin does not recognize. You will have to change them so that they fulfill certain criteria. In this case also continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}.
 
 \subsubsection{Tests that do not test the currently selected method are shown}
 		\label{subsubsec:Tests that do not test the currently selected method are shown}
-If the classes that contains these wrongly indentified tests do not contain any tests for the currently selected class then you can simply unlink these classes. Follow the steps outlined in \autoref{subsec:Unlinking an existing test class}. All the tests from these classes should new be gone from the found tests droplist.
+If the classes that contains these wrongly indentified tests do not contain any tests for the currently selected class then you can simply unlink these classes. Follow the steps outlined in \autoref{subsec:Unlinking an existing test class}. All the tests from these classes should now be gone from the found tests droplist.
 
 If you want to remove only some tests from the found tests droplist then continue with \autoref{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}. 
 
 \subsubsection{Adding and removing individual tests to the tests found by the TVPlugin}
 		\label{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}
-Both adding and removing an indiviual test from the tests that the TVPlugin finds are not a features that are directly supported. It is still possible to make these adjustments although likely not for all projects and not without changing your tests. The way the TVPlugin identifies individual tests as corresponding to the selected method has two components. The first one is soley based on the name of your test and the name of the method that it is supposed to test. The second one is if the test calls a method with the same name as the method that it supposedly tests.
+Both adding and removing an indiviual test from the tests that the TVPlugin finds are features that are directly supported. It is still possible to make these adjustments although likely not for all projects and not without changing your tests. The way the TVPlugin identifies individual tests as corresponding to the selected method has two components. The first one is soley based on the name of your test and the name of the method that it is supposed to test. The second one is if the test calls a method with the same name as the method that it supposedly tests.
 
-The name based criterion is a check if your test contains the full name of your method under test with at least one additonal time the substring "test". Examples of what is recognized as a test and what not based on this criterion are shown in \autoref{tab:name criterion examples}. This check is not case sensitive. And ":" from methods names with parameters will be ignored when looking for a test.
+The name based criterion is a check if your test contains the full name of your method under test with at least one additonal time the substring "test". Examples of what is recognized as a test and what not based on this criterion are shown in \autoref{tab:name criterion examples}. This check is not case sensitive. ":" from methods names with parameters will be ignored when looking for a test.
 
 \begin{table}[h]
    \begin{tabular}{| c | c | c |}
@@ -598,60 +662,6 @@ The second criterion is if a method call is done inside of the possible test met
 
 A test is recognized as such if either or both of these criteria are fulfilled. Conversely if neither is then the test is not considered a test to the selected method.
 Adding a specific method to the tests found for a certain method can thus be done in two ways. Either make the name of the test contain the full name of the method in addition to "test" or call the method you want to test directly in the test. To remove a method from the found tests you have to make sure that the test name does not contain "test" and the full method name, and that inside of the test never a method with the same name as the supposed method under test is called. 
-	
-\begin{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\section{Basic Components}
-	\label{sec:Basic Components}
-\brs{if you are talking about GUI components say so in section title, components can be anything}Here is a quick overview of all the visual elements can be found\brs{passive again}. The TVPlugin adds 3 buttons and one droplist to your Nautilus windows. The "TestView" button toggles the search for test methods to the currently selected method. If it is toggled on a second source code editor will appear at the bottom where the test methods will be displayed.\brs{pic, or did not happen} This list will change whenever a new method is selected in the Nautilus window.
-The initial list shown in the droplist\brs{the what?} is composed of tests found through the search algorithm described under \ref{sec:The search Algorithm} \nameref{sec:The search Algorithm}\brs{use autoref in stead of ref and nameref}. The additional buttons "Link Class" and "Unlink Class" allow to customize this list if the search for any reason did not find some tests.
-
-\section{The search Algorithm}
-	\label{sec:The search Algorithm}
-In this section I will provide a detailed explanation how corresponding tests to a certain method are found. It is a hierarchical search with two stages. \\ \par
-\ugh{In the first stage all test classes are determined}\brs{what does this even mean?}. \ugh{For this all classes in the your environment are taken into consideration in the beginning. By the end of the first stage only those classes that inherit from "TestCase" as well as pass a substring search \brs{the what now?} in the class name are then passed over to the next step.} The substring search requires the name of the class in question to contain both "test" and the name of the selected class.\brs{oh... well, say this up front, don't make me guess what you mean by sub-string search}  If those two conditions are met then the class in question \ugh{is} \brs{is it really? how can you be so sure? if you are not 100\% sure, you need to say ``We consider it'' or something similar. } a test class of the selected class. The substring search is not case sensitive and the matches for "test" as well as the selected method can't overlap, meaning one letter can only be used to match partially either "test" or the selected class name.\brs{split the two conditions in two separate subsections or paragraphs and explain them in detail with either code, block diagram algorithms, math or something to help the reader understand}\\ \par
-
-\begin{center}
-   \begin{tabular}{| l | c | r |}
-     \hline
-     Original class name & Possible class names & Not a test class name \\ \hline
-     String & StringTest, stringtest, TestString & String, Test, StrinTgEST \\ \hline
-     Protest & ProtestTest & Protest \\
-
-     \hline
-   \end{tabular}
-\end{center}
-\todo{number this}
-\brs{All tables, figures, listings, etc. MUST be numbered, named, and mentioned + refereed to in the text.}
-
-
-In the second stage all test methods corresponding to the selected method out of all methods of the test classes are \ugh{determined} \brs{determining is not the right term for this, at least not in this phrasing. }. Similarly as before the test method name needs to contain the name of the selected method in addition to "test". \ugh{The second criterion is if the method in question uses the selector of the selected method.} \brs{you have like 4 or 5 different steps in this process and they are all divided in to pairs for some reason and all of them are 'in the second part, the second criteria etc. very confusing} Unlike stage one this stage\brs{name the stages, this usually helps} is fairly inclusive in that if only one of those criteria is satisfied it still qualifies as a test to the selected method.\\ \par
-The two criteria of the second stage also serve to order the found test methods. The ones displayed on top satisfy both criteria. The ones that only satisfy the naming requirement are shown below these and the last ones are those that only contain the selector of the selected method. 
-
-\section{Creating new Tests}
-	\label{sec:Creating new Tests}
-%move this to userGuide(partialy)
-The other main functionality of the plugin besides finding tests is to facilitate creating them. When you have a method open in the first code editor to which you would like to add a test select the "new Test" option from the droplist\brs{run on sentence}. This option is an exception to the order described at the end of \ref{sec:The search Algorithm} \nameref{sec:The search Algorithm} and is always shown on top of the list. This option also can be found there regardless whether there were any tests found for the selected method. A template will appear in the second editor where the user can write the new test. When the test is accepted the user will be asked to name the class in which this test will be added. If the specified class doesn't exist it will be created and the user will be asked for a package to place it in. \\ \par 
-A faster way to create a new test is to select an existing test from the droplist and alter it. By selecting a new name the old test will not be overwritten and the new test will be added to the class of the old test. Any test that was written using the second editor will result in its class being linked to the class of the selected method. This makes sure that the class in which the test was added is later recognized by the search algorithm even if its name does not confirm to the naming conventions of a test class.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{screenshots/dropListOpen.png}
-	\caption{Here the tests are selected}
-\end{figure}
-
-\chapter{Conclusion and Future Work}
-\idea{more focused on improved UI and everything resulting from this. Other directions to improve unit test friendlyness would be hierarchical tests amongst other things.}
-
-
-\chapter{User Guide}
-	\label{cha:User Guide}
-\end{comment}
-
-%END Doc
-%-------------------------------------------------------
-
-%ideas: lack of large scale test suit support in TV(allan page beatiful testing), creating methods and classes from tests to better support tdd, better tdd support in general, unit testing cant be condensed to these core functionalities(e.g. test result collection and displaying is equaly as important), pctures for Pharo in related work chapter, test search only works method->tests not test->method
 
 \bibliography{scg,thesis}
 	\bibliographystyle{plain}

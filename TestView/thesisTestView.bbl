@@ -22,10 +22,10 @@ Philippe Marschall.
 \newblock Detecting the methods under test in {Java}.
 \newblock Informatikprojekt, University of Bern, April 2005.
 
-\bibitem{Mart09a}
-Robert Martin.
-\newblock What killed {Smalltalk} could kill {Ruby}, too.
-\newblock (RailsConf 09 -- http://blip.tv/file/2089545).
+\bibitem{Mart09b}
+Robert~C. Martin.
+\newblock {\em Clean Code: A Handbook of Agile Software Craftsmanship}.
+\newblock Prentice Hall PTR, Upper Saddle River, NJ, USA, 2 edition, 2009.
 
 \bibitem{Pres14a}
 Roger~S. Pressman.
