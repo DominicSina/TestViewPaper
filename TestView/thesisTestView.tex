@@ -48,17 +48,20 @@ In this chapter we will take a look at different testing paradigms in order to s
 
 \section{Unit Testing}
 	\label{sec:Unit Testing}
-Unit testing follows the paradigm of isolating the smallest inseparable parts of a program and testing them independently of each other. Each of these tests is done as low level as possible. System wide tests are generally not a part of unit testing.
-This means that the scope of each test is very small and consequently many tests are needed to cover the whole implementation. By making unit tests one ensures that the tested parts behave as expected. In Smalltalk these smallest units are often methods since the language heavily relies on sending messages (what roughly translates to a method invocation in other languages) between objects.
+Unit testing follows the paradigm of isolating the smallest inseparable parts of a program and testing them independently of each other. Each of these tests is done \chg{as low level}{at as low a level} as possible. System wide tests are generally not a part of unit testing.
+This means that the scope of each test is very small and consequently many tests are needed to cover the whole implementation. By making unit tests one ensures that the tested parts behave as expected. In Smalltalk these smallest units are often methods since the language heavily relies on sending messages \ugh{(what roughly translates to a method invocation in other languages)}\brs{make this a footnote}  between objects.
 
 To start testing a method an instance of the class under test is created and brought into a state where a set of preconditions is met.
-An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled.
+An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled.\brs{You might want to mention assertions here}
 
-To illustrate this let us examine how unit tests for a simple stack might work. The stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named "push(x)" which adds an element "x" on top of the stack and  a method named "pop()" which removes and returns the element that was added last to the stack. Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by "pop()" and not some other object.
+To illustrate this let us examine how unit tests for a \ugh{simple stack}\brs{You are using the actual Pharo stack implementation in the code later, so you might as well say so} might work. The stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named \chg{"}{``}\chg{push(x)}{\emph{push}}\chg{"}{''}\brs{fix quotation marks everywhere else, use emph for code chunks in text, and } which adds an element "x" on top of the stack and  a method named "pop()" which removes and returns the element that was added last to the stack. Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by \chg{"pop()"}{the pop operation} and not some other object.
 
 The preconditions need to make sure that the stack is initialized with a capacity bigger than zero. If no stack is created or if its size is smaller than one then the stack can return nothing even if everything is correctly implemented. After this precondition the test will now call "push(x)" and then "pop()".
 
-Now we need to make sure that operations work as expected or in other word we need to check our postconditions. In this case if the object returned by "pop()" is the one that we pushed to the stack and that the stack is empty again after the element was popped. Below is an example in SmallTalk of how such a test could look like. To check if the stack is empty again after calling pop() a separate test could be written.
+Now we need to make sure that operations work as expected\ins{.} \chg{or in}{In} other word\ins{s} we need to check \chg{our}{the} postconditions. In this case if the object returned by "pop()" is the one that we pushed to the stack and that the \ugh{stack is empty again after the element was popped}\brs{you did not mention this a paragraph ago}. Below is an example in SmallTalk of how such a test could look like. To check if the stack is empty again after calling pop() a separate test could be written.
+
+\brs{the last two paragraphs are very ugly. Make this code a listing of it's on and reference it early in the text, then explain it. You are doing the opposite, you first explain a lot of things, forcing the reader to keep it in their mind, and then you show it to them. First show, then explain, that way you can reference the listing and the line of code you are talking about. Also, make sure the listing has line nubmers}
+
 \begin{code}
 testPopReturnedElement
 | stack |
@@ -68,14 +71,14 @@ stack push: 5
 
 self assert: (stack pop=5)\end{code}
 
-For the purpose of this paper two features of unit testing are important to keep in mind. The first one is that unit testing takes place at a method level and the second one is that the narrow scope of unit tests requires many tests to cover multiple methods. Further, due to how it is recommended to keep each test as small as possible even a single method is likely to require multiple corresponding tests since every path in the decision tree of the method should be covered.
+For the purpose of this \ugh{paper}\brs{paper?} two features of unit testing are important to keep in mind. The first one is that unit testing takes place at a method level and the second one is that the narrow scope of unit tests requires many tests to cover multiple methods. Further, \chg{due to how}{since} it is recommended to keep each test as small as possible even a single method is likely to require multiple corresponding tests since every path in the decision tree of the method should be covered.
 
 \section{Test-driven Development}
 	\label{sec:Test-driven Development}
 In Test-driven Development the tests for an implementation are written before the implementation itself.
 Afterwards the implementation is written and improved until those tests are satisfied.
-After this more tests are added to test additional features. This process is repeated until the implementation is sufficiently working.
-Test-driven development thus requires the developers to regularly determine the requirements for a feature.
+After this more tests are added to test additional features. This process is repeated until the implementation is sufficient\del{ly working}.
+Test-driven development thus requires the developers to regularly determine the requirements for a feature\brs{and normal development does not?}.
 Below are some basic rules of Test-Driven Development as laid out by Martin\cite{Mart09b}.
 \begin{quote}
 First Law: You may not write production code until you have written a failing unit test.
@@ -86,15 +89,21 @@ Third Law: You may not write more production code than is sufficient to pass the
 \end{quote}
 While it might seem tedious this repeated careful planning is the biggest advantage of this approach. Applications developed with Test-driven Development have to be very thought-out and every requirement has to be clear since those are required to begin writing the production code.
 
-As shown in \autoref{sec:Unit Testing} it is fair to look at testing on a method level when discussing unit testing. Since in Test-driven Development the methods may not have been written when the tests are created the method declarations and the method locations in the class hierarchy can not always be used to make certain assumptions that could be used to facilitate creating new tests. For example before a method in the production code is written it needs to have a failing tests. Only for subsequent tests to the same method can the method declaration and the method location in the class hierarchy be found in the production code.
+As shown in \autoref{sec:Unit Testing} \ugh{it is fair to look at testing on a method level when discussing unit testing}\brs{does not parse. No idea what this is suppose to say}. \ugh{Since in Test-driven Development the methods may not have been written when the tests are created the method declarations and the method locations in the class hierarchy can not always be used to make certain assumptions that could be used to facilitate creating new tests}\brs{sentence is way too long}. For example \ugh{before a method in the production code is written it needs to have a failing tests}\brs{how is this an example?}.  \ugh{Only for subsequent tests \chg{to}{of} the same method can the method declaration and the method location in the class hierarchy be found in the production code.}\brs{hm...  ok... ``we can only find the method declaration and location for methods that already have existing tests'' or something.} 
 
-Test-driven Development bears mentioning because it is one of the major paradigms concerned with testing and because in the context of this paper it has to be treated a bit differently. Namely since it is not possible to always get the method declaration and location in the class hierarchy to help generating tests when doing Test-driven Development.
+\brs{you spend a lot of time in these paragraphs explaining how we don't know
+things about the methods because we don't have them yet, but I have no idea why
+that is important to know. It should be clear WHY not knowing this is a
+problem}
+
+Test-driven Development bears mentioning because it is one of the major paradigms concerned with testing and because in the context of this \ugh{paper}\brs{s/paper/thesis/g or something} it has to be treated a bit differently. Namely since it is not possible to always get the method declaration and location in the class hierarchy to help generating tests when doing Test-driven Development. \brs{AHA! Now you mention, yet just breafly something about generation of tests! Just a glimpse, but not enough.  That is why you need to make clear in the introduction what exactly you are trying to do}
 
 \section{Blackbox and Whitebox Testing}
 	\label{sec:Blackbox and Whitebox Testing}
-Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method. Especially interesting are worst case scenarios that can be found by examining the code and method invocations that result in as much executed lines as possible.
 
-Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "[t]est sets are developed and their results evaluated solely on the basis of the specifications" \cite{Ghez02a}. This means that the tests have to be made so that they return the right value for all tested input values. Since it might be unfeasible to test all values it is necessary to choose the critical input values where an error might occur.
+Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method. \ugh{Especially interesting are worst case scenarios that can be found by examining the code and method invocations that result in as much executed lines as possible}\brs{convoluted. Are method invocations interesting?  cause if not, you are missing a ``the'' in front of method invocation. Do the method invocations result in as much executed lines as possible? Please rephrase the entire sentence}.
+
+Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "[t]est\brs{lose the square brackets} sets are developed and their results evaluated solely on the basis of the specifications" \cite{Ghez02a}.  This means that the tests have to be made so that they return the right value for all tested input values. Since it might be \chg{unfeasible}{impossible} to test all values\brs{values of what?} it is necessary to choose the critical input values where an error might occur.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The Problem %%%%%%%%%%%%%%%%%%%%%
