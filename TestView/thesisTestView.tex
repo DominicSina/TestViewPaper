@@ -284,7 +284,7 @@ The next functionality that will be discussed is how Pharo finds existing tests 
 \end{table}
 
 Namely\ins{,} test classes and test method\ins{s} have to contain the full name of the \ugh{original}\brs{which is the original? does that mean that the other ones are unoriginal?} class or \del{respectively} method. Additionally the name of the test class has to have the suffix "Test" and the name of the test method has to have the prefix "test". Also tests have no parameters and thus lack all colons in their name.  If anything more is part of the test name then it will not be found\ins{ by the ...}. The test classes also have to inherit from TestCase in order to be found by the test search.
- 
+
 Both the restrictions on class names and method names are quite restrictive.  From a test class name the class under test can be quite reliably inferred\cite{Mars05a}. On the other hand Marschall \ins{who?} also states that the method name and the corresponding test name for it are less directly related. These restrictive name criteria also lead to the problem that at most only one test per method will be found since others with a slightly different name will not fulfill these naming criteria.
 
 This test search function is not directly available to the developers. It is used by Nautilus  in the file hierarchy to add a button to the left of each method where a test has been found. This button can be pressed to execute the test and show if this corresponding test was successful or not.
@@ -302,16 +302,16 @@ Eclipse's and Nautilus's way of adding new tests are very comparable. A case cou
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter {The TestView Plugin}
 	\label{cha:The TestView Plugin}
-Having discussed some important features of a unit test friendly environment in \autoref{cha:The Problem} and where their implementation is lacking in \autoref{cha:Related Work} we will now try to present a solution to this problem: the TestView Plugin.
+Having discussed some important features of a unit test friendly environment in \autoref{cha:The Problem} and where their implementation is lacking in \autoref{cha:Related Work} we will now \ugh{try to present}\brs{we will not TRY to present, we will present} \ugh{a solution}\brs{a bit of a bold statement that testView is a solution to these problems. I would prefer something like ``our attempt to address the problems''} to this problem: the TestView Plugin.
 
-Since the lack of unit test supporting features can not be corrected for all environments at once we chose to extend Nautilus's functionality. The reasoning behind this was that the inability to view tests and methods side by side in a single Nautilus window was perceived by us as the gravest of these issues and that Eclipse already has a big community which provides many plug-ins.
+Since the lack of unit test supporting features can not be corrected for all environments at once we chose to extend Nautilus's functionality. The reasoning behind this was that the inability to view tests and methods side by side in a single Nautilus window was perceived by us as the gravest of these issues and that Eclipse already has a big community which provides many plug-ins.\brs{the reasoning is weak. This is not why we chose to do it for Nautilus. It would be better to say that we chose it because it is easier to implement then an eclipse plugin}
 
-In this section we will comment on the same three functionalities discussed in the last chapters: viewing test and method side by side, finding tests to certain methods and creating new tests. Special focus will be put on improvements compared to Eclipse and the Pharo IDE.
+\ugh{In this section we will comment on the same three functionalities discussed in the last chapters: viewing test and method side by side, finding tests to certain methods and creating new tests. Special focus will be put on improvements compared to Eclipse and the Pharo IDE.} \brs{What does this mean?  We will talk about something we already talked about! rephrase to put an accent on testView}
 
 \section{Methods and Tests Side by Side}
-As stated one of the drawbacks concerning unit testing with Nautilus is that it is hard to view tests and methods at the same time. Whitebox testing becomes cumbersome through this. Seeing both method and test together should be quick, convenient and not introduce too much redundant user interface elements that might clutter the environment.
+As stated\ins{before/in section x,} one of the drawbacks concerning unit testing with Nautilus is that it is hard to view tests and methods at the same time. Whitebox testing becomes cumbersome through this. Seeing both method and test together should be quick\chg{,}{and } convenient\ins{.} \chg{and not}{It should also not} introduce too much redundant user interface elements that might clutter \ins{up}  the environment.
 
-Following this the TestView Plugin allows to split the code editor panel of a Nautilus window vertically into two parts, the result can be seen in \autoref{fig:Nautilus window with two code editors}. With this approach the need to open two Nautilus windows is eliminated. The file hierarchy for example will not be displayed a second time and less screen space is occupied.
+Following this\brs{You do this all over the paper, if you want to start a sentence with a reference to somethin earlier, like: ``Following this'' or ``With this in mind'' you need to put a comma after. This separates the two parts of the sentence clearly. Please apply this globaly} the TestView Plugin allows \chg{to split}{splitting} the code editor panel of a Nautilus window vertically into two parts\chg{,}{.} \chg{the}{The} result \ins{of this} can be seen in \autoref{fig:Nautilus window with two code editors}. With this approach the need to open two Nautilus windows is eliminated. The file hierarchy for example will not be displayed a second time and less screen space is occupied.
 
 \begin{figure}[h!]
 	\centering
@@ -329,9 +329,9 @@ Which test is currently shown can be changed through the drop list that can be s
 This approach combines the convenience of Eclipse's ability to show code side by side with limited but more focused contend in the right code editor. This results in an easy to use support for whitebox testing. Since it is not possible to view multiple methods in one Nautilus window at the same time this is a notable improvement.
 
 \section{Test Search}
-As a direct consequence of the heavily selected content of the second code editor it became necessary to use a test search. Without this it would be impossible to show a relevant selection. As discussed in \autoref{subsec:Test Search} the test search that Nautilus provides is very restrictive and only finds at most one test per method. In order to find better results the TestView Plugin uses its own test search.
+As a direct consequence of the heavily selected content of the second code editor it became necessary to use a test search. Without this it would be impossible to show a relevant selection. As discussed in \autoref{subsec:Test Search} the test search that Nautilus provides is very restrictive and only finds at most one test per method. In order to find better results the TestView Plugin uses its own test search\ins{ implementation}.
 
-In this section I will provide a detailed explanation how corresponding tests to a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method.
+In this section\brs{subsection maybe?} \chg{I}{we} will provide a detailed explanation how corresponding tests to a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method.
 
 This search is performed every time a different method is selected. This makes it possible that the additional code panel introduced by the plugin always shows a relevant selection.
 
@@ -339,7 +339,14 @@ This search is performed every time a different method is selected. This makes i
 \label{subsec:CorrTestClasses}
 A purely name-based search works quite well to find test classes corresponding to a certain class\cite{Mars05a}. This is already used in the Nautilus test search and a similar name based search is also part of the test search in the TestView Plugin.
 
-In \autoref{tab:TVTestClassNames} examples of which corresponding test classes that the TestView Plugin finds are shown. All classes with names like in the column of possible class names are considered corresponding test classes if they also inherit from TestCase.
+In \autoref{tab:TVTestClassNames} examples of which corresponding test
+classes that the TestView Plugin finds are shown.
+All classes with names like in the column of possible class names are considered
+corresponding test classes if they also inherit from TestCase.
+\brs{way to complicated, and poorly explains what you are
+trying to say.  Make clear that you find test classes by looking at subclasses
+of TestCase.  also, explain and then give examples, like mentioned before. If
+you give examples first, then use the example to explain.}
 
 \begin{table}[h!]
 	\centering
@@ -354,15 +361,14 @@ In \autoref{tab:TVTestClassNames} examples of which corresponding test classes t
 	\label {tab:TVTestClassNames}
 \end{table}
 
-The name-based criterion requires the name of the class in question to contain both "test" and the name of the selected class.
-The substring search is not case sensitive and the matches for "test" and for the name of the selected class can not overlap. This is why "Contest" is not considered to be a test class to a class that is also named "Contest" even though it contains "test" as well as the full name of the class under test.
+The name-based criterion requires the name of the class in question to contain both "test" and the name of the selected class.  The substring search is not case sensitive and \ugh{the matches for "test" and for the name of the selected class can not overlap} \brs{wat?}. This is why "Contest" is not considered to be a test class to a class that is also named "Contest" even though it contains "test" as well as the full name of the class under test.
 
-Since the results of this search for corresponding classes are used as base for the search for corresponding tests it is important that it works as well as possible. If this search for corresponding test classes is inadequate the developers can use the "Link Class" and "Unlink Class" buttons provided by the TestView Plugin to add and remove test classes from the results.
+\ugh{Since the results of this search for corresponding classes \chg{are}{is} used as \ins{a} base for the search for corresponding tests it is important that it works as well as possible} \brs{Very ugly and says nothing. This is used for that so it is important that it works well}. If this search for corresponding test classes is inadequate the developers can use the "Link Class" and "Unlink Class" buttons provided by the TestView Plugin to add and remove test classes from the results.  \brs{This is not a good explanation of why one needs these buttons, and what they do. Rewrite.}
 
 \subsection{Corresponding Test Methods}
-After some possible test classes have been identified using the criteria described in \autoref{subsec:CorrTestClasses} the results will be searched for corresponding test methods to the currently selected method.
+After some possible test classes have been identified using the criteria described in \autoref{subsec:CorrTestClasses} the result\chg{s}{ing classes} will be searched for corresponding test methods to the currently selected method.
 
-Similar as the name criterion for test classes described in \autoref{subsec:CorrTestClasses} the tests have to contain the full name of the selected method(without colons) as well as "test". Examples can be found in \autoref{tab:testNameCrit}.
+Similar as the name criterion for test classes described in \autoref{subsec:CorrTestClasses} the test\chg{s}{methods} have to contain the full name of the selected method\ins{ }(without colons) as well as \ins{the string} "test". Examples can be found in \autoref{tab:testNameCrit}.
 
 \begin{table}[h!]
 	\centering
@@ -378,26 +384,32 @@ Similar as the name criterion for test classes described in \autoref{subsec:Corr
 	\label {tab:testNameCrit}
 \end{table}
 
+\brs{Please use real-world-ish examples. Foo bar/do stuff test should be
+avoided}
+
 The second criterion is that the test contains a method invocation with the same selector as the selected method. If either of those criteria is fulfilled the method is considered a test to the selected method. If just one or both of those criteria is met is used to order the found tests in the drop list that can be seen in \autoref{fig:Nautilus window with two code editors} right below of the Nautilus History Navigator.
 
 This new search should yield better results than Nautilus' search since it allows multiple test classes and methods to a particular method. It works very similar to the test search provided by Eclipse and like Nautilus's search is used directly by the IDE and does not have to be called manually.
 
-\section{Creating new tests}
-The purpose of this functionality is to prevent the users from having to repetitively enter similarly structured class and package names while still letting them retain the freedom to choose each name if needed.
+\brs{so, you are flying over most of the things you did in your project. You don't talk about your implementation at all \ie how you do the doStuff--testDoStuff mapping (regex or what?), The way to implemented the sorting of potential test methods is just mentioned in one sentence. I feel you are missing a lot}
 
-Every time developers start to write a new unit test they have to determine to which test class the new test belongs. We can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where there already are tests corresponding to the selected method.
+\section{Creating new tests}
+The purpose of \ugh{this}\brs{which?} functionality is to \ugh{prevent the users from having to}\brs{ugly phrasing. you don't prevent someone from having to do something you enable someone to do something better} repetitively enter similarly structured class and package names while still letting them retain the freedom to choose each name if needed.
+
+Every time developers \brs{please use singular} start to write a new unit test they have to determine to which test class the new test belongs. We can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where \del{there already are} tests corresponding to the selected method already exist.
 
 \subsection{Adding a new Test Class}
-First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class. The easiest way to do this is to let the users write the new test and later determine where this test will be put. With this the user is encouraged to immediately start writing a test as soon as a method is created.
+First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class. The easiest way to do this is to let the users write the new test and later determine where this test will be \chg{put}{placed}. With this the user is encouraged to immediately start writing a test as soon as a method is created.
 
-When as the test is saved the plugin will ask the user how the new test class should be named and in which package this class should be put. Here default values based on the class name and the package name of the method under test are given which in many cases might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite{Mars05a}.
+When as the test \ins{method}\brs{there is a difference between a test and a
+test method, try to use the right phrasing.Apply globally}  is saved the plugin will ask the user \chg{how the new test class should be named}{for the name of the test class} and in which package this class should be\chg{put}{placed}. \del{Here} default values\ins{,} based on the class name and the package name of the method under test\ins{,} are \chg{given}{provided by default.} \chg{which in many cases}{This} might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite{Mars05a}.\brs{please explain how you come up with the default name, example is not enough}
 
 For example if the method under test is contained in a class called ``Queue'' within a package ``Collections'' then the proposed names for the test class and the test package will be ``QueueTest'' and ``Collections-Tests''. The new test class will also automatically subclass TestCase.
 
 These names and the inheritance from TestCase is also what Nautilus's test search expects and thus this does not break existing conventions. Even though default names are provided the user can still ignore them and specify different ones.
 
 \subsection{Adding a test to an existing Test Class}
-The second use case is that a developer wants to add a test to a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added. No test package has to be specified.
+The second use case is that a developer wants to add a test to a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added. No test package has to be specified\brs{no test HAS to be specified, but what if I WANT to specify a different one?}.
 
 One potential problem is how this choice between making new test classes and test packages and using existing ones is communicated to the user. The users have to make their intentions clear to the plugin by selecting a specific item from the list of found tests.
 
