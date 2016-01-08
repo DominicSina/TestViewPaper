@@ -9,9 +9,23 @@
 \chapter*{\centering Abstract}
 	\begin{quotation}
 		\noindent
-The purpose of this bachelor project is to improve the Pharo environment by making it more unit test friendly. Instead of writing a new system browser we chose to realize this as a Nautilus plug-in since this makes it easy to set up and builds on established parts of the Pharo environment. This plug-in includes various functionalities that help with finding and writing unit tests.
-Further it provides ways to check if a method is untested, to see all tests that have been written for a certain method, to add new tests for existing methods and the ability to view a method and a corresponding test side by side.
-Before explaining the plug-in and its functionalities in more detail we will take a look at various terms surrounding unit testing and analyze the develop environments Eclipse and Pharo. They will be compared to each other in how unit test friendly they are and opportunities to improve them will be discussed. The aim of this thesis is to take a closer look at unit testing and in form of a Nautilus plug-in provide an example of how unit testing can be facilitated.
+
+The purpose of this bachelor project is to improve the Pharo environment by
+making it more unit test friendly. Instead of writing a new system browser we
+chose to realize this as a Nautilus plug-in since this makes it easy to set up
+and builds on established parts of the Pharo environment. This plug-in includes
+various functionalities that help with finding and writing unit tests.  Further
+it provides ways to check if a method is untested, to see all tests that have
+been written for a certain method, to add new tests for existing methods and
+the ability to view a method and a corresponding test side by side.  Before
+explaining the plug-in and its functionalities in more detail we will take a
+look at various terms surrounding unit testing and analyze the develop
+environments Eclipse and Pharo. They will be compared to each other in how unit
+test friendly they are\ins{.} \chg{and}{We also deiscuss} opportunities
+\chg{to}{for} improve\ins{ment} \del{them will be discussed}. The aim of this
+\ins{part of the} thesis is to take a closer look at unit testing and in form
+of a Nautilus plug-in provide an example of how unit testing can be
+facilitated.
 
 	\end{quotation}
 \clearpage
@@ -27,21 +41,56 @@ Before explaining the plug-in and its functionalities in more detail we will tak
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 	\label{cha:introduction}
-Testing has become an important part of software development. While it is true that ``Program testing can be used to show the presence of bugs, but never to show their absence!'' \cite{Dijk72b} testing helps to at least partially validate a program. Tests for example aids verifying newly written code and detecting if changes broke previously working code(regression errors).
 
-Not only does testing make code more reliable but it also helps to speed up development by recognizing and preventing regression errors. User studies indicate that about 10-15\% of the development time is spent waiting for tests to finish executing and fixing regression errors, and simply increasing the frequency with which the tests are executed reduces this wasted time by 31-81\% \cite{Saff03b}. This means that the additional time it takes to execute tests more frequently is less than the time saved by fixing regression errors early.
+Testing has become an important part of software development. While it is true
+that ``Program testing can be used to show the presence of bugs, but never to
+show their absence!'' \cite{Dijk72b} testing helps to at least partially
+validate a program. Tests for example aids verifying newly written code and
+detecting if changes broke previously working code\ins{ }(regression errors).
 
-Since testing provides these benefits it has become a key feature of many current software engineering paradigms like for example extreme programing (XP) \cite{Pres14a}. Together with the other features of these development methods testing helps to speed up the development and increase the quality of the software being developed. Additionally for example in XP the time that is spent writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during the life of a project an automated test can save you a hundred times the cost to create it... ''. This is done by guarding against bugs and regression errors. Since this guard is in place "refactoring" and "frequent integration" of new code become possible.
 
-While testing clearly has its benefits, especially under pressure unit testing is still seen as optional and too time consuming.
-Tests are not executed as often as they should be which indicates that the use of unit tests is underestimated.
-In their case studies Pressman and Ernst found that a 31-82\%  reduction of waisted time can be achieved by simply running the same tests two to five times as often\cite{Pres14a}.
+Not only does testing make code more reliable but it also helps to speed up
+development by recognizing and preventing regression errors. User studies
+indicate that about 10-15\% of the development time is spent waiting for tests
+to finish\ins{,} executing and fixing regression errors\del{,} and simply
+increasing the frequency with which the tests are executed reduces this wasted
+time by 31-81\% \cite{Saff03b}. This means that the additional time it takes to
+execute tests more frequently is less than the time saved by fixing regression
+errors early.
 
-Not testing properly will in the long run slow down the development process since all the previously discussed benefits of testing are missing. So there might be no time for testing in the future as well.
+Since testing provides these benefits it has become a key feature of many
+current software engineering paradigms like for example extreme programing (XP)
+\cite{Pres14a}. Together with the other features of these development methods
+testing helps to speed up the development and increase the quality of the
+software being developed. Additionally for example in XP the time that is spent
+writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during
+the life of a project an automated test can save you a hundred times the cost
+to create it... ''. This is done by guarding against bugs and regression
+errors. Since this guard is in place "refactoring" and "frequent integration"
+of new code become possible.
 
-Breaking out of this circle can require an outside influence \cite{Beck98a}. Many environments are missing convenient features to facilitate unit testing and thus repetitively break the developers flow during unit testing. This only makes breaking out of this circle harder.
+While testing clearly has its benefits, \ugh{especially under
+pressure}\brs{what?} unit testing is still seen as optional and too time
+consuming.  Tests are not executed as often as they should be which indicates
+that the use of unit tests is underestimated.  In their case studies Pressman
+and Ernst found that a 31-82\% reduction of waisted time can be achieved by
+simply running the same tests two to five times as often\cite{Pres14a}.
 
-In this thesis we attempt to provide such an outside influence for the Pharo IDE. Our solution is realized as a Nautilus plug-in. This  TestView plugin provides additional functionality to the Pharo System Browser Nautilus. Included features are an easy way to view tests and methods side by side, an automated test search and a quick way to create new tests.
+Not testing properly will in the long run slow down the development process
+since all the previously discussed benefits of testing are missing. So there
+might be no time for testing in the future as well.
+
+Breaking out of this circle can require an outside influence \cite{Beck98a}.
+Many environments are missing convenient features to facilitate unit testing
+and thus repetitively break the developers flow during unit testing. This only
+makes breaking out of this circle harder.
+
+In this thesis we attempt to provide such an outside influence for the Pharo
+IDE. Our solution is realized as a ins{plug-in for} Nautilus \chg{plug-in}{,
+the default system browser in Pharo}. \chg{This}{The}  TestView plugin provides
+additional functionality \del{to the Pharo System Browser Nautilus.  Included
+features are} {such as} an easy way to view tests and methods side by side, an
+automated test search and a quick way to create new tests.
 
 \chapter{A Closer Look at Testing}
 	\label{cha:Testing}
