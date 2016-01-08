@@ -94,22 +94,56 @@ automated test search and a quick way to create new tests.
 
 \chapter{A Closer Look at Testing}
 	\label{cha:Testing}
-In this chapter we will take a look at different testing paradigms in order to specify how these terms are used throughout this thesis. During the next chapters these terms will then be applied to better describe how current programming environments support these paradigms and where precisely this support is lacking. It is important to note that these paradigms are not mutually exclusive.
+
+In this chapter we will take a look at different testing paradigms in order to
+specify how these terms are used throughout this thesis. During the next
+chapters these terms will then be applied to better describe how current
+programming environments support these paradigms and where precisely this
+support is lacking. It is important to note that these paradigms are not
+mutually exclusive.
 
 
 \section{Unit Testing}
 	\label{sec:Unit Testing}
-Unit testing follows the paradigm of isolating the smallest inseparable parts of a program and testing them independently of each other. Each of these tests is done at as low a level as possible. System wide tests are generally not a part of unit testing.
-This means that the scope of each test is very small and consequently many tests are needed to cover the whole implementation. By making unit tests one ensures that the tested parts behave as expected. In Smalltalk these smallest units are often methods since the language heavily relies on sending messages\footnote{Roughly translates to a method invocation in other languages} between objects.
 
-To start testing a method an instance of the class under test is created and brought into a state where a set of preconditions is met.
-An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled. These postconditions are checked by using assertions.
+Unit testing follows the paradigm of isolating the smallest inseparable parts
+of a program and testing them independently of each other. Each of these tests
+is done at as low a level as possible. System wide tests are generally not a
+part of unit testing.  This means that the scope of each test is very small and
+consequently many tests are needed to cover the whole implementation. By making
+unit tests one ensures that the tested parts behave as expected. In Smalltalk
+these smallest units are often methods since the language heavily relies on
+sending messages\footnote{Roughly translates to a method invocation in other
+languages} between objects.
 
-To illustrate this let us examine how a unit test for an imaginary ``\emph{Stack}'' Class in Pharo might work. Each stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named ``\emph{push: anObject}'' which adds an element on top of the stack and a method named ``\emph{pop}'' which removes and returns the element that was added last to the stack.
+To start testing a method an instance of the class under test is created and
+brought into a state where a set of preconditions is met.  An example for
+preconditions would be the requirement for the objects instance variables to
+have certain values. From this initial state in a deterministic environment a
+specific outcome can be expected after the method is executed. The outcome is a
+success if all of the previously defined postconditions are fulfilled. These
+postconditions are checked by using assertions.
 
-Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by the pop operation and not some other object. An example of how such a test could be implemented can be found in \autoref{code:exampleTest}.
+To illustrate this let us examine how a unit test for an imaginary
+``\emph{Stack}'' \chg{C}{c}lass in Pharo might work. Each stack has a maximum
+capacity that is set once the stack is created. \del{Further} the stack
+provides a method named ``\emph{push: anObject}'' which adds an element on top
+of the stack and a method named ``\emph{pop}'' which removes and returns the
+element that was added last to the stack.
 
-The preconditions need to make sure that the stack is initialized with a capacity bigger than zero. This is done in line \autoref{line:init} of our example. Then an element is pushed and popped again in line \autoref{line:push} and line \autoref{line:assert}. The postcondition is checked with the \emph{assert} that can be found in line \autoref{line:assert}. The popped element should be the same as the one that was pushed to the stack earlier.
+Now let us examine how to make a unit test for this stack that checks if the
+last element that was added is returned by the pop operation and not some other
+object. An example of how such a test could be implemented can be found in
+\autoref{code:exampleTest}.
+
+The preconditions need to make sure that the stack is initialized with a
+capacity bigger than zero. This is done in line \autoref{line:init} of our
+example. Then an element is pushed and popped again in line \autoref{line:push}
+and line \autoref{line:assert}. The postcondition is checked with the
+\emph{assert} that can be found in line \autoref{line:assert}. The popped
+element should be the same as the one that was pushed to the stack earlier.
+
+\brs{Please format this code snippet, and give more context to the caption \eg Example test of a stack class that tests if the push/pop combination works correctly}
 
 \begin{lstlisting}[caption=Example Test, label=code:exampleTest]
 testPopReturnedElement
@@ -121,32 +155,73 @@ stack push: 5 !\label{line:push}!
 self assert: (stack pop=5) !\label{line:assert}!
 \end{lstlisting}
 
-For the purpose of this thesis two features of unit testing are important to keep in mind. The first one is that unit testing takes place at a method level and the second one is that the narrow scope of unit tests requires many tests to cover multiple methods. Further, since it is recommended to keep each test as small as possible even a single method is likely to require multiple corresponding tests since every path in the decision tree of the method should be covered.
+For the purpose of this thesis two features of unit testing are important to
+keep in mind. The first one is that unit testing takes place at a method level
+and the second one is that the narrow scope of unit tests requires many tests
+to cover multiple methods. Further, since it is recommended to keep each test
+as small as possible even a single method is likely to require multiple
+corresponding tests since every path in the decision tree of the method should
+be covered.
 
 \section{Test-driven Development}
 	\label{sec:Test-driven Development}
-In Test-driven Development the tests for an implementation are written before the implementation itself.
-Afterwards the implementation is written and improved until those tests are satisfied.
-After this more tests are added to test additional features. This process is repeated until the implementation is sufficient.
-Below are some basic rules of Test-Driven Development as laid out by Martin\cite{Mart09b}.
+
+In Test-driven Development the tests for an implementation are written before
+the implementation itself.  Afterwards the implementation is written and
+improved until those tests are satisfied.  After this more tests are added to
+test additional features. This process is repeated until the implementation is
+sufficient.  Below are some basic rules of Test-Driven Development as laid out
+by Martin\cite{Mart09b}\brs{add a last name, this is not your friend from
+school. Also, there seems to be some grammatical errors in the quote which makes
+me doubt that it is a quote. Please find the exact quote or say that you are
+paraphrasing.}.
+
 \begin{quote}
-First Law: You may not write production code until you have written a failing unit test.
+First Law: You may not write production code until you have
+written a failing unit test.
 
-Second Law: You many not write a more of a unit test than is sufficient to fail, and not compiling is failing.
+Second Law: You many not write a more of a unit test than is sufficient to
+fail, and not compiling is failing.
 
-Third Law: You may not write more production code than is sufficient to pass the currently failing test.
+Third Law: You may not write more production code than is sufficient to pass the
+currently failing test.
 \end{quote}
-While it might seem tedious this repeated careful planning is the biggest advantage of this approach. Applications developed with Test-driven Development have to be very thought-out and every requirement has to be clear since those are required to begin writing the production code.
 
-Test-driven Development bears mentioning because it is one of the major paradigms concerned with testing and because in the context of this thesis it has to be treated a bit differently. Namely when trying to facilitate testing Test-Driven Development can be difficult to properly support. Some useful information to support the user is only available after a method has been implemented. This includes the method declaration and the location of this method. Without these no test name and test location can be derived for new tests.
+While it might seem tedious\ins{,} del{this} repeat\chg{ed}{ing this} careful
+planning is the biggest advantage of this approach. Applications developed with
+Test-driven Development have to be very thought-out and every requirement has to
+be clear since those are required to begin writing the production code.
+
+Test-driven Development bears mentioning because it is one of the major
+paradigms concerned with testing and because in the context of this thesis it
+has to be treated a bit differently. Namely when trying to facilitate testing
+Test-Driven Development can be difficult to properly support. Some useful
+information to support the user is only available after a method has been
+implemented. This includes the method declaration and the location of this
+method. Without these no test name and test location can be derived for new
+tests.
 
 \section{Blackbox and Whitebox Testing}
 	\label{sec:Blackbox and Whitebox Testing}
 
-Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method.
-Especially interesting are worst case scenarios. These are the method invocations that result in as many executed lines as possible.
+Whitebox and blackbox testing refer to \ugh{how closely tests are written to
+suit a method}\brs{wat? just say what it is, \eg ``refer to whether or not the
+implementation of the method is taken in to accoout''}. In whitebox testing the
+tester is completely aware of the method and its inner workings when writing a
+test for it. This means that an adequate amount of unit tests done with a
+whitebox approach will cover each important path in the decision tree of a
+method.  Especially interesting are \ugh{worst case}\brs{extreme is probably a
+better term} scenarios.  These are the method invocations that result in as many
+executed lines as possible.
 
-Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "test sets are developed and their results evaluated solely on the basis of the specifications" \cite{Ghez02a}.  This means that the tests have to be made so that they return the right value for all tested input values. Since it might be impossible to test all possible input values it is necessary to choose the critical input values where an error might occur.
+Contrary\ins{,} in blackbox testing\ins{,} the test writer does not know the
+inner workings of the method that is being tested. Ghezzi et al. describe that
+during blackbox testing \chg{"}{``}test sets are developed and their results
+evaluated solely on the basis of the specifications\chg{"}{''} \brs{please use
+correct quotation marks everywhere}  \cite{Ghez02a}.  This means that the tests
+have to be made so that they return the right value for all tested input values.
+Since it might be impossible to test all possible input values it is necessary
+to choose the critical input values where an error might occur.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The Problem %%%%%%%%%%%%%%%%%%%%%
