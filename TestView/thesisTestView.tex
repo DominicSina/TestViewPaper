@@ -686,34 +686,75 @@ will not be displayed a second time and less screen space is occupied.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.4]{screenshots/toggledOn2.png}
-	\caption{Nautilus window with two code editors}
+	\caption{Nautilus window with \ugh{two code editors}\brs{nope, it's the
+nautilus editor with the TestView plugin installed right?}}
 	\label{fig:Nautilus window with two code editors}
 \end{figure}
 
-It also becomes unnecessary to use Nautilus's locking feature or History Navigator to be able to switch fast between methods and tests. Thus it also is not required anymore to manage the locked or recently viewed classes and methods in order to quickly navigate back and forth.
+It also becomes unnecessary to use Nautilus's locking feature or History
+Navigator to be able to switch fast between methods and tests. Thus it also is
+not required anymore to manage the locked or recently viewed classes and methods
+in order to quickly navigate back and forth.
 
-Unlike in Eclipse the user has no absolute control over this additional code editor. Only methods of interest are shown there and the user does not have to manage what should be displayed. This is possible due to the fact that some assumptions can be made about what code the user wants to see if this code editor is only used during unit testing. The left code editor will be displaying the in the file hierarchy selected method and the right code editor will show the corresponding tests.
+Unlike in Eclipse the user has no absolute control over this additional code
+editor. Only methods of interest are shown there and the user does not have to
+manage what should be displayed. This is possible due to the fact that some
+assumptions can be made about what code the user wants to see if this code
+editor is only used during unit testing. The left code editor will be displaying
+the in the file hierarchy selected method and the right code editor will show
+the corresponding tests.
 
-Which test is currently shown can be changed through the drop list that can be seen in \autoref{fig:Nautilus window with two code editors} just below of the Nautilus History Navigator.
+Which test is currently shown can be changed through the drop list that can be
+seen in \autoref{fig:Nautilus window with two code editors} just below of the
+Nautilus History Navigator.
 
-This approach combines the convenience of Eclipse's ability to show code side by side with limited but more focused contend in the right code editor. This results in an easy to use support for whitebox testing. Since it is not possible to view multiple methods in one Nautilus window at the same time this is a notable improvement.
+This approach combines the convenience of Eclipse's ability to show code side by
+side with limited but more focused contend in the right code editor. This
+results in an easy to use support for whitebox testing. Since it is not possible
+to view multiple methods in one Nautilus window at the same time this is a
+notable improvement.
 
 \section{Test Search}
-As a direct consequence of the heavily selected content of the second code editor it became necessary to use a test search. Without this it would be impossible to show a relevant selection. As discussed in \autoref{subsec:Test Search} the test search that Nautilus provides is very restrictive and only finds at most one test per method. In order to find better results the TestView Plugin uses its own test search implementation.
 
-In the following subsections we will provide a detailed explanation how corresponding tests for a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method.
+As a direct consequence of the heavily selected content of the second code
+editor it became necessary to use a test search. Without this it would be
+impossible to show a relevant selection. As discussed in \autoref{subsec:Test
+Search} the test search that Nautilus provides is very restrictive and only
+finds at most one test per method. In order to find better results the TestView
+Plugin uses its own test search implementation.
 
-This search is performed every time a different method is selected. This makes it possible that the additional code panel introduced by the plugin always shows a relevant selection.
+\brs{use plug-in or plugin, just be consistent. Apply globally}
+
+In the following subsections we will provide a detailed explanation how
+corresponding tests for a certain method are found. The plugin uses a
+hierarchical search with two stages. First the TestView Plugin searches all test
+classes \chg{to}{of} the currently selected class and then inside of these test
+classes all test methods \chg{to}{of}\brs{apply globally} the currently selected method.
+
+This search is performed every time a different method is selected. This makes
+it possible that the additional code panel introduced by the plugin always shows
+a relevant selection.
 
 \subsection{Corresponding Test Classes}
 \label{subsec:CorrTestClasses}
 
-A name-based search works quite well to find test classes corresponding to a certain class\cite{Mars05a}. This is already used in the Nautilus test search and a similar name based search is also part of the test search in the TestView Plugin.
+A name-based search works quite well to find test classes corresponding to a
+certain class\cite{Mars05a}. This is already used in the Nautilus test search
+and a similar name based search is also part of the test search in the TestView
+Plugin.
 
-The name-based criterion requires the name of the class in question to contain both the name of the selected class and an additional ``test''. This is why ``Contest'' is not considered to be a test class to a class that is also named ``Contest'' even though it contains ``test'' as well as the full name of the class under test. The substring search is not case sensitive.
+The name-based criterion requires the name of the class in question to contain
+both the name of the selected class and an additional ``test''. This is why
+``Contest'' is not considered to be a test class to a class that is also named
+``Contest'' even though it contains ``test'' as well as the full name of the
+class under test. The substring search is not case sensitive.
 
-In \autoref{tab:TVTestClassNames} examples of which corresponding test
-classes that the TestView Plugin finds are shown.
+\brs{so, how is this different from what Nautilus does? I can see later that you
+mention the ``inherits from TestCase'' situation, but please make that clear
+first}
+
+In \autoref{tab:TVTestClassNames} examples of which corresponding test classes
+that the TestView Plugin finds are shown.
 
 \begin{table}[h!]
 	\centering
@@ -728,22 +769,59 @@ classes that the TestView Plugin finds are shown.
 	\label {tab:TVTestClassNames}
 \end{table}
 
-More precisely the name based search for test classes works as follows. First all class names are gathered in a \textbf{class name collection}. In a \textbf{substring collection} the name of the class under test and the string ``test'' is put. The substring collection is sorted so that the longest string is first. Each element in the class name collection is now checked if it contains the first string of the substring collection. If it does the first occurrence of this substring is removed and it is checked if the remaining string contains the second substring from the substring collection. Both substring checks are not case sensitive. The naming criterion is fulfilled if both substring checks are successful.
+More precisely the name based search for test classes works as follows. First
+all class names are gathered in a \textbf{class name collection}. In a
+\textbf{substring collection} the name of the class under test and the string
+``test'' is put. The substring collection is sorted so that the longest string
+is first. Each element in the class name collection is now checked if it
+contains the first string of the substring collection. If it does the first
+occurrence of this substring is removed and it is checked if the remaining
+string contains the second substring from the substring collection. Both
+substring checks are not case sensitive. The naming criterion is fulfilled if
+both substring checks are successful.\brs{wow that's confusing. Please rephrase
+and give an example}
 
-If a class  inherits from ``\emph{TestCase}'' in addition to fulfilling this naming criterion the class is considered a corresponding test class.
+If a class  inherits from ``\emph{TestCase}'' in addition to fulfilling this
+naming criterion the class is considered a corresponding test class\brs{so, you
+do all this complicated stuff on ALL classes, and then filter the ones that are
+actually tests? Please tell me you first filter the non test classes before
+doing all the complicated stuff from the last paragraph}.
 
-While a name-based test class search is quite precise a name-based test method search is not. This lead us to first search for test classes and then in the found test classes search for test methods. Since the test method search builds on the results of the test class search it became important to make the test class search works flawlessly.
+While a name-based test class search is quite precise a name-based test method
+search is not. This lead us to first search for test classes and then in the
+found test classes search for test methods. Since the test method search builds
+on the results of the test class search it became important to make the test
+class search works flawlessly\brs{bold claim, bring it down a bit \ie works as
+good as possible}.
 
-Our solution to this is to let the users customize the search results. If the search for corresponding test classes is inadequate the developers can use the ``Link Class'' and ``Unlink Class'' buttons provided by the TestView Plugin to add and remove test classes from the results.
+Our solution to this is to let the users customize the search results. If the
+search for corresponding test classes is inadequate the developers can use the
+``Link Class'' and ``Unlink Class'' buttons provided by the TestView Plugin to
+add and remove test classes from the results.
 
-Classes that have been unlinked will no longer be searched for test methods while linked classes will be searched even if they do not inherit from ``\emph{TestCase}'' or fulfill the naming criterion. If a class is linked and unlinked multiple times only the latest input counts.
+Classes that have been unlinked will no longer be searched for test methods
+while linked classes will be searched even if they do not inherit from
+``\emph{TestCase}'' or fulfill the naming criterion. \ugh{If a class is linked and
+unlinked multiple times only the latest input counts.}\brs{wat?}
 
-The plugin keeps track of the linked and unlinked classes in two \emph{Dictionaries}. When a class is linked or unlinked the currently selected class is used as a key to store the specified class. Since the currently selected class is used as a key each linking or unlinking of a class only counts for the currently selected class. It is possible that the user has to link or unlink the same class multiple times for different classes.
+The plugin keeps track of the linked and unlinked classes in two
+\emph{Dictionaries}. When a class is linked or unlinked the currently selected
+class is used as a key to store the specified class. Since the currently
+selected class is used as a key each linking or unlinking of a class only counts
+for the currently selected class. \ugh{It is possible that the user has to link or
+unlink the same class multiple times for different classes.}\brs{again, wat? Why
+do you insist on this multiple times thing without explaining why we care?}
 
 \subsection{Corresponding Test Methods}
-After some possible test classes have been identified using the criteria described in \autoref{subsec:CorrTestClasses} the resulting classes will be searched for corresponding test methods to the currently selected method.
 
-Similar as the name criterion for test classes described in \autoref{subsec:CorrTestClasses} the test methods have to contain the full name of the selected method (without colons) as well as the string "test". Examples can be found in \autoref{tab:testNameCrit}.
+After some possible test classes have been identified using the criteria
+described in \autoref{subsec:CorrTestClasses} the resulting classes will be
+searched for corresponding test methods to the currently selected method.
+
+Similar as the name criterion for test classes described in
+\autoref{subsec:CorrTestClasses} the test methods have to contain the full name
+of the selected method (without colons) as well as the string "test". Examples
+can be found in \autoref{tab:testNameCrit}.
 
 \begin{table}[h!]
 	\centering
@@ -760,42 +838,114 @@ Similar as the name criterion for test classes described in \autoref{subsec:Corr
 	\label {tab:testNameCrit}
 \end{table}
 
-The substring search works like described in \autoref{subsec:CorrTestClasses}. First a collection is created that contains all method names of all found corresponding test classes. Then the substring collection is prepared. The only difference here is that all colons are removed from the name of the selected method before it is put in the substring collection. Like before the substring collection is sorted according to length, both substring checks are made and matches removed.
+The substring search works like described in \autoref{subsec:CorrTestClasses}.
+First a collection is created that contains all method names of all found
+corresponding test classes. Then the substring collection is prepared. The only
+difference here is that all colons are removed from the name of the selected
+method before it is put in the substring collection. Like before the substring
+collection is sorted according to length, both substring checks are made and
+matches removed\brs{You are referring to an ugly section, so fix this one
+accordingly once you fix the ugly one.}.
 
-The second criterion besides the name criterion is that the test contains a method invocation with the same selector as the selected method. If either of those criteria is fulfilled the method is considered a test for the selected method.
+The second criterion besides the name criterion is that the test contains a
+method invocation with the same selector as the selected method. If either of
+those criteria is fulfilled the method is considered a test for the selected
+method.
 
-How many of those criteria are met is used to order the found tests in the droplist that can be seen in \autoref{fig:Nautilus window with two code editors} right below of the Nautilus History Navigator. Specifically each found test method has an associated rating. The rating is increased by one if the method uses the selected method and by two if the naming criterion is fulfilled. Test methods with a higher rating will be displayed first in the results.
+How many of those criteria are met is used to order the found tests in the
+\ugh{droplist}\brs{drop down list or something, apply globally} that can be seen in
+\autoref{fig:Nautilus window with two code editors} right below of the Nautilus
+History Navigator. Specifically each found test method has an associated rating.
+The rating is increased by one if the method uses the selected method and by two
+if the naming criterion is fulfilled. Test methods with a higher rating will be
+displayed first in the results.
 
-This new search should yield better results than Nautilus' search since it allows multiple test classes and methods to a particular method. It works very similar to the test search provided by Eclipse and like Nautilus's search is used directly by the IDE and does not have to be called manually.
+This new search should yield better results than Nautilus' search since it
+allows multiple test classes and methods to a particular method. It works very
+similar to the test search provided by Eclipse and like Nautilus's search is
+used directly by the IDE and does not have to be called manually.
 
 \section{Creating new tests}
-Another purpose of the TVPlugin is to make the creation of new tests as quick as possible. This is done by providing the user with default names as much as possible and making the creation of new test packages, classes and methods as easy as possible.
 
-Every time a developer starts to write a new unit test they have to determine to which test class the new test belongs. We can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where tests corresponding to the selected method already exist.
+Another purpose of the TVPlugin is to make the creation of new tests as quick as
+possible. This is done by providing the user with default names as much as
+possible and making the creation of new test packages, classes and methods as
+easy as possible.
+
+Every time a developer starts to write a new unit test they have to determine to
+which test class the new test belongs. We can split the creation of new tests
+into two basic use cases: adding the new test in a new test class or adding the
+new test in a test class where tests corresponding to the selected method
+already exist.
 
 \subsection{Adding a new Test Class}
-First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class.
-The easiest way to do this is to let the users write the new test and later determine where this test will be placed. With this the user is encouraged to immediately start writing a test as soon as a method is created. The new test class option is activated by having the topmost element ``new Test'' from the droplist of found tests.
 
-When the test method is saved the plugin will ask the user for the name of the test class and in which package this class should be placed. Default values, based on the class name and the package name of the method under test, are provided. This might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite{Mars05a}.
+First let us talk about what can be done to facilitate the creation of a new
+test that does not yet have a fitting test class.  The easiest way to do this is
+to let the users write the new test and later determine where this test will be
+placed. With this the user is encouraged to immediately start writing a test as
+soon as a method is created. The new test class option is activated by having
+the topmost element ``new Test'' from the droplist of found tests\ins{as show in
+figure bla}.
 
-To create the default name for a new test package ``-Test'' is added to the name of the package under test. Similarly the default test class name is derived from the name of the class under test with the suffix ``Test''.
+When the test method is saved the plugin will ask the user for the name of the
+test class and in which package this class should be placed. Default values,
+based on the class name and the package name of the method under test, are
+provided. This might already be sufficient since test class names and test
+package names can often be derived from the original class and package names
+\cite{Mars05a}.
 
-For example if the method under test is contained in a class called ``Queue'' within a package ``Collections'' then the proposed names for the test class and the test package will be ``QueueTest'' and ``Collections-Tests''. The new test class will also automatically subclass TestCase.
+To create the default name for a new test package ``-Test'' is added to the name
+of the package under test. Similarly the default test class name is derived from
+the name of the class under test with the suffix ``Test''.
 
-These names and the inheritance from TestCase is also what Nautilus's test search expects and thus this does not break existing conventions. Even though default names are provided the user can still ignore them and specify different ones.
+For example if the method under test is contained in a class called ``Queue''
+within a package ``Collections'' then the proposed names for the test class and
+the test package will be ``QueueTest'' and ``Collections-Tests''
+\ins{respectively}. The new test class will also automatically subclass
+TestCase.
+
+These names and the inheritance from TestCase is also what Nautilus's test
+search expects and thus this does not break existing conventions. Even though
+default names are provided the user can still ignore them and specify different
+ones.
 
 \subsection{Adding a test to an existing Test Class}
-The second use case is that a developer wants to add a test for a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added.
-No test package has to be specified since only when a new test class is made the package might also be a new one.
 
-One potential problem is how this choice between making new test classes and test packages and using existing ones is communicated to the user. The users have to make their intentions clear to the plugin by selecting a specific item from the list of found tests.
+The second use case is that a developer wants to add a test for a method that
+already has tests. In this case the corresponding test classes should have
+already been found by the plugin\brs{how? you don't really discuss how you know
+it a method already has tests or not}. The users just have to select any test
+that is in the test class where the new test should be added. No test package
+has to be specified since only when a new test class is made the package might
+also be a new one.
 
-When the user saves a test while having selected the first item in the list the plugin will always ask the user to give names for the test class and the test package. When the user has any other item selected then the test is saved in the test class that was selected. This might create some confusion but on the other hand with only two clicks(open the list and selecting target class) the user can specify where the new test should be saved.
+\ugh{One potential problem is how this choice between making new test classes and
+test packages and using existing ones is communicated to the user. The users
+have to make their intentions clear to the plugin by selecting a specific item
+from the list of found tests.}\brs{no idea what this means}
 
-Now let us take a look at how this functionality compares to Eclipse and Nautilus. Improvements compared to Eclipse are that the user can add a single new test in an already existing test class. Eclipse has an advantage when creating a new test class and filling it with multiple new tests. Eclipse supports the user only at the start of writing a new test class while the TVPlugin keeps supporting the user during the addition of any new test.
+When the user saves a test while having selected the first item in the
+list\brs{what list?}\ins{,} the plugin will always ask the user to give names
+for the test class and the test package. When the user has any other item
+selected then the test is saved in the test class that was selected\brs{selected
+where? Explain better and show figures of what you are talking about}. This might
+create some confusion but on the other hand with only two clicks(open the list
+and selecting target class) the user can specify where the new test should be
+saved\brs{really needs to be rephrased}.
 
-In Nautilus the user can extremely quickly create new tests in fixed test packages and test classes but only one test per method can be created that way. If the ``Generate test'' or the ``Generate test and jump'' option is pressed multiple times then the previous test is overwritten. The TVPlugin helps the programmers to add multiple tests to the same method.
+Now let us take a look at how this functionality compares to Eclipse and
+Nautilus. Improvements compared to Eclipse are that the user can add a single
+new test in an already existing test class. Eclipse has an advantage when
+creating a new test class and filling it with multiple new tests. Eclipse
+supports the user only at the start of writing a new test class while the
+TVPlugin keeps supporting the user during the addition of any new test.
+
+In Nautilus the user can extremely quickly create new tests in fixed test
+packages and test classes but only one test per method can be created that way.
+If the ``Generate test'' or the ``Generate test and jump'' option is pressed
+multiple times then the previous test is overwritten. The TVPlugin helps the
+programmers to add multiple tests to the same method.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The Validation %%%%%%%%%%%%%%%%%%%%%
@@ -803,7 +953,13 @@ In Nautilus the user can extremely quickly create new tests in fixed test packag
 \chapter {The Validation}
 	\label{cha:The Validation}
 %intro(aim, evaluation methods, )
-To see if the TestView plugin fulfills our initial aim to encourage unit testing we conducted a small scale controlled experiment coupled with a questionnaire. Our most important research question was to see if the TestView plugin increases test coverage by reminding the users to write tests. Other research questions were if the plugin reduces the time, clicks and keystrokes necessary to implement some simple classes and methods.
+
+To see if the TestView plugin fulfills our initial aim to encourage unit testing
+we conducted a small scale controlled experiment coupled with a questionnaire.
+Our most important research question was to see if the TestView plugin increases
+test coverage by reminding the users to write tests. Other research questions
+were if the plugin reduces the time, clicks and keystrokes necessary to
+implement some simple classes and methods.
 
 \section{The Setup}
 %the participants
