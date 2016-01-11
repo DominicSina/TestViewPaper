@@ -1137,7 +1137,8 @@ use of the TestView plugin. The one person that used the plugin has a test
 coverage of 100\% with or without the plugin. Also Person two was faster,
 pressed less \chg{keyboard}{keys} or mouse buttons and opened less windows
 without the plugin. This difference is most likely due to the varying difficult
-of the problems. Everybody seemed to have more difficulty with the
+of the problems\ins{ or with the participant not being familiar with the
+plugin}. Everybody seemed to have more difficulty with the
 \hyperref[prob:fib]{Fibonacci problem}.
 
 \ins{Is is }Interesting \chg{was}{to note } that while only one person wrote
@@ -1170,29 +1171,68 @@ number of required tools low.
 \chapter {Conclusion and Future Work}
 	\label{cha:Conclusion and Future Work}
 
-Unit testing is an important part of current software development paradigms like Extreme Programming. Sadly in many software development environments unit testing is not as well supported as it could be. This lack of support can break the developers' flow and discourage them from testing.
+Unit testing is an important part of current software development paradigms
+like Extreme Programming. Sadly in many software development environments unit
+testing is not as well supported as it could be. This lack of support can break
+the developers' flow and discourage them from testing.
 
-In \autoref{cha:The Problem} we examined Eclipse and the Pharo IDE with its system browser Nautilus to see where exactly unit testing could be facilitated. Features that are lacking include: the ability to conveniently view methods and their tests side by side,  an automated test search and an option to easily create new tests.
+In \autoref{cha:The Problem} we examined Eclipse and the Pharo IDE with its
+system browser Nautilus to see where exactly unit testing could be facilitated.
+Features that are lacking include: the ability to conveniently view methods and
+their tests side by side,  an automated test search and an option to easily
+create new tests.
 
-In an attempt to fix these problems concerning unit testing for the Pharo IDE we made a Nautilus plugin(called TestView Plugin or TVPlugin).
+In an attempt to fix these problems concerning unit testing for the Pharo IDE
+we made a Nautilus plugin\del{(} called TestView Plugin or TVPlugin\del{)}.
 
-With the TVPlugin it becomes possible to horizontally split the code editor of a Nautilus window. This second code editor will only be used for tests so certain optimizations can be made. Namely the environment can derive which tests the user wants to see in this second editor from whats displayed in the first code editor.
+With the TVPlugin it becomes possible to horizontally split the code editor of
+a Nautilus window. This second code editor will only be used for tests so
+certain optimizations can be made. Namely the environment can derive which
+tests the user wants to see in this second editor from whats displayed in the
+first code editor.
 
-To be able to always show relevant tests the TVPlugin makes use of its own test search. Improvements compared to Nautilus' test search include less restrictive criteria for a method to qualify as a corresponding test. Additionally one method can now have multiple corresponding tests. See \autoref{sec:TVtestsearch} for a more detailed explanation of how the search works and what exactly the new criteria are.
+To be able to always show relevant tests the TVPlugin makes use of its own test
+search. Improvements compared to Nautilus' test search include less restrictive
+criteria for a method to qualify as a corresponding test. Additionally one
+method can now have multiple corresponding tests. See
+\autoref{sec:TVtestsearch} for a more detailed explanation of how the search
+works and what exactly the new criteria are.
 
-To facilitate the creation of new tests the plugin provides default names and a template for each new test. Both adding a test in a new test class or an existing one is supported.
+To facilitate the creation of new tests the plugin provides default names and a
+template for each new test. Both adding a test in a new test class or an
+existing one is supported.
 
-To evaluate if the TVPlugin encourages and facilitates testing we conducted a controlled experiment with a short questionnaire. The results although were not very decisive. While all participants liked the plugin the recorded measurements showed now clear improvement. This might be due to the low number of participants and the differences in their programming styles. Another user study would be needed to show the effectiveness of the plugin.
+To evaluate if the TVPlugin encourages and facilitates testing we conducted a
+controlled experiment with a short questionnaire. The results although were not
+very decisive. While all participants \ugh{liked the plugin}\brs{did they?} the
+recorded measurements showed now clear improvement. This might be due to the
+low number of participants and the differences in their programming styles.
+Another user study would be needed to show the effectiveness of the plugin.
 
-The participants of the user study suggested to implement an option to run all tests found by the plugin as well as to enhance the test search so that the \emph{setUp} methods also would be found.
+The participants of the user study suggested to implement an option to run all
+tests found by the plugin as well as to enhance the test search so that the
+\emph{setUp} methods also would be found\ins{you never mentioned the setUp
+method in the evaluation}.
 
-Another possible improvement would be to make the search results more customizable. At the moment the user can only add and remove corresponding test classes. A similar option to link and unlink individual test methods could be useful.
+Another possible improvement would be to make the search results more
+customizable. At the moment the user can only add and remove corresponding test
+classes. A similar option to link and unlink individual test methods could be
+useful.
 
-Partially integrating some of the features of the TVPlugin directly into Nautilus could also be beneficial. For example the TVPlugin's ability to split the code editor in half could be used to show other things than methods and corresponding tests side by side.
+Partially integrating some of the features of the TVPlugin directly into
+Nautilus could also be beneficial. For example the TVPlugin's ability to split
+the code editor in half could be used to show other things than methods and
+corresponding tests side by side.
 
-Another feature of the TVPlugin that could be integrated into Nautilus is its test search. Nautilus' own test search is used to display a button besides each method with which the corresponding test can be executed. With an enhanced test search it would become possible to run all found tests instead of just one through this button.
+Another feature of the TVPlugin that could be integrated into Nautilus is its
+test search. Nautilus' own test search is used to display a button besides each
+method with which the corresponding test can be executed. With an enhanced test
+search it would become possible to run all found tests instead of just one
+through this button.
 
-The test method templates that the TVPlugin creates to make adding new tests easier could also be used by Nautilus to give each new test some default content.
+The test method templates that the TVPlugin creates to make adding new tests
+easier could also be used by Nautilus to give each new test some default
+content.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Anleitung zu wissenschaftlichen Arbeiten %%%%%%%%%%%%%%%%%%%%%
