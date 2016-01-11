@@ -403,27 +403,47 @@ are: viewing test and method side by side, search all tests for a specified
 method and facilitating the creation of new tests. The two environments are
 compared and possible places for improvement are discussed.
 
-\brs{CONTINUE HERE!}
-
 \section{Unit Testing in Eclipse}
 \label{seg:Unit Testing in Eclipse}
 
-We will start by taking a closer look at Eclipse since it is widely used and many parallels to other programming environments (\eg Visual Studio) can be made.
+We will start by taking a closer look at Eclipse since it is widely used and
+many parallels to other programming environments (\eg Visual Studio) can be
+made.
 
-In \autoref{fig:Eclipse's user interface} you see a Java project opened in Eclipse with a package and two classes. The package and classes can be seen on the left side in the ``Package Explorer'' pane.
-
+In \autoref{fig:Eclipse's user interface} you see a Java \brs{Say which project
+this is and footnote a url to the repo or webpage}project opened in Eclipse
+\ins{version bla bla}  with a package and two classes. The package and classes
+can be seen on the left side in the ``Package Explorer'' pane.
 
 \subsection{Methods and Tests Side by Side}
 
-We start with a discussion on how Eclipse enables users to see the a method and corresponding tests at the same time.
+We start with a discussion on how Eclipse enables users to see \del{the} a
+method and corresponding tests at the same time.
 
-One option is to open both classes through the Package Explorer. The opened classes will be shown in the middle of the screen and a new tab on top of the code editor will appear.  In \autoref{fig:Eclipse's user interface} there are two tabs ``\emph{BezierPath.java}''  and ``\emph{BezierPathTest.java}''.  The ``\emph{BezierPath.java}''  tab is currently selected and thus the content of ``\emph{BezierPath.java}'' is displayed in the code editor.  Unless you close these tabs all the classes you opened will be quickly available through their tabs.
+One option is to open both classes through the Package Explorer. The opened
+classes will be shown in the middle of the screen and a new tab on top of the
+code editor will appear.  In \autoref{fig:Eclipse's user interface} there are
+two tabs ``\emph{BezierPath.java}''  and ``\emph{BezierPathTest.java}''.  The
+``\emph{BezierPath.java}''  tab is currently selected and thus the content of
+``\emph{BezierPath.java}'' is displayed in the code editor.  Unless you close
+these tabs all the classes you opened will be quickly available through their
+tabs.
 
-A big advantage of this system is that users can create favorites by not closing important tabs. Through this they can switch back and forth between methods and tests. A slight drawback is that the user has to close unneeded tabs from time to time to quicker find the currently important ones. In most cases the use of these tabs will be smooth enough to allow the programmer to switch uninterrupted between classes and their tests.
+A big advantage of this system is that users can create favorites by not closing
+important tabs. Through this they can switch back and forth between methods and
+tests. A slight drawback is that the user has to close unneeded tabs from time
+to time to quicker find the currently important ones. In most cases the use of
+these tabs will be smooth enough to allow the programmer to switch uninterrupted
+between classes and their tests.
 
-If for some reason this does not suffice then it is also possible to split the code editor multiple times either horizontally or vertically like in \autoref{fig:eclipseSplitscreen}. Since each code panel is smaller than the original one this splitting can only be done a limited number of times. After this the panels get too small to be useful.
+If for some reason this does not suffice then it is also possible to split the
+code editor multiple times either horizontally or vertically like in
+\autoref{fig:eclipseSplitscreen}. Since each code panel is smaller than the
+original one this splitting can only be done a limited number of times. After
+this the panels get too small to be useful.
 
-As shown, Eclipse provides multiple ways to make the tested method easily accessible during testing.
+As shown, Eclipse provides multiple ways to make the tested method easily
+accessible during testing.
 
 \begin{figure}[h]
 	\centering
@@ -434,16 +454,30 @@ As shown, Eclipse provides multiple ways to make the tested method easily access
 
 \subsection{Test Search}
 
-Another feature we discussed in the previous chapter
-was the ability to find all tests of a certain method. Eclipse provides a good option to search for tests. By selecting the "Search" from the top menu bar followed by "Referring Tests..." it is possible to find all tests that reference the currently selected method.
+Another feature we discussed in the previous chapter was the ability to find all
+tests of a certain method. Eclipse provides a good option to search for tests.
+By selecting the "Search" from the top menu bar followed by "Referring Tests..."
+it is possible to find all tests that reference the currently selected method.
 
-Sadly this feature is very badly documented. The requirements for a test to to be associated with a certain method seem to include that the test class extends "TestCase" and that the test name starts with "test". "@Test" annotations are ignored by this function. It seems like this test search does not yet support JUnit 4 standards.
+Sadly this feature is very badly documented. The requirements for a test to
+\del{to} be associated with a certain method seem to include that the test class
+extends "TestCase" and that the test name starts with "test". \ins{The} "@Test"
+annotations are ignored by this function. It seems like this test search does
+not yet support JUnit 4 standards.
 
 \subsection{Creating new Tests}
 
-The next feature in Eclipse that we now discuss is how the creation of new tests is facilitated. Eclipse provides an option for adding a new test class by right clicking on the class that should be tested, selecting "New" from the list that is shown and then clicking "JUnit Test Case".
+The next feature in Eclipse that we now discuss is how the creation of new tests
+is facilitated. Eclipse provides an option for adding a new test class by right
+clicking on the class that should be tested, selecting "New" from the list that
+is shown and then clicking "JUnit Test Case".
 
-In the newly open wizard a default name is already created and the selected class is put into the "Class under test" field, see \autoref{fig:eclipseWizard1}. As default package the package of the class under test is used but it can be changed. By clicking on the "Next" button it is possible to select methods of the class under test and create test stubs for every selected method, see \autoref{fig:eclipseWizard2}.
+In the newly open wizard a default name is already created and the selected
+class is put into the "Class under test" field, \chg{see}{as shown in}
+\autoref{fig:eclipseWizard1}. As default package the package of the class under
+test is used but it can be changed. By clicking on the "Next" button it is
+possible to select methods of the class under test and create test stubs for
+every selected method, see \autoref{fig:eclipseWizard2}.
 
 \begin{figure}[b!]
   \centering
@@ -460,22 +494,52 @@ In the newly open wizard a default name is already created and the selected clas
   \end{minipage}
 \end{figure}
 
-On one hand, this wizard is very good for creating new test classes but on the other hand Eclipse helps neither to add new test methods in an already existing test class nor to create more than one test per method. During Test-Driven Development its use is also limited, since it can only add tests to existing methods.
+On one hand, this wizard is very good for creating new test classes but on the
+other hand Eclipse helps neither to add new test methods in an already existing
+test class nor to create more than one test per method. During Test-Driven
+Development its use is also limited, since it can only add tests to existing
+methods.
 
 \section{Unit Testing in Pharo}
 
-Now let us take a look how the Pharo IDE and its system browser Nautilus support unit testing and how they compare to Eclipse. In this context it seems worth mentioning that the Pharo IDE is quite different from Eclipse in that the placement of its visual elements is less rigid. The users are able to customize the appearance of the environment very quickly and adapt it to their wishes. On the other hand Pharo is less wide spread and not as well maintained in many ways as Eclipse.
+Now let us take a look how the Pharo IDE and its system browser Nautilus support
+unit testing and how they compare to Eclipse. In this context it seems worth
+mentioning that the Pharo IDE is quite different from Eclipse in that the
+placement of its visual elements is less rigid. The users are able to customize
+the appearance of the environment very quickly and adapt it to their wishes. On
+the other hand Pharo is less wide spread and not as well maintained in many ways
+as Eclipse.
 
-Like in \autoref{seg:Unit Testing in Eclipse} the discussed features are viewing test and method side by side, searching all tests for a specified method and facilitating the creation of new tests.
+Like in \autoref{seg:Unit Testing in Eclipse} the discussed features are viewing
+test and method side by side, searching all tests for a specified method and
+facilitating the creation of new tests.
 
 \subsection{Methods and Tests Side by Side}
 \label{subsec:Nautilus side by side}
 
-As with Eclipse the first functionality we will look at is the ability to view tests and methods side by side. The Pharo IDE provides a very customizable environment. It invites users to arrange all windows that are created in a way that seems comfortable. It is possible to create multiple Nautilus windows and arrange them so that one shows the method and the other the test for this method. Through this a very similar effect to Eclipse's split code editor is achieved.
+As with Eclipse the first functionality we will look at is the ability to view
+tests and methods side by side. The Pharo IDE provides a very customizable
+environment. It invites users to arrange all windows that are created in a way
+that seems comfortable. It is possible to create multiple Nautilus windows and
+arrange them so that one shows the method and the other the test for this
+method. Through this a very similar effect to Eclipse's split code editor is
+achieved.
 
-The free placement of those Nautilus windows gives the user more freedom to customize the environment but several visual elements will be duplicated which reduces the available space on the screen to arrange these. An example for such a duplicated element is the file hierarchy that takes up the top half of each Nautilus window like for example in \autoref{fig:Locking}.
+The free placement of those Nautilus windows gives the user more freedom to
+customize the environment but several visual elements will be duplicated which
+reduces the available space on the screen to arrange these. An example for such
+a duplicated element is the \ugh{file hierarchy}\brs{it's not a file hierarchy,
+bur a list of packages and classes} that takes up the top half of each Nautilus
+window like for example in \autoref{fig:Locking}.
 
-A possibility that does not have this drawback is to lock a method or class and then select others inside the same Nautilus window. It is possible to select which of the locked elements is shown in the code panel by using the "All", "Current" and number buttons shown at the bottom of \autoref{fig:Locking}.  Through these buttons the users can switch between seeing all locked methods and classes at the same time or each individually. This is very similar to the tabs of opened classes that Eclipse has. Although with many locked classes and methods it is hard to remember which number belongs to what.
+A possibility that does not have this drawback is to lock a method or class and
+then select others inside the same Nautilus window. It is possible to select
+which of the locked elements is shown in the code panel by using the "All",
+"Current" and number buttons shown at the bottom of \autoref{fig:Locking}.
+Through these buttons the users can switch between seeing all locked methods and
+classes at the same time or each individually. This is very similar to the tabs
+of opened classes that Eclipse has. Although with many locked classes and
+methods it is hard to remember which number belongs to what.
 
  \begin{figure}[h!]
 	\centering
@@ -484,15 +548,39 @@ A possibility that does not have this drawback is to lock a method or class and 
 	\label{fig:Locking}
 \end{figure}
 
-Apart from this Nautilus also has the History Navigator which allows fast access to all recently viewed methods and classes. The History Navigator can be seen in the middle right in \autoref{fig:Locking}. It can be used to switch between method and test in a way that is comparable to Eclipse's tabs of recently opened classes. The drawback here is that only a certain amount of those recently accessed classes and methods is stored and if the user looks at different methods and classes it is quickly necessary to reopen the previous tests and methods to put them back in the History Navigator.
+Apart from this Nautilus also has the History Navigator which allows fast access
+to all recently viewed methods and classes. The History Navigator can be seen in
+the middle right in \autoref{fig:Locking}. It can be used to switch between
+method and test in a way that is comparable to Eclipse's tabs of recently opened
+classes. The drawback here is that only a certain amount of those recently
+accessed classes and methods is stored and if the user looks at different
+methods and classes it is quickly necessary to reopen the previous tests and
+methods to put them back in the History Navigator.
 
-To conclude in the Pharo IDE are various things a user can do to view multiple pieces of code at the same time. Compared to Eclipse there are more ways to see things side by side or to switch between them but each of these ways has a slight drawback.
+To conclude in the Pharo IDE are various things a user can do to view multiple
+pieces of code at the same time. Compared to Eclipse there are more ways to see
+things side by side or to switch between them but each of these ways has a
+slight drawback.
 
 \subsection{Test Search}
 \label{subsec:Test Search}
-The next functionality that will be discussed is how Pharo finds existing tests for a specified method. Like Eclipse Nautilus has a test search implemented. Like with Eclipse's test search only tests with a very specific name are found. Additionally they have to be placed in classes with an equally specific name.
 
-Namely, test classes and test methods have to contain the full name of the class or method under test. Additionally the name of the test class has to have the suffix "Test" and the name of the test method has to have the prefix "test". Also tests have no parameters and thus lack all colons in their name.  If anything more is part of the test name then it will not be found by Nautilus's test search. The test classes also have to inherit from TestCase in order to be found by the test search. Examples of tests corresponding to certain methods can be found in \autoref{tab:correspondingMethods}.
+The next functionality that will be discussed is how Pharo finds existing tests
+for a specified method. Like Eclipse Nautilus has a test search implemented.
+Like with Eclipse's test search only tests with \del{a} very specific
+name\ins{s} are found. Additionally they have to be placed in classes with an
+equally specific name.
+
+Namely, test classes and test methods have to contain the full name of the class
+or method under test. Additionally the name of the test class has to have the
+suffix "Test" and the name of the test method has to have the prefix "test".
+Also tests have no parameters and thus lack all colons in their name.  If
+anything more is part of the test name then it will not be found by Nautilus's
+test search. The test classes also have to inherit from
+\chg{TestCase}{\emph{TestCase}}\brs{Emphasise the source code parts in text
+somehow. Be consistent.} in order to be found by the test search. Examples of
+tests corresponding to certain methods can be found in
+\autoref{tab:correspondingMethods}.
 
 \begin{table}[h!]
 	\centering
@@ -506,38 +594,94 @@ Namely, test classes and test methods have to contain the full name of the class
 	ProtoObject & ifNil:ifNotNil: & ProtoObjectTest & testIfNilIfNotNil \\
      	\hline
    	\end{tabular}
-	\caption {Methods and corresponding tests from Nautilus}
+	\caption {Methods and corresponding \ugh{tests from Nautilus}\brs{these test
+are not from Nautilus, they are the ones that can be found or generated by nautilus. Please
+rephrase}}
 	\label {tab:correspondingMethods}
 \end{table}
 
-Both the limitations on class names and method names are quite restrictive.  From a test class name the class under test can be quite reliably inferred. On the other hand the method name and the corresponding test name for it are less directly related\cite{Mars05a}. These restrictive name criteria also lead to the problem that at most only one test per method will be found since others with a slightly different name will not fulfill these naming criteria.
+Both the limitations on class names and method names are quite restrictive.
+From a test class name the class under test can be quite reliably inferred. On
+the other hand the method name and the corresponding test name for it are less
+directly related\cite{Mars05a}. These restrictive name criteria also lead to the
+problem that at most only one test per method will be found since others with a
+slightly different name will not fulfill these naming criteria.
 
-This test search function is not directly available to the developers. It is used by Nautilus  in the file hierarchy to add a button to the left of each method where a test has been found. This button can be pressed to execute the test and show if this corresponding test was successful or not.
+This test search function is not directly available to the developers. It is
+used by Nautilus  in the file hierarchy to add a button to the left of each
+method where a test has been found. This button can be pressed to execute the
+test and show if this corresponding test was successful or not.
 
-The test search is better in Eclipse since it is not only less restrictive with its name-based criterion but also checks if the test calls the method under test. Eclipse's test search is also able to find more than one test for a method.  On the other hand in Nautilus the test search is better integrated in the environment. The additional button to execute a corresponding test conveniently allows running the test without navigating to it.
+The test search is better in Eclipse since it is not only less restrictive with
+its name-based criterion but also checks if the test calls the method under
+test. Eclipse's test search is also able to find more than one test for a
+method. On the other hand in Nautilus the test search is better integrated in
+the environment. The additional button to execute a corresponding test
+conveniently allows running the test without navigating to it.
 
 \subsection{Creating new tests}
-Right clicking on a method in Nautilus gives the "Generate test"  option.  The new test will automatically be added to a certain test class in a specific package (both of which will be created if needed). More precisely the test package is named like the package under test with the suffix "-Tests". The test class and method will be named like \autoref{tab:correspondingMethods} shows.  All the tests created through this will thus be found by Nautilus's test search function.  "Generate test and jump" works very similar but also selects and shows the newly created test so that the user can start implementing.
 
-Using these predefined package and class names is faster since the user does not need to enter them. Another advantage is that tests created in this manner confirm to the naming standards imposed by Nautilus. Sadly this robs the user of the ability to specify different package and class names. Also only one test per method can be created in this manner. All additional tests for the same method will simply overwrite the previous test since they will have exactly the same name.
+Right clicking on a method in Nautilus gives the "Generate test"  option.  The
+new test will automatically be added to a certain test class in a specific
+package (both of which will be created if needed). More precisely the test
+package is named like the package under test with the suffix "-Tests". The test
+class and method will be named like \autoref{tab:correspondingMethods} shows.
+All the tests created through this will thus be found by Nautilus's test search
+function.  "Generate test and jump" works very similar but also selects and
+shows the newly created test so that the user can start implementing.
 
-Eclipse's and Nautilus's way of adding new tests are very comparable. A case could be made for both versions of this feature. Eclipse's version is more customizable but only supports the user when creating a new test class while Nautilus's version is faster and supports the user with each new test but is less flexible. An easy way to create multiple tests for one method is not provided by neither Nautilus nor Eclipse.
+Using these predefined package and class names is faster since the user does not
+need to enter them. Another advantage is that tests created in this manner
+confirm to the naming standards imposed by Nautilus. Sadly this robs the user of
+the ability to specify different package and class names. Also only one test per
+method can be created in this manner. All additional tests for the same method
+will simply overwrite the previous test since they will have exactly the same
+name.
+
+Eclipse's and Nautilus's way of adding new tests are very comparable. A case
+could be made for both versions of this feature. Eclipse's version is more
+customizable but only supports the user when creating a new test class while
+Nautilus's version is faster and supports the user with each new test but is
+less flexible. An easy way to create multiple tests for one method is not
+provided by neither Nautilus nor Eclipse.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% The TestView Plugin %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter {The TestView Plugin}
 	\label{cha:The TestView Plugin}
-Having discussed some important features of a unit test friendly environment in \autoref{cha:The Problem} and where their implementation is lacking in \autoref{cha:Related Work} we will now present an attempt to address this problem: the TestView Plugin.
 
-Since the lack of unit test supporting features can not be corrected for all environments at once we chose to extend Nautilus's functionality. The reasoning behind this was that it is much easier to implement a plug-in for Nautilus than for Eclipse. Additionally the inability to view tests and methods side by side in a single Nautilus window was perceived by us as the gravest of these issues and that Eclipse already has a big community which provides many plug-ins.
+Having discussed some important features of a unit test friendly environment in
+\autoref{cha:The Problem} and where their implementation is lacking in
+\autoref{cha:Related Work} we will now present an attempt to address this
+problem: the TestView Plugin.
 
-In this chapter we will comment on how the TestView Plugin performs regarding viewing test and method side by side, finding tests for certain methods and creating new tests. Comparisons to Eclipse and the Pharo IDE will be drawn.
+Since the lack of unit test supporting features can not be corrected for all
+environments at once we chose to extend Nautilus's functionality. The reasoning
+behind this was that it is much easier to implement a plug-in for Nautilus than
+for Eclipse. \ugh{Additionally the inability to view tests and methods side by side
+in a single Nautilus window was perceived by us as the gravest of these issues
+and that Eclipse already has a big community which provides many
+plug-ins}\brs{how are these two connected? Side by side and eclipse community}.
+
+In this chapter we will comment on how the TestView Plugin performs regarding
+viewing test and method side by side, finding tests for certain methods and
+creating new tests. Comparisons to Eclipse and the Pharo IDE will be drawn.
 
 \section{Methods and Tests Side by Side}
-As stated in \autoref{subsec:Nautilus side by side} one of the drawbacks concerning unit testing with Nautilus is that it is hard to view tests and methods at the same time. Whitebox testing becomes cumbersome through this. Seeing both method and test together should be quick and convenient. It should also not introduce too much redundant user interface elements that might clutter up the environment.
 
-Following this, the TestView Plugin allows splitting the code editor panel of a Nautilus window vertically into two parts. The result of this can be seen in \autoref{fig:Nautilus window with two code editors}. With this approach the need to open two Nautilus windows is eliminated. The file hierarchy for example will not be displayed a second time and less screen space is occupied.
+As stated in \autoref{subsec:Nautilus side by side} one of the drawbacks
+concerning unit testing with Nautilus is that it is hard to view tests and
+methods at the same time. Whitebox testing becomes cumbersome through this.
+Seeing both method and test together should be quick and convenient. It should
+also not introduce too much redundant user interface elements that might clutter
+up the environment.
+
+Following this, the TestView Plugin allows splitting the code editor panel of a
+Nautilus window vertically into two parts. The result of this can be seen in
+\autoref{fig:Nautilus window with two code editors}. With this approach the need
+to open two Nautilus windows is eliminated. The \ugh{file hierarchy} for example
+will not be displayed a second time and less screen space is occupied.
 
 \begin{figure}[h!]
 	\centering
