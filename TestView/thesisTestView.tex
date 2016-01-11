@@ -967,10 +967,16 @@ implement some simple classes and methods.
 
 \section{The Setup}
 %the participants
-We evaluated the plugin with four people from the Software Composition Group of the University of Bern. The only requirements for the participants were that they know both the Pharo IDE and programming language.
+We evaluated the plugin with four \chg{people }{PhD students} from the Software
+Composition Group of the University of Bern. The only requirements for the
+participants were that they know both the Pharo IDE and programming language.
 
 %the evaluation
-The evaluation was printed on multiple sheets in order to prevent later questions and tasks from influencing the participants. The evaluation started with two simple multiple choice questions surrounding test-driven development and unit testing. This was done to be able to group the participants according to how comfortable they were with testing. These questions were:
+The evaluation was printed on multiple sheets in order to prevent later
+questions and tasks from influencing the participants. The evaluation started
+with two simple multiple choice questions surrounding test-driven development
+and unit testing. This was done to be able to group the participants according
+to how comfortable they were with testing. These questions were:
 
 \begin{quote}
 \begin{enumerate}
@@ -985,41 +991,70 @@ Never		Rarely		Often		Always
 \end{enumerate}
 \end{quote}
 
-The next part of the evaluation was the controlled experiment. For this we previously selected two problems. The participants were asked to write in the Pharo IDE a solution to these problems. One problem was the ``Even Fibonacci numbers''-problem\footnote{https://projecteuler.net/problem=2} and the other problem was the ``Sum Square Difference''-problem\footnote{https://projecteuler.net/problem=6}.
+The next part of the evaluation was the controlled experiment. For this we
+\del{previously} selected two problems \ins{in advance}. The participants were
+asked to write in the Pharo IDE a solution to these problems. One problem was
+the ``Even Fibonacci
+numbers''\del{-}problem\footnote{https://projecteuler.net/problem=2} and the other
+problem was the ``Sum Square
+Difference''\del{-}problem\footnote{https://projecteuler.net/problem=6}.
 
-We paraphrased these problems taken from Project Euler to ensure that both tasks would require the same number of methods to complete:
+We paraphrased these problems taken from Project Euler to ensure that both
+tasks would require the same number of methods to complete:
+
 \begin{quote}
 \label{prob:fib}
 Task1
 
-Implement the ``Even Fibonacci numbers''-Problem.
+Implement the ``Even Fibonacci numbers''\del{-}Problem.
 
 (Hint the Fibonacci numbers are: 1,2,3,5,8,13,21,34,55,89,...)
 
-a) Write a class with a method that generates all Fibonacci numbers below a certain number "collectFibBelow: aNumber".
+a) Write a class with a method that generates all Fibonacci numbers below a
+certain number "collectFibBelow: aNumber".
 
-b) Additionally the class should have a method to sum up all even numbers in a collection.
+b) Additionally the class should have a method to sum up all even numbers in a
+collection\brs{didn't this and the next method have  names as well?}.
 
-c) Write a method that combines a) and b) and sums up the even Fibonacci numbers below a certain number.
+c) Write a method that combines a) and b) and sums up the even Fibonacci
+numbers below a certain number.
+
 \end{quote}
+
 \begin{quote}
 \label{prob:sumDiff}
 Task2
 
-Implement the  ``Sum Square Difference''-Problem.
+Implement the  ``Sum Square Difference''\del{-}Problem.
 
-a) Write a method "sumSquaresOf: aCollection" that receives a collection of numbers, squares each number and sums up the squares.
+a) Write a method "sumSquaresOf: aCollection" that receives a collection of
+numbers, squares each number and sums up the squares.
 
-b) Write a second method "squareSumOf: aCollection" that receives a collection of numbers, sums them up and returns the square of the sum.
+b) Write a second method "squareSumOf: aCollection" that receives a collection
+of numbers, sums them up and returns the square of the sum.
 
-c) Write a third method "sumSquareDiff: aCollection" that calculates the difference between "squareSumOf: aCollection" and "sumSquaresOf: aCollection".
+c) Write a third method "sumSquareDiff: aCollection" that calculates the
+difference between "squareSumOf: aCollection" and "sumSquaresOf: aCollection".
+
 \end{quote}
 
-The participants were required to use a prepared laptop with two Pharo images. One image had the TV Plugin installed and the other did not. In each image one of the tasks had to be implemented. DFlow was used in both images to track the user interactions and the time.
+The participants were required to use a prepared laptop with two Pharo images.
+One image had the TV Plugin installed and the other did not. In each image one
+of the tasks had to be implemented. DFlow\brs{link in the footnote, or even
+better cite the paper}\ins{, a tool for bla bla bla,}\brs{not everyone knows
+what dflow is} was used in both images to track the user interactions and the
+time.
 
-To prevent the order of the images and the difficulty of the problems from influencing the evaluation we used counter balancing on both of these factors. This means that the first two people started both with the ``Even Fibonacci numbers''-Problem while the last two people ended with this problem. Every participant with an odd number started without the TVPlugin while those with an even number started the first task with it and then completed their second task without it.
+\chg{To prevent}{In order for} the order of the images and the difficulty of
+the problems \chg{from influencing}{not to influence} the evaluation we used
+counter balancing on both of these factors.  This means that the first two
+people started both with the ``Even Fibonacci numbers''\del{-}Problem while the
+last two people ended with this problem. Every participant with an odd number
+started without the TVPlugin while those with an even number started the first
+task with it and then completed their second task without it.
 
-The evaluation ended with an open question to gather opinions about the usefulness of the plugin:
+The evaluation ended with an open question to gather opinions about the
+usefulness of the plugin:
 
 \begin{quote}
 \begin{enumerate}
@@ -1028,15 +1063,28 @@ The evaluation ended with an open question to gather opinions about the usefulne
 \end{enumerate}
 \end{quote}
 
-To measure if the plugin encourages the users to write test we used the test coverage percentage. We neither told the participants explicitly to write tests nor that the plugin was there. With this we wanted to see if simply by being there the plugin would remind users to write tests. Only if the participants decided to write tests we told them to use the plugin if they did not notice it.
+To measure if the plugin encourages the users to write test we used the test
+coverage percentage. We neither told the participants explicitly to write tests
+nor that the plugin was there. With this we wanted to see if simply by being
+there the plugin would remind users to write tests. Only if the participants
+decided to write tests we told them to use the plugin if they did not notice
+it.
 
-To quantify the participants' performance  we took additional measurements. With these the participants that used the plugin and those that did not should be compared. This should give us an indication if the plugin facilitates testing or not.
+To quantify the participants' performance  we took additional measurements.
+With these the participants that used the plugin and those that did not should
+be compared. This should give us an indication if the plugin facilitates
+testing or not.
 
 \section{The Results}
 
-As expected everyone answered question \ref{itm:q1} with yes. For question \ref{itm:q2} two participants each said to write unit tests rarely or often respectively.
+As expected everyone answered question \ref{itm:q1} with yes. For question
+\ref{itm:q2} two participants \chg{each said to}{stated that they} write unit
+tests rarely\chg{or often respectively.}{and two stated that they write unit tests often}
 
-The results of the experiments can be seen in \autoref{tab:eval1} and \autoref{tab:eval2}. The results seem pretty unexpected which might be due to the small number of participants. All measurements were taken with DFlow. The tracked values are:
+The results of the experiments can be seen in \autoref{tab:eval1} and
+\autoref{tab:eval2}. The results seem pretty unexpected which might be due to
+the small number of participants. All measurements were taken with DFlow. The
+tracked values are:
 
 \begin{enumerate}
 		\item time to complete the task in seconds
@@ -1078,18 +1126,43 @@ The results of the experiments can be seen in \autoref{tab:eval1} and \autoref{t
 	\label {tab:eval2}
 \end{table}
 
-The averages of the experiments with the TV Plugin seem to be slightly worse than those without. This is very surprising since except person two nobody used or noticed the plugin. Most likely the small number of participants made the differences between them the decisive factor.
+The averages of the experiments with the TV Plugin seem to be slightly worse
+than those without. This is very surprising since except \chg{person
+two}{participant number two}\brs{apply globally} nobody used or noticed the
+plugin. Most likely the small number of participants made the differences
+between them the decisive factor.
 
-Most people with the exception of person two did not do unit testing or make use of the TestView plugin. The one person that used the plugin has a test coverage of 100\% with or without the plugin. Also Person two was faster, pressed less keyboard or mouse buttons and opened less windows without the plugin. This difference is most likely due to the varying difficult of the problems. Everybody seemed to have more difficulty with the \hyperref[prob:fib]{Fibonacci problem}.
+Most people with the exception of person two did not do unit testing or make
+use of the TestView plugin. The one person that used the plugin has a test
+coverage of 100\% with or without the plugin. Also Person two was faster,
+pressed less \chg{keyboard}{keys} or mouse buttons and opened less windows
+without the plugin. This difference is most likely due to the varying difficult
+of the problems. Everybody seemed to have more difficulty with the
+\hyperref[prob:fib]{Fibonacci problem}.
 
-Interesting was that while only one person wrote unit tests everyone was testing if parts of their code worked as expected in the Pharo Playground. Testing definitively is a necessity but sometimes developers seem to prefer to do it manually. By making unit testing easier a lot of those manual test could hopefully become unit tests. That everybody answered positive to question \ref{itm:q3} underlines the need for additional unit testing tools and an environment that properly supports unit testing.
+\ins{Is is }Interesting \chg{was}{to note } that while only one person wrote
+unit tests everyone was testing if parts of their code worked as expected in
+the Pharo Playground.  Testing definitively is a necessity but sometimes
+developers seem to prefer to do it manually. By making unit testing easier a
+lot of those manual test could hopefully become unit tests. That everybody
+answered positive to question \ref{itm:q3} underlines the need for additional
+unit testing tools and an environment that properly supports unit testing.
 
-The participants also gave general feedback to the plugin. The two most mentioned points were that the plugin should stand out more and that there should be a quick option to run all the found tests.
+The participants also gave general feedback to the plugin. The two most
+mentioned points were that the plugin should stand out more and that there
+should be a quick option to run all the found tests.
 
-If making the plugin stand out more is really necessary is debatable since this was only wished by people who did not see the plugin. While this certainly would help users to discover the plugin, other users that already know about it could possibly be annoyed by it standing out to much.
+If making the plugin stand out more is really necessary is debatable since this
+was only wished by people who did not see the plugin. While this certainly
+would help users to discover the plugin, other users that already know about it
+could possibly be annoyed by it standing out to much.
 
-A quick option to run all the found tests would certainly be a useful addition to the plugin. Luckily there are already the Nautilus TestRunner and Nautilus itself that provide similar functionality. So while this might be an option, enhancing the existing tools would keep the number of required tools low.
-
+A quick option to run all the found tests would certainly be a useful addition
+to the plugin. Luckily there \chg{are}{is} already the Nautilus
+TestRunner\ins{a tool that bla bla bla} \chg{and}{.} Nautilus itself
+\chg{that}{also} provide\ins{s} similar functionality\ins{through bla bla bla}.
+So while this might be an option, enhancing the existing tools would keep the
+number of required tools low.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Conclusion and Future Work %%%%%%%%%%%%%%%%%%%%%
@@ -1101,7 +1174,7 @@ Unit testing is an important part of current software development paradigms like
 
 In \autoref{cha:The Problem} we examined Eclipse and the Pharo IDE with its system browser Nautilus to see where exactly unit testing could be facilitated. Features that are lacking include: the ability to conveniently view methods and their tests side by side,  an automated test search and an option to easily create new tests.
 
-In an attempt to fix these problems concerning unit testing for the Pharo IDE we made a Nautilus plugin(called TestView Plugin or TVPlugin). 
+In an attempt to fix these problems concerning unit testing for the Pharo IDE we made a Nautilus plugin(called TestView Plugin or TVPlugin).
 
 With the TVPlugin it becomes possible to horizontally split the code editor of a Nautilus window. This second code editor will only be used for tests so certain optimizations can be made. Namely the environment can derive which tests the user wants to see in this second editor from whats displayed in the first code editor.
 
@@ -1111,7 +1184,7 @@ To facilitate the creation of new tests the plugin provides default names and a 
 
 To evaluate if the TVPlugin encourages and facilitates testing we conducted a controlled experiment with a short questionnaire. The results although were not very decisive. While all participants liked the plugin the recorded measurements showed now clear improvement. This might be due to the low number of participants and the differences in their programming styles. Another user study would be needed to show the effectiveness of the plugin.
 
-The participants of the user study suggested to implement an option to run all tests found by the plugin as well as to enhance the test search so that the \emph{setUp} methods also would be found. 
+The participants of the user study suggested to implement an option to run all tests found by the plugin as well as to enhance the test search so that the \emph{setUp} methods also would be found.
 
 Another possible improvement would be to make the search results more customizable. At the moment the user can only add and remove corresponding test classes. A similar option to link and unlink individual test methods could be useful.
 
