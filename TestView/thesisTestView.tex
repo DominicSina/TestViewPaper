@@ -1,4 +1,5 @@
 \documentclass[oneside,a4paper]{book}
+\frontmatter
 %\pagestyle{headings}
 \input{st80.tex} %seems to create a problem with the preamble command needline already defined
 \input{preambleTestView.tex}
@@ -20,6 +21,7 @@ Before explaining the plug-in and its functionalities in more detail we will tak
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \tableofcontents
 
+\mainmatter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Introduction %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,13 +35,13 @@ Since testing provides these benefits it has become a key feature of many curren
 
 While testing clearly has its benefits, especially under pressure unit testing is still seen as optional and too time consuming.
 Tests are not executed as often as they should be which indicates that the use of unit tests is underestimated.
-In their case studies Pressman and Ernst found that a 31-82\%  reduction of waisted time can be achieved by simply running the same tests two to five times as often\cite{Pres14a}. 
+In their case studies Pressman and Ernst found that a 31-82\%  reduction of waisted time can be achieved by simply running the same tests two to five times as often\cite{Pres14a}.
 
 Not testing properly will in the long run slow down the development process since all the previously discussed benefits of testing are missing. So there might be no time for testing in the future as well.
 
 Breaking out of this circle can require an outside influence \cite{Beck98a}. Many environments are missing convenient features to facilitate unit testing and thus repetitively break the developers flow during unit testing. This only makes breaking out of this circle harder.
 
-In this thesis we attempt to provide such an outside influence for the Pharo IDE. Our solution is realized as a Nautilus plug-in. This  TestView plugin provides additional functionality to the Pharo System Browser Nautilus. Included features are an easy way to view tests and methods side by side, an automated test search and a quick way to create new tests. 
+In this thesis we attempt to provide such an outside influence for the Pharo IDE. Our solution is realized as a Nautilus plug-in. This  TestView plugin provides additional functionality to the Pharo System Browser Nautilus. Included features are an easy way to view tests and methods side by side, an automated test search and a quick way to create new tests.
 
 \chapter{A Closer Look at Testing}
 	\label{cha:Testing}
@@ -54,7 +56,7 @@ This means that the scope of each test is very small and consequently many tests
 To start testing a method an instance of the class under test is created and brought into a state where a set of preconditions is met.
 An example for preconditions would be the requirement for the objects instance variables to have certain values. From this initial state in a deterministic environment a specific outcome can be expected after the method is executed. The outcome is a success if all of the previously defined postconditions are fulfilled. These postconditions are checked by using assertions.
 
-To illustrate this let us examine how a unit test for an imaginary ``\emph{Stack}'' Class in Pharo might work. Each stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named ``\emph{push: anObject}'' which adds an element on top of the stack and a method named ``\emph{pop}'' which removes and returns the element that was added last to the stack. 
+To illustrate this let us examine how a unit test for an imaginary ``\emph{Stack}'' Class in Pharo might work. Each stack has a maximum capacity that is set once the stack is created. Further the stack provides a method named ``\emph{push: anObject}'' which adds an element on top of the stack and a method named ``\emph{pop}'' which removes and returns the element that was added last to the stack.
 
 Now let us examine how to make a unit test for this stack that checks if the last element that was added is returned by the pop operation and not some other object. An example of how such a test could be implemented can be found in \autoref{code:exampleTest}.
 
@@ -92,7 +94,7 @@ Test-driven Development bears mentioning because it is one of the major paradigm
 \section{Blackbox and Whitebox Testing}
 	\label{sec:Blackbox and Whitebox Testing}
 
-Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method. 
+Whitebox and blackbox testing refer to how closely tests are written to suit a method. In whitebox testing the tester is completely aware of the method and its inner workings when writing a test for it. This means that an adequate amount of unit tests done with a whitebox approach will cover each important path in the decision tree of a method.
 Especially interesting are worst case scenarios. These are the method invocations that result in as many executed lines as possible.
 
 Contrary in blackbox testing the test writer does not know the inner workings of the method that is being tested. Ghezzi et al. describe that during blackbox testing "test sets are developed and their results evaluated solely on the basis of the specifications" \cite{Ghez02a}.  This means that the tests have to be made so that they return the right value for all tested input values. Since it might be impossible to test all possible input values it is necessary to choose the critical input values where an error might occur.
@@ -178,14 +180,14 @@ In this section we describe current programming environments, namely Eclipse and
 \section{Unit Testing in Eclipse}
 \label{seg:Unit Testing in Eclipse}
 
-We will start by taking a closer look at Eclipse since it is widely used and many parallels to other programming environments (\eg Visual Studio) can be made. 
+We will start by taking a closer look at Eclipse since it is widely used and many parallels to other programming environments (\eg Visual Studio) can be made.
 
 In \autoref{fig:Eclipse's user interface} you see a Java project opened in Eclipse with a package and two classes. The package and classes can be seen on the left side in the ``Package Explorer'' pane.
 
 
 \subsection{Methods and Tests Side by Side}
 
-We start with a discussion on how Eclipse enables users to see the a method and corresponding tests at the same time. 
+We start with a discussion on how Eclipse enables users to see the a method and corresponding tests at the same time.
 
 One option is to open both classes through the Package Explorer. The opened classes will be shown in the middle of the screen and a new tab on top of the code editor will appear.  In \autoref{fig:Eclipse's user interface} there are two tabs ``\emph{BezierPath.java}''  and ``\emph{BezierPathTest.java}''.  The ``\emph{BezierPath.java}''  tab is currently selected and thus the content of ``\emph{BezierPath.java}'' is displayed in the code editor.  Unless you close these tabs all the classes you opened will be quickly available through their tabs.
 
@@ -202,7 +204,7 @@ As shown, Eclipse provides multiple ways to make the tested method easily access
 	\label{fig:eclipseSplitscreen}
 \end{figure}
 
-\subsection{Test Search} 
+\subsection{Test Search}
 
 Another feature we discussed in the previous chapter
 was the ability to find all tests of a certain method. Eclipse provides a good option to search for tests. By selecting the "Search" from the top menu bar followed by "Referring Tests..." it is possible to find all tests that reference the currently selected method.
@@ -260,7 +262,7 @@ To conclude in the Pharo IDE are various things a user can do to view multiple p
 
 \subsection{Test Search}
 \label{subsec:Test Search}
-The next functionality that will be discussed is how Pharo finds existing tests for a specified method. Like Eclipse Nautilus has a test search implemented. Like with Eclipse's test search only tests with a very specific name are found. Additionally they have to be placed in classes with an equally specific name. 
+The next functionality that will be discussed is how Pharo finds existing tests for a specified method. Like Eclipse Nautilus has a test search implemented. Like with Eclipse's test search only tests with a very specific name are found. Additionally they have to be placed in classes with an equally specific name.
 
 Namely, test classes and test methods have to contain the full name of the class or method under test. Additionally the name of the test class has to have the suffix "Test" and the name of the test method has to have the prefix "test". Also tests have no parameters and thus lack all colons in their name.  If anything more is part of the test name then it will not be found by Nautilus's test search. The test classes also have to inherit from TestCase in order to be found by the test search. Examples of tests corresponding to certain methods can be found in \autoref{tab:correspondingMethods}.
 
@@ -286,7 +288,7 @@ This test search function is not directly available to the developers. It is use
 
 The test search is better in Eclipse since it is not only less restrictive with its name-based criterion but also checks if the test calls the method under test. Eclipse's test search is also able to find more than one test for a method.  On the other hand in Nautilus the test search is better integrated in the environment. The additional button to execute a corresponding test conveniently allows running the test without navigating to it.
 
-\subsection{Creating new tests} 
+\subsection{Creating new tests}
 Right clicking on a method in Nautilus gives the "Generate test"  option.  The new test will automatically be added to a certain test class in a specific package (both of which will be created if needed). More precisely the test package is named like the package under test with the suffix "-Tests". The test class and method will be named like \autoref{tab:correspondingMethods} shows.  All the tests created through this will thus be found by Nautilus's test search function.  "Generate test and jump" works very similar but also selects and shows the newly created test so that the user can start implementing.
 
 Using these predefined package and class names is faster since the user does not need to enter them. Another advantage is that tests created in this manner confirm to the naming standards imposed by Nautilus. Sadly this robs the user of the ability to specify different package and class names. Also only one test per method can be created in this manner. All additional tests for the same method will simply overwrite the previous test since they will have exactly the same name.
@@ -328,7 +330,7 @@ This approach combines the convenience of Eclipse's ability to show code side by
 \label{sec:TVtestsearch}
 As a direct consequence of the heavily selected content of the second code editor it became necessary to use a test search. Without this it would be impossible to show a relevant selection. As discussed in \autoref{subsec:Test Search} the test search that Nautilus provides is very restrictive and only finds at most one test per method. In order to find better results the TestView Plugin uses its own test search implementation.
 
-In the following subsections we will provide a detailed explanation how corresponding tests for a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method. 
+In the following subsections we will provide a detailed explanation how corresponding tests for a certain method are found. The plugin uses a hierarchical search with two stages. First the TestView Plugin searches all test classes to the currently selected class and then inside of these test classes all test methods to the currently selected method.
 
 This search is performed every time a different method is selected. This makes it possible that the additional code panel introduced by the plugin always shows a relevant selection.
 
@@ -359,11 +361,11 @@ More precisely the name based search for test classes works as follows. First al
 
 If a class  inherits from ``\emph{TestCase}'' in addition to fulfilling this naming criterion the class is considered a corresponding test class.
 
-While a name-based test class search is quite precise a name-based test method search is not. This lead us to first search for test classes and then in the found test classes search for test methods. Since the test method search builds on the results of the test class search it became important to make the test class search works flawlessly. 
+While a name-based test class search is quite precise a name-based test method search is not. This lead us to first search for test classes and then in the found test classes search for test methods. Since the test method search builds on the results of the test class search it became important to make the test class search works flawlessly.
 
-Our solution to this is to let the users customize the search results. If the search for corresponding test classes is inadequate the developers can use the ``Link Class'' and ``Unlink Class'' buttons provided by the TestView Plugin to add and remove test classes from the results. 
+Our solution to this is to let the users customize the search results. If the search for corresponding test classes is inadequate the developers can use the ``Link Class'' and ``Unlink Class'' buttons provided by the TestView Plugin to add and remove test classes from the results.
 
-Classes that have been unlinked will no longer be searched for test methods while linked classes will be searched even if they do not inherit from ``\emph{TestCase}'' or fulfill the naming criterion. If a class is linked and unlinked multiple times only the latest input counts. 
+Classes that have been unlinked will no longer be searched for test methods while linked classes will be searched even if they do not inherit from ``\emph{TestCase}'' or fulfill the naming criterion. If a class is linked and unlinked multiple times only the latest input counts.
 
 The plugin keeps track of the linked and unlinked classes in two \emph{Dictionaries}. When a class is linked or unlinked the currently selected class is used as a key to store the specified class. Since the currently selected class is used as a key each linking or unlinking of a class only counts for the currently selected class. It is possible that the user has to link or unlink the same class multiple times for different classes.
 
@@ -389,7 +391,7 @@ Similar as the name criterion for test classes described in \autoref{subsec:Corr
 
 The substring search works like described in \autoref{subsec:CorrTestClasses}. First a collection is created that contains all method names of all found corresponding test classes. Then the substring collection is prepared. The only difference here is that all colons are removed from the name of the selected method before it is put in the substring collection. Like before the substring collection is sorted according to length, both substring checks are made and matches removed.
 
-The second criterion besides the name criterion is that the test contains a method invocation with the same selector as the selected method. If either of those criteria is fulfilled the method is considered a test for the selected method. 
+The second criterion besides the name criterion is that the test contains a method invocation with the same selector as the selected method. If either of those criteria is fulfilled the method is considered a test for the selected method.
 
 How many of those criteria are met is used to order the found tests in the droplist that can be seen in \autoref{fig:Nautilus window with two code editors} right below of the Nautilus History Navigator. Specifically each found test method has an associated rating. The rating is increased by one if the method uses the selected method and by two if the naming criterion is fulfilled. Test methods with a higher rating will be displayed first in the results.
 
@@ -401,19 +403,19 @@ Another purpose of the TVPlugin is to make the creation of new tests as quick as
 Every time a developer starts to write a new unit test they have to determine to which test class the new test belongs. We can split the creation of new tests into two basic use cases: adding the new test in a new test class or adding the new test in a test class where tests corresponding to the selected method already exist.
 
 \subsection{Adding a new Test Class}
-First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class. 
+First let us talk about what can be done to facilitate the creation of a new test that does not yet have a fitting test class.
 The easiest way to do this is to let the users write the new test and later determine where this test will be placed. With this the user is encouraged to immediately start writing a test as soon as a method is created. The new test class option is activated by having the topmost element ``new Test'' from the droplist of found tests.
 
 When the test method is saved the plugin will ask the user for the name of the test class and in which package this class should be placed. Default values, based on the class name and the package name of the method under test, are provided. This might already be sufficient since test class names and test package names can often be derived from the original class and package names \cite{Mars05a}.
 
-To create the default name for a new test package ``-Test'' is added to the name of the package under test. Similarly the default test class name is derived from the name of the class under test with the suffix ``Test''. 
+To create the default name for a new test package ``-Test'' is added to the name of the package under test. Similarly the default test class name is derived from the name of the class under test with the suffix ``Test''.
 
 For example if the method under test is contained in a class called ``Queue'' within a package ``Collections'' then the proposed names for the test class and the test package will be ``QueueTest'' and ``Collections-Tests''. The new test class will also automatically subclass TestCase.
 
 These names and the inheritance from TestCase is also what Nautilus's test search expects and thus this does not break existing conventions. Even though default names are provided the user can still ignore them and specify different ones.
 
 \subsection{Adding a test to an existing Test Class}
-The second use case is that a developer wants to add a test for a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added. 
+The second use case is that a developer wants to add a test for a method that already has tests. In this case the corresponding test classes should have already been found by the plugin. The users just have to select any test that is in the test class where the new test should be added.
 No test package has to be specified since only when a new test class is made the package might also be a new one.
 
 One potential problem is how this choice between making new test classes and test packages and using existing ones is communicated to the user. The users have to make their intentions clear to the plugin by selecting a specific item from the list of found tests.
@@ -434,14 +436,14 @@ To see if the TestView plugin fulfills our initial aim to encourage unit testing
 
 \section{The Setup}
 %the participants
-We evaluated the plugin with four people from the Software Composition Group of the University of Bern. The only requirements for the participants were that they know both the Pharo IDE and programming language. 
+We evaluated the plugin with four people from the Software Composition Group of the University of Bern. The only requirements for the participants were that they know both the Pharo IDE and programming language.
 
 %the evaluation
 The evaluation was printed on multiple sheets in order to prevent later questions and tasks from influencing the participants. The evaluation started with two simple multiple choice questions surrounding test-driven development and unit testing. This was done to be able to group the participants according to how comfortable they were with testing. These questions were:
 
 \begin{quote}
 \begin{enumerate}
-\item \label{itm:q1} Do you know what Test-driven Development is?	
+\item \label{itm:q1} Do you know what Test-driven Development is?
 
 
 Yes		No
@@ -463,7 +465,7 @@ Implement the ``Even Fibonacci numbers''-Problem.
 
 (Hint the Fibonacci numbers are: 1,2,3,5,8,13,21,34,55,89,...)
 
-a) Write a class with a method that generates all Fibonacci numbers below a certain number "collectFibBelow: aNumber". 
+a) Write a class with a method that generates all Fibonacci numbers below a certain number "collectFibBelow: aNumber".
 
 b) Additionally the class should have a method to sum up all even numbers in a collection.
 
@@ -482,7 +484,7 @@ b) Write a second method "squareSumOf: aCollection" that receives a collection o
 c) Write a third method "sumSquareDiff: aCollection" that calculates the difference between "squareSumOf: aCollection" and "sumSquaresOf: aCollection".
 \end{quote}
 
-The participants were required to use a prepared laptop with two Pharo images. One image had the TV Plugin installed and the other did not. In each image one of the tasks had to be implemented. DFlow was used in both images to track the user interactions and the time. 
+The participants were required to use a prepared laptop with two Pharo images. One image had the TV Plugin installed and the other did not. In each image one of the tasks had to be implemented. DFlow was used in both images to track the user interactions and the time.
 
 To prevent the order of the images and the difficulty of the problems from influencing the evaluation we used counter balancing on both of these factors. This means that the first two people started both with the ``Even Fibonacci numbers''-Problem while the last two people ended with this problem. Every participant with an odd number started without the TVPlugin while those with an even number started the first task with it and then completed their second task without it.
 
@@ -491,7 +493,7 @@ The evaluation ended with an open question to gather opinions about the usefulne
 \begin{quote}
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item \label{itm:q3}Did the TestView plug-in help in your opinion? 
+\item \label{itm:q3}Did the TestView plug-in help in your opinion?
 \end{enumerate}
 \end{quote}
 
@@ -526,7 +528,7 @@ The results of the experiments can be seen in \autoref{tab:eval1} and \autoref{t
 	\hline
    	\end{tabular}
 	\caption {Results with the TV Plugin}
-	\label {tab:eval1}	
+	\label {tab:eval1}
 \end{table}
 
 \begin{table}[h]
@@ -547,11 +549,11 @@ The results of the experiments can be seen in \autoref{tab:eval1} and \autoref{t
 
 The averages of the experiments with the TV Plugin seem to be slightly worse than those without. This is very surprising since except person two nobody used or noticed the plugin. Most likely the small number of participants made the differences between them the decisive factor.
 
-Most people with the exception of person two did not do unit testing or make use of the TestView plugin. The one person that used the plugin has a test coverage of 100\% with or without the plugin. Also Person two was faster, pressed less keyboard or mouse buttons and opened less windows without the plugin. This difference is most likely due to the varying difficult of the problems. Everybody seemed to have more difficulty with the \hyperref[prob:fib]{Fibonacci problem}. 
+Most people with the exception of person two did not do unit testing or make use of the TestView plugin. The one person that used the plugin has a test coverage of 100\% with or without the plugin. Also Person two was faster, pressed less keyboard or mouse buttons and opened less windows without the plugin. This difference is most likely due to the varying difficult of the problems. Everybody seemed to have more difficulty with the \hyperref[prob:fib]{Fibonacci problem}.
 
 Interesting was that while only one person wrote unit tests everyone was testing if parts of their code worked as expected in the Pharo Playground. Testing definitively is a necessity but sometimes developers seem to prefer to do it manually. By making unit testing easier a lot of those manual test could hopefully become unit tests. That everybody answered positive to question \ref{itm:q3} underlines the need for additional unit testing tools and an environment that properly supports unit testing.
 
-The participants also gave general feedback to the plugin. The two most mentioned points were that the plugin should stand out more and that there should be a quick option to run all the found tests. 
+The participants also gave general feedback to the plugin. The two most mentioned points were that the plugin should stand out more and that there should be a quick option to run all the found tests.
 
 If making the plugin stand out more is really necessary is debatable since this was only wished by people who did not see the plugin. While this certainly would help users to discover the plugin, other users that already know about it could possibly be annoyed by it standing out to much.
 
