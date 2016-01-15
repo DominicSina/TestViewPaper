@@ -27,6 +27,13 @@ Robert~C. Martin.
 \newblock {\em Clean Code: A Handbook of Agile Software Craftsmanship}.
 \newblock Prentice Hall PTR, Upper Saddle River, NJ, USA, 2 edition, 2009.
 
+\bibitem{Mine2016a}
+Roberto Minelli, Andrea Mocci, and Michele Lanza.
+\newblock Measuring navigation efficiency in the ide.
+\newblock In {\em Proceedings of IWESEP 2016 ($7^{th}$ IEEE International
+  Workshop on Empirical Software Engineering in Practice)}, page to appear,
+  2016.
+
 \bibitem{Pres14a}
 Roger~S. Pressman.
 \newblock {\em Software Engineering: A Practitioner's Approach}.

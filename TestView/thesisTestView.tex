@@ -61,18 +61,20 @@ current software engineering paradigms like for example extreme programing (XP)
 \cite{Pres14a}. Together with the other features of these development methods
 testing helps to speed up the development and increase the quality of the
 software being developed. Additionally for example in XP the time that is spent
-writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during 
+writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during
 the life of a project an automated test can save you a hundred times the cost
 to create it... ''. This is done by guarding against bugs and regression
 errors. Since this guard is in place ``refactoring'' and ``frequent integration''
 of new code become possible.
 
-While testing clearly has its benefits, especially under stress
-unit testing is still seen as optional and too time
-consuming.  Tests are not executed as often as they should be which indicates
-that the use of unit tests is underestimated.  In their case studies Pressman
-and Ernst found that a 31-82\% reduction of waisted time can be achieved by
-simply running the same tests two to five times as often\cite{Pres14a}.
+While testing clearly has its benefits, \ugh{especially under
+stress}\brs{replacing pressure with stress does not solve the problem. What
+does the ``especially under stress'' mean?} unit testing is still seen as
+optional and too time consuming.  Tests are not executed as often as they
+should be which indicates that the use of unit tests is underestimated.  In
+their case studies Pressman and Ernst found that a 31-82\% reduction of waisted
+time can be achieved by simply running the same tests two to five times as
+often\cite{Pres14a}.
 
 Not testing properly will in the long run slow down the development process
 since all the previously discussed benefits of testing are missing. So there
@@ -169,14 +171,14 @@ sufficient.  Below are some basic rules of Test-Driven Development as laid out
 by Robert C. Martin\cite{Mart09b}.
 
 \begin{quote}
-\textbf{First Law} You may not write production code until you have 
+\textbf{First Law} You may not write production code until you have
 written a failing unit test.
 
-\textbf{Second Law} You may not write more of a unit test than is sufficient 
+\textbf{Second Law} You may not write more of a unit test than is sufficient
 to fail, and not compiling is failing.
 
-\textbf{Third Law} You may not write more production code than is sufficient to pass the 
-currently failing test. 
+\textbf{Third Law} You may not write more production code than is sufficient to pass the
+currently failing test.
 \end{quote}
 
 While it might seem tedious, repeating this careful
@@ -197,18 +199,18 @@ tests.
 	\label{sec:Blackbox and Whitebox Testing}
 
 Whitebox and blackbox testing refer to whether or not the
-implementation of a method is taken into account while writing tests for it. 
+implementation of a method is taken into account while writing tests for it.
 
-In whitebox testing the tester is completely aware of the method and its inner 
-workings when writing a test for it. This means that an adequate amount of unit tests 
+In whitebox testing the tester is completely aware of the method and its inner
+workings when writing a test for it. This means that an adequate amount of unit tests
 done with a whitebox approach will cover each important path in the decision tree of a
-method.  Especially interesting are the most extreme cases. These are the method 
+method.  Especially interesting are the most extreme cases. These are the method
 invocations that result in as many executed lines as possible.
 
 Contrary, in blackbox testing, the test writer does not know the
 inner workings of the method that is being tested. Ghezzi et al. describe that
 during blackbox testing ``test sets are developed and their results
-evaluated solely on the basis of the specifications''\cite{Ghez02a}. This means that 
+evaluated solely on the basis of the specifications''\cite{Ghez02a}. This means that
 the tests have to be made so that they return the right value for all tested input values.
 Since it might be impossible to test all possible input values it is necessary
 to choose the critical input values where an error might occur.
@@ -516,7 +518,7 @@ achieved.
 The free placement of those Nautilus windows gives the user more freedom to
 customize the environment but several visual elements will be duplicated which
 reduces the available space on the screen to arrange these. An example for such
-a duplicated element is the list of packages and classes that takes up the top 
+a duplicated element is the list of packages and classes that takes up the top
 half of each Nautilus window like for example in \autoref{fig:Locking}.
 
 A possibility that does not have this drawback is to lock a method or class and
@@ -589,7 +591,7 @@ Both the limitations on class names and method names are quite restrictive.
 From a test class name the class under test can be quite reliably inferred. On
 the other hand the method name and the corresponding test name for it are less
 directly related\cite{Mars05a}. These restrictive name criteria also lead to the
-problem that at most only one test class and method per method will be found since 
+problem that at most only one test class and method per method will be found since
 others with a slightly different name will not fulfill these naming criteria.
 
 This test search function is not directly available to the developers. It is
@@ -718,21 +720,21 @@ a relevant selection.
 \subsection{Corresponding Test Classes}
 \label{subsec:CorrTestClasses}
 
-To qualify as a test class a class has to inherit from ``\emph{TestCase}''. This requirement 
-has to be fulfilled in Nautilus' test search as well. 
+To qualify as a test class a class has to inherit from ``\emph{TestCase}''. This requirement
+has to be fulfilled in Nautilus' test search as well.
 
 After this a name-based search is performed on the remaining classes.
 A name-based search works quite well to find test classes corresponding to a
 certain class\cite{Mars05a}. A name-based criterion is used in Nautilus' test search
 and something similar is also part of the test class search in the TestView Plugin.
 
-As discussed in \autoref{subsec:Test Search} Nautilus' naming criteria result in at most one 
-corresponding test class being found. The naming criterion that the TVPlugin uses is less 
-restrictive. 
+As discussed in \autoref{subsec:Test Search} Nautilus' naming criteria result in at most one
+corresponding test class being found. The naming criterion that the TVPlugin uses is less
+restrictive.
 
 The name-based criterion of the TVPlugin requires the name of the class in question to contain
-the full name of the selected class in addition to ``test''. Unlike Nautilus' naming criterion this substring 
-search is not case sensitive and it does not matter which of those substrings comes first or if the name 
+the full name of the selected class in addition to ``test''. Unlike Nautilus' naming criterion this substring
+search is not case sensitive and it does not matter which of those substrings comes first or if the name
 contains additional characters.
 
 In \autoref{tab:TVTestClassNames} examples of test class names that fulfill and that do not fulfill
@@ -751,26 +753,33 @@ the naming criterion of the TestView Plugin are shown.
 	\label {tab:TVTestClassNames}
 \end{table}
 
-More precisely the substring search works as follows. First
-all class names are gathered in a \textbf{class name collection}. In a
+More precisely the substring search works as follows. First all class names
+\ins{from bla bla }are gathered in a \textbf{class name collection}. \chg{In a
 \textbf{substring collection} the name of the class under test and the string
-``test'' is put. The substring collection is sorted so that the longest string
-is first. 
+``test'' is put}{The name of the class under test and the string ``test'' are
+put in the substring collection}.  The substring collection is sorted so that
+the longest string is first.
 
-Starting with the longest substring out of the substring collection 
-each element in the class name collection is now checked if it contains this substring. 
-If it does the first occurrence of this substring is removed and it is checked if the remaining
-string contains the second substring from the substring collection.
-A class name qualifies as test class name if both substrings from the substring collection were found in it.
+\ugh{Starting with the longest substring out of the substring collection each
+element in the class name collection is now checked if it contains this
+substring.  If it does the first occurrence of this substring is removed and it
+is checked if the remaining string contains the second substring from the
+substring collection.  A class name qualifies as test class name if both
+substrings from the substring collection were found in it.}\brs{so, essentially,
+you just check which potential test classes contain the name of the class in
+question and contain the string ``test'' outside the class name. Please say
+this simply, no need to name collections and complicate}
 
-To illustrate this substring search let us examine why a class named ``Contest'' is not considered a test class for 
-a class named ``Contest''. To confirm to the naming criterion used by the TVPlugin the test class 
-name would have to contain the substrings ``Contest'' and ``test''. The substring search first
-checks if the substring ``Contest'' is included in ``Contest''. Since it is the first occurrence of  ``Contest'' is
-removed, which leaves an empty string. Now it is checked if this empty string contains ``test'' as well.
+To illustrate this substring search let us examine why a class named
+``Contest'' is not considered a test class for a class named ``Contest''. To
+confirm to the naming criterion used by the TVPlugin the test class name would
+have to contain the substrings ``Contest'' and ``test''. The substring search
+first checks if the substring ``Contest'' is included in ``Contest''. Since it
+is the first occurrence of  ``Contest'' is removed, which leaves an empty
+string. Now it is checked if this empty string contains ``test'' as well.
 Since it does not ``Contest'' is not a test class for ``Contest''.
 
-Since the test method search builds on the results of the test class search it 
+Since the test method search builds on the results of the test class search it
 became important to make the test class search works works as good as possible.
 
 Our solution to this is to let the users customize the search results. If the
@@ -816,12 +825,14 @@ can be found in \autoref{tab:testNameCrit}.
 
 The substring search works like described in \autoref{subsec:CorrTestClasses}.
 First a collection is created that contains all method names of all found
-corresponding test classes. Then the substring collection is filled with the name of the 
-selected method and ``test''. The only difference here is that all colons 
-are removed from the name of the selected method before it is put in the substring 
-collection. Like before the substring collection is sorted according to length, both substring
-checks are made and matches removed. If both substring checks are successful the method is 
-a test for the selected method-
+corresponding test classes. Then the substring collection is filled with the
+name of the selected method and ``test''. The only difference here is that all
+colons are removed from the name of the selected method before it is put in the
+substring collection. Like before the substring collection is sorted according
+to length, both substring checks are made and matches removed. If both substring
+checks are successful the method is a test for the selected
+method\chg{-}{.}\brs{same as earlier, keep it simple, no need to name the
+collections, just say what you did}
 
 The second criterion besides the name criterion is that the test contains a
 method invocation with the same selector as the selected method. If either of
@@ -897,19 +908,19 @@ ones.
 
 The second use case is that a developer wants to add a test for a method that
 already has tests. In this case the corresponding test classes should have
-already been found by the test search described in \autoref{sec:TVtestsearch}. 
+already been found by the test search described in \autoref{sec:TVtestsearch}.
 The users just have to select any found test
 that is in the test class where the new test should be added. No test package
 has to be specified since only when a new test class is made the package might
 also be a new one.
 
-When the user saves a test while having selected the ``new Test'' option described in 
+When the user saves a test while having selected the ``new Test'' option described in
 \autoref{subsec:AddToNewTestClass}, the plugin will always ask the user to give names
 for the test class and the test package. When the user has any other item
-selected in this drop down list then the test is saved in the test class that was selected. 
+selected in this drop down list then the test is saved in the test class that was selected.
 
 Now let us take a look at how this functionality compares to Eclipse and
-Nautilus. Improvements compared to Eclipse are that the user can add new tests 
+Nautilus. Improvements compared to Eclipse are that the user can add new tests
 in an already existing test class. Eclipse has an advantage when
 creating a new test class and filling it with multiple new tests. Eclipse
 supports the user only at the start of writing a new test class while the
@@ -1012,8 +1023,8 @@ The participants were required to use a prepared laptop with two Pharo images.
 One image had the TV Plugin installed and the other did not. In each image one
 of the tasks had to be implemented.
 
-To keep track of the time it took the participants to complete the tasks 
-and the user interactions with the IDE we used DFlow\footnote{http://dflow.inf.usi.ch/experiment.html}. 
+To keep track of the time it took the participants to complete the tasks
+and the user interactions with the IDE we used DFlow\footnote{http://dflow.inf.usi.ch/experiment.html}.
 DFlow is a tool written for the Pharo IDE that tracks user interactions like mouse movement, key presses
 and various windows opened inside of Pharo\cite{Mine2016a}. We modified DFlow slightly to correctly keep track of mouseclicks and made it log the gathered data localy instead of sending it to a server.
 
@@ -1131,17 +1142,17 @@ could possibly be annoyed by it standing out to much.
 
 A quick option to run all the found tests would certainly be a useful addition
 to the plugin. Luckily there is already the Nautilus
-TestRunner, a tool to execute tests and keep track of the test coverage of those test. 
+TestRunner, a tool to execute tests and keep track of the test coverage of those test.
 
-Other possible points for improvement that some participants mentioned were to include 
-the \emph{setUp} method in the drop down list of found tests and to enhance the 
+Other possible points for improvement that some participants mentioned were to include
+the \emph{setUp} method in the drop down list of found tests and to enhance the
 template for new tests so that more \emph{assert} variations would be used.
 
 Nautilus  itself allows the execution of tests by pressing a button next to each method or class
 that has corresponding tests. Sadly it is quite possible that not all tests get executed through
 this since as described in \autoref{subsec:Test Search} only one corresponding test per method
 or class is found by Nautilus.
-So while implementing a functionality to run tests through the TestView Plugin might be an option, 
+So while implementing a functionality to run tests through the TestView Plugin might be an option,
 enhancing the existing tools would to keep the number of required tools low.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1223,7 +1234,7 @@ content.
 \subsection{What's the TestView Plugin?}
 	\label{subsec:What's a TestView Plugin?}
 
-Nautilus is the default system browser in Pharo 4.0. 
+Nautilus is the default system browser in Pharo 4.0.
 \autoref{fig:NautilusWindow} shows how a Nautilus window
 normally looks like.
 
@@ -1253,7 +1264,7 @@ The \textbf{``TestView''} button toggles the additional code panel to the right
 of the original code panel on and off. All features described here require that
 the plugin is turned on.
 
-The TestView Plugin heavily relies on knowing which method is currently selected 
+The TestView Plugin heavily relies on knowing which method is currently selected
 in a Nautilus window.  All functions the plugin
 provides are relative to what you have selected in the Nautilus window.
 Whenever you select a Method in the Nautilus class hierarchy the plugin will
