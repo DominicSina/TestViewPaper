@@ -58,29 +58,28 @@ errors early.
 
 Since testing provides these benefits it has become a key feature of many
 current software engineering paradigms like for example extreme programing (XP)
-\cite{Pres14a}. Together with the other features of these development methods
+ \cite{Pres14a}. Together with the other features of these development methods
 testing helps to speed up the development and increase the quality of the
 software being developed. Additionally for example in XP the time that is spent
-writing a test will be regained. As Wells\cite{Well13a} puts it: ``...during
+writing a test will be regained. As Wells \cite{Well13a} puts it: ``...during
 the life of a project an automated test can save you a hundred times the cost
 to create it... ''. This is done by guarding against bugs and regression
 errors. Since this guard is in place ``refactoring'' and ``frequent integration''
 of new code become possible.
 
-While testing clearly has its benefits, \ugh{especially under
-stress}\brs{replacing pressure with stress does not solve the problem. What
-does the ``especially under stress'' mean?} unit testing is still seen as
+While testing clearly has its benefits, especially with fast-approaching
+deadlines unit testing is still seen as
 optional and too time consuming.  Tests are not executed as often as they
 should be which indicates that the use of unit tests is underestimated.  In
 their case studies Pressman and Ernst found that a 31-82\% reduction of waisted
 time can be achieved by simply running the same tests two to five times as
-often\cite{Pres14a}.
+often \cite{Pres14a}.
 
 Not testing properly will in the long run slow down the development process
 since all the previously discussed benefits of testing are missing. So there
 might be no time for testing in the future as well.
 
-Breaking out of this circle can require an outside influence\cite{Beck98a}.
+Breaking out of this circle can require an outside influence \cite{Beck98a}.
 Many environments are missing convenient features to facilitate unit testing
 and thus repetitively break the developers flow during unit testing. This only
 makes breaking out of this circle harder.
@@ -168,7 +167,7 @@ the implementation itself.  Afterwards the implementation is written and
 improved until those tests are satisfied.  After this more tests are added to
 test additional features. This process is repeated until the implementation is
 sufficient.  Below are some basic rules of Test-Driven Development as laid out
-by Robert C. Martin\cite{Mart09b}.
+by Robert C. Martin \cite{Mart09b}.
 
 \begin{quote}
 \textbf{First Law} You may not write production code until you have
@@ -210,7 +209,7 @@ invocations that result in as many executed lines as possible.
 Contrary, in blackbox testing, the test writer does not know the
 inner workings of the method that is being tested. Ghezzi et al. describe that
 during blackbox testing ``test sets are developed and their results
-evaluated solely on the basis of the specifications''\cite{Ghez02a}. This means that
+evaluated solely on the basis of the specifications'' \cite{Ghez02a}. This means that
 the tests have to be made so that they return the right value for all tested input values.
 Since it might be impossible to test all possible input values it is necessary
 to choose the critical input values where an error might occur.
@@ -590,7 +589,7 @@ tests corresponding to certain methods can be found in
 Both the limitations on class names and method names are quite restrictive.
 From a test class name the class under test can be quite reliably inferred. On
 the other hand the method name and the corresponding test name for it are less
-directly related\cite{Mars05a}. These restrictive name criteria also lead to the
+directly related \cite{Mars05a}. These restrictive name criteria also lead to the
 problem that at most only one test class and method per method will be found since
 others with a slightly different name will not fulfill these naming criteria.
 
@@ -725,7 +724,7 @@ has to be fulfilled in Nautilus' test search as well.
 
 After this a name-based search is performed on the remaining classes.
 A name-based search works quite well to find test classes corresponding to a
-certain class\cite{Mars05a}. A name-based criterion is used in Nautilus' test search
+certain class \cite{Mars05a}. A name-based criterion is used in Nautilus' test search
 and something similar is also part of the test class search in the TestView Plugin.
 
 As discussed in \autoref{subsec:Test Search} Nautilus' naming criteria result in at most one
@@ -733,9 +732,11 @@ corresponding test class being found. The naming criterion that the TVPlugin use
 restrictive.
 
 The name-based criterion of the TVPlugin requires the name of the class in question to contain
-the full name of the selected class in addition to ``test''. Unlike Nautilus' naming criterion this substring
-search is not case sensitive and it does not matter which of those substrings comes first or if the name
-contains additional characters.
+the full name of the selected class in addition to ``test''. The name of the 
+selected class and ``test'' have to be contained separately in the name of a potential test class to
+fulfill this naming criterion. 
+Unlike Nautilus' naming criterion this substring search is not case sensitive and it does not matter 
+which of those substrings comes first or if the name contains additional characters.
 
 In \autoref{tab:TVTestClassNames} examples of test class names that fulfill and that do not fulfill
 the naming criterion of the TestView Plugin are shown.
@@ -753,31 +754,16 @@ the naming criterion of the TestView Plugin are shown.
 	\label {tab:TVTestClassNames}
 \end{table}
 
-More precisely the substring search works as follows. First all class names
-\ins{from bla bla }are gathered in a \textbf{class name collection}. \chg{In a
-\textbf{substring collection} the name of the class under test and the string
-``test'' is put}{The name of the class under test and the string ``test'' are
-put in the substring collection}.  The substring collection is sorted so that
-the longest string is first.
-
-\ugh{Starting with the longest substring out of the substring collection each
-element in the class name collection is now checked if it contains this
-substring.  If it does the first occurrence of this substring is removed and it
-is checked if the remaining string contains the second substring from the
-substring collection.  A class name qualifies as test class name if both
-substrings from the substring collection were found in it.}\brs{so, essentially,
-you just check which potential test classes contain the name of the class in
-question and contain the string ``test'' outside the class name. Please say
-this simply, no need to name collections and complicate}
-
-To illustrate this substring search let us examine why a class named
-``Contest'' is not considered a test class for a class named ``Contest''. To
-confirm to the naming criterion used by the TVPlugin the test class name would
-have to contain the substrings ``Contest'' and ``test''. The substring search
-first checks if the substring ``Contest'' is included in ``Contest''. Since it
-is the first occurrence of  ``Contest'' is removed, which leaves an empty
-string. Now it is checked if this empty string contains ``test'' as well.
-Since it does not ``Contest'' is not a test class for ``Contest''.
+To closer illustrate this substring search let us examine why a test class named
+``Contest'' is not considered a corresponding test class for a class that is also 
+named ``Contest''. To confirm to the naming criterion used by the TVPlugin the test 
+class name ``Contest'' would have to contain the full name of the class it is 
+supposed to test (in this example ``Contest'') as well as ``test''. 
+While ``Contest'' indeed contains both of those substrings they are overlapping.
+The only occurrence of ``test'' is inside of ``Contest''. So the plugin does not consider
+``Contest'' to be a test class for a class also named ``Contest''. To 
+make this test class confirm to the naming criterion it could be renamed to
+``ContestTest''.
 
 Since the test method search builds on the results of the test class search it
 became important to make the test class search works works as good as possible.
@@ -823,16 +809,11 @@ can be found in \autoref{tab:testNameCrit}.
 	\label {tab:testNameCrit}
 \end{table}
 
-The substring search works like described in \autoref{subsec:CorrTestClasses}.
-First a collection is created that contains all method names of all found
-corresponding test classes. Then the substring collection is filled with the
-name of the selected method and ``test''. The only difference here is that all
-colons are removed from the name of the selected method before it is put in the
-substring collection. Like before the substring collection is sorted according
-to length, both substring checks are made and matches removed. If both substring
-checks are successful the method is a test for the selected
-method\chg{-}{.}\brs{same as earlier, keep it simple, no need to name the
-collections, just say what you did}
+The substring search works similar as described in \autoref{subsec:CorrTestClasses}.
+A test method name has to contain both the full name of the selected method
+as well as ``test''. Both of these substrings have to be contained separately \ie 
+they can not overlap. If both substring checks are successful the method is a 
+test for the selected method.
 
 The second criterion besides the name criterion is that the test contains a
 method invocation with the same selector as the selected method. If either of
@@ -887,7 +868,7 @@ test class and in which package this class should be placed. Default values,
 based on the class name and the package name of the method under test, are
 provided. This might already be sufficient since test class names and test
 package names can often be derived from the original class and package names
-\cite{Mars05a}.
+ \cite{Mars05a}.
 
 To create the default name for a new test package ``-Test'' is added to the name
 of the package under test. Similarly the default test class name is derived from
@@ -1026,7 +1007,7 @@ of the tasks had to be implemented.
 To keep track of the time it took the participants to complete the tasks
 and the user interactions with the IDE we used DFlow\footnote{http://dflow.inf.usi.ch/experiment.html}.
 DFlow is a tool written for the Pharo IDE that tracks user interactions like mouse movement, key presses
-and various windows opened inside of Pharo\cite{Mine2016a}. We modified DFlow slightly to correctly keep track of mouseclicks and made it log the gathered data localy instead of sending it to a server.
+and various windows opened inside of Pharo \cite{Mine2016a}. We modified DFlow slightly to correctly keep track of mouseclicks and made it log the gathered data localy instead of sending it to a server.
 
 In order for the sequence of the images and the difficulty of
 the problems not to influence the evaluation we used
