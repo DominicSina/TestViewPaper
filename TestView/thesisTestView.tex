@@ -254,7 +254,7 @@ sections we will take a closer look at the tasks involved in different goals
 arising from unit testing. This will help to understand the problem of those
 missing functionalities.
 
-\section{Is a method tested?}
+\section{Is a Method Tested?}
 \label{sec:Is a method tested?}
 
 In unit testing it is important that each method is tested (baring trivial
@@ -277,7 +277,7 @@ that are called indirectly by a test suite will still show up as covered.
 Developers thus might believe that a method is tested even if it never was
 called directly by a test.
 
-\section{Showing all tests of a method}
+\section{Showing All Tests of a Method}
 \label{sec:Showing all tests of a method}
 
 Unit testing requires to look up a method and all the tests that have been
@@ -310,7 +310,7 @@ during the execution of a test suite. Also coverage is not necessarily a good
 metric to determine if a tests actually tests a method. Nested method calls
 might yield a large number of false positives.
 
-\section{Creating new tests}
+\section{Creating New Tests}
 \label{sec:Creating new tests}
 
 As discussed previously it should be as simple as possible to check if a method
@@ -454,7 +454,7 @@ extends ``TestCase'' and that the test name starts with ``test''. The ``@Test''
 annotations are ignored by this function. It seems like this test search does
 not yet support JUnit 4 standards.
 
-\subsection{Creating new Tests}
+\subsection{Creating New Tests}
 
 The next feature in Eclipse that we now discuss is how the creation of new tests
 is facilitated. Eclipse provides an option for adding a new test class by right
@@ -605,7 +605,7 @@ method. On the other hand in Nautilus the test search is better integrated in
 the environment. The additional button to execute a corresponding test
 conveniently allows running the test without navigating to it.
 
-\subsection{Creating new tests}
+\subsection{Creating New Tests}
 
 Right clicking on a method in Nautilus gives the ``Generate test''  option.  The
 new test will automatically be added to a certain test class in a specific
@@ -833,7 +833,7 @@ allows multiple test methods for one method. It works very
 similar to the test search provided by Eclipse and like Nautilus' search is
 used directly by the IDE and does not have to be called manually.
 
-\section{Creating new tests}
+\section{Creating New Tests}
 
 Another purpose of the TVPlugin is to make the creation of new tests as quick as
 possible. This is done by providing the user with default names as much as
@@ -846,7 +846,7 @@ into two basic use cases: adding the new test in a new test class or adding the
 new test in a test class where tests corresponding to the selected method
 already exist.
 
-\subsection{Adding a new Test Class}
+\subsection{Adding a New Test Class}
 \label{subsec:AddToNewTestClass}
 First let us talk about what can be done to facilitate the creation of a new
 test that does not yet have a fitting test class.  The easiest way to do this is
@@ -885,7 +885,7 @@ search expects and thus this does not break existing conventions. Even though
 default names are provided the user can still ignore them and specify different
 ones.
 
-\subsection{Adding a test to an existing Test Class}
+\subsection{Adding a Test to an Existing Test Class}
 
 The second use case is that a developer wants to add a test for a method that
 already has tests. In this case the corresponding test classes should have
@@ -1212,7 +1212,7 @@ content.
 	\label{cha:Anleitung zu wissenschaftlichen Arbeiten}
 \section {User Guide}
 	\label{sec:User Guide}
-\subsection{What's the TestView Plugin?}
+\subsection{What is the TestView Plugin?}
 	\label{subsec:What's a TestView Plugin?}
 
 Nautilus is the default system browser in Pharo 4.0.
@@ -1283,7 +1283,7 @@ hierarchy. Detailed instructions on how to use these functionalities are found
 in \autoref{subsec:Linking an existing test class} and \autoref{subsec:Unlinking
 an existing test class}.
 
-\subsection{Installation and activation}
+\subsection{Installation and Activation}
 	\label{subsec:Installation and activation}
 
 To install and activate the TVPlugin follow the steps listed bellow:
@@ -1328,7 +1328,7 @@ be shown there until you remove it again using the Nautilus Plugins Manager.
 
 \end{enumerate}
 
-\subsection{Adding a new test inside a new test class}
+\subsection{Adding a New Test Inside a New Test Class}
 \label{subsec:Creating a new test inside a new test class}
 
 So now that the plugin is set up after following the steps in
@@ -1408,7 +1408,7 @@ the newly created test class and test package.
 
 \end{enumerate}
 
-\subsection{Adding a new test to an existing test class}
+\subsection{Adding a New Test to an Existing Test Class}
 	\label{subsec:Adding a new to an existing test class}
 
 In this section we will take a look at how to add a new test inside of an
@@ -1455,7 +1455,7 @@ your new test is there as can be seen in \autoref{fig:newTestCheck}.
 	}
 \end{enumerate}
 
-\subsection{Linking an existing test class}
+\subsection{Linking an Existing Test Class}
 	\label{subsec:Linking an existing test class}
 
 When the TVPlugin does not find tests that you have created then this might be
@@ -1493,7 +1493,7 @@ verify if it now works by opening the found tests dropview.
 
 \end{enumerate}
 
-\subsection{Unlinking an existing test class}
+\subsection{Unlinking an Existing Test Class}
 	\label{subsec:Unlinking an existing test class}
 
 In case the TVPlugin shows you tests from a test class that you do not recognize
@@ -1536,7 +1536,7 @@ drop down list. No test contained in the unlinked class should be shown there.
 In this section possible problems with the TVPlugin are listed and possible
 solutions to them outlined.
 
-\subsubsection{Tests are not found by the TVPlugin}
+\subsubsection{Tests are Not Found by the TVPlugin}
 \label{subsubsec:Tests are not found by the TVPlugin}
 
 In case all tests from one or multiple tests classes are missing in the found
@@ -1563,7 +1563,7 @@ they fulfill certain criteria. In this case also continue with
 \autoref{subsubsec:Add and remove individual tests from the corresponding test
 list to the selected method}.
 
-\subsubsection{Tests that do not test the currently selected method are shown}
+\subsubsection{Tests That Do Not Test the Currently Selected Method Are Shown}
 		\label{subsubsec:Tests that do not test the currently selected method are shown}
 
 If the classes that contains these wrongly identified tests do not contain any
@@ -1576,7 +1576,7 @@ If you want to remove only some tests from the found tests drop down list then
 continue with \autoref{subsubsec:Add and remove individual tests from the
 corresponding test list to the selected method}.
 
-\subsubsection{Adding and removing specific found tests}
+\subsubsection{Adding and Removing Specific Found Tests}
 		\label{subsubsec:Add and remove individual tests from the corresponding test list to the selected method}
 
 Both adding and removing an individual test from the tests that the TVPlugin
