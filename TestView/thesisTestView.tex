@@ -12,17 +12,17 @@
 
 The purpose of this bachelor project is to improve the Pharo environment by
 making it more unit test friendly. Instead of writing a new system browser we
-chose to realize this as a Nautilus plugin since this makes it easy to set up
-and builds on established parts of the Pharo environment. This plugin includes
-various functionalities that help with finding and writing unit tests.  Further
+chose to realize this as a Nautilus plugin since this builds on 
+established parts of the Pharo environment. This plugin includes
+various functionalities that help with finding and writing unit tests. Furthermore
 it provides ways to check if a method is untested, to see all tests that have
 been written for a certain method, to add new tests for existing methods and
 the ability to view a method and a corresponding test side by side.  Before
 explaining the plugin and its functionalities in more detail we will take a
-look at various terms surrounding unit testing and analyze the develop
+look at various terms surrounding unit testing and analyze the development
 environments Eclipse and Pharo. They will be compared to each other in how unit
 test friendly they are. We also discuss opportunities
-for improvement. The aim of this thesis is to take a closer look at unit testing and in form
+for improvement. The aim of this thesis is to take a closer look at unit testing and in the form
 of a Nautilus plugin provide an example of how unit testing can be
 facilitated.
 
@@ -50,7 +50,7 @@ detecting if changes broke previously working code (regression errors).
 Not only does testing make code more reliable but it also helps to speed up
 development by recognizing and preventing regression errors. User studies
 indicate that about 10-15\% of the development time is spent waiting for tests
-to finish, executing and fixing regression errors and simply
+to finish, executing and fixing regression errors, and simply
 increasing the frequency with which the tests are executed reduces this wasted
 time by 31-81\% \cite{Saff03b}. This means that the additional time it takes to
 execute tests more frequently is less than the time saved by fixing regression
@@ -64,14 +64,14 @@ software being developed. Additionally for example in XP the time that is spent
 writing a test will be regained. As Wells \cite{Well13a} puts it: ``...during
 the life of a project an automated test can save you a hundred times the cost
 to create it... ''. This is done by guarding against bugs and regression
-errors. Since this guard is in place ``refactoring'' and ``frequent integration''
+errors. Since this guard is in place refactoring and frequent integration
 of new code become possible.
 
 While testing clearly has its benefits, especially with fast-approaching
 deadlines unit testing is still seen as
 optional and too time consuming.  Tests are not executed as often as they
 should be which indicates that the use of unit tests is underestimated.  In
-their case studies Pressman and Ernst found that a 31-82\% reduction of waisted
+their case studies Pressman and Ernst found that a 31-82\% reduction of wasted
 time can be achieved by simply running the same tests two to five times as
 often \cite{Pres14a}.
 
@@ -93,7 +93,7 @@ automated test search and a quick way to create new tests.
 \chapter{A Closer Look at Testing}
 	\label{cha:Testing}
 
-In this chapter we will take a look at different testing paradigms in order to
+In this chapter we will take a look at different testing practices in order to
 specify how these terms are used throughout this thesis. During the next
 chapters these terms will then be applied to better describe how current
 programming environments support these paradigms and where precisely this
@@ -104,7 +104,7 @@ mutually exclusive.
 \section{Unit Testing}
 	\label{sec:Unit Testing}
 
-Unit testing follows the paradigm of isolating the smallest inseparable parts
+Unit testing follows the practice of isolating the smallest inseparable parts
 of a program and testing them independently of each other. Each of these tests
 is done at as low a level as possible. System wide tests are generally not a
 part of unit testing.  This means that the scope of each test is very small and
@@ -116,7 +116,7 @@ languages} between objects.
 
 To start testing a method an instance of the class under test is created and
 brought into a state where a set of preconditions is met.  An example for
-preconditions would be the requirement for the objects instance variables to
+preconditions would be the requirement for the object's instance variables to
 have certain values. From this initial state in a deterministic environment a
 specific outcome can be expected after the method is executed. The outcome is a
 success if all of the previously defined postconditions are fulfilled. These
@@ -155,7 +155,7 @@ For the purpose of this thesis two features of unit testing are important to
 keep in mind. The first one is that unit testing takes place at a method level
 and the second one is that the narrow scope of unit tests requires many tests
 to cover multiple methods. Further, since it is recommended to keep each test
-as small as possible even a single method is likely to require multiple
+as small as possible. Even a single method is likely to require multiple
 corresponding tests since every path in the decision tree of the method should
 be covered.
 
@@ -248,16 +248,16 @@ some of these features are often missing.  Concrete examples of environments
 lacking these specific features will be pointed out in \autoref{cha:Related
 Work}. To compensate for these missing features the user is required to manually
 execute many tasks like navigating back and forth between method and test and
-creating new test classes and packages. This repeatedly breaks the programmers
+creating new test classes and packages. This repeatedly breaks the programmers'
 flow and in effect discourages them from writing tests. In the following
 sections we will take a closer look at the tasks involved in different goals
-arising from unit testing. This will help to understand the problem of those
+arising from unit testing. This will help us to understand the problem of those
 missing functionalities.
 
 \section{Is a Method Tested?}
 \label{sec:Is a method tested?}
 
-In unit testing it is important that each method is tested (baring trivial
+In unit testing it is important that each method is tested (barring trivial
 things like getters and setters). As discussed in \autoref{sec:Unit Testing} a
 method with no tests is unsafe and might even have to be tested manually which
 is quite slow. Thus a very important feature in unit testing is the ability to
@@ -290,7 +290,7 @@ previous ability to see if a method is untested will thus no longer be discussed
 separately in this paper.
 
 Similar to showing if a method is tested this helps the user to decide if it is
-necessary to write a new test. Further this functionality helps the user to see
+necessary to write a new test. Furthermore this functionality helps the user to see
 if a certain test case has already been created and thus is not needed again. A
 developer could also study how a method works by looking at the corresponding
 tests.
@@ -307,7 +307,7 @@ Code coverage tools can not fully substitute an automated test search since it
 relies strongly on the relation between tests and method.  To be useful the code
 coverage tool would have to save for each method from which test it was called
 during the execution of a test suite. Also coverage is not necessarily a good
-metric to determine if a tests actually tests a method. Nested method calls
+metric to determine if a test actually tests a method. Nested method calls
 might yield a large number of false positives.
 
 \section{Creating New Tests}
@@ -337,7 +337,7 @@ Development.
 As shown in the last two paragraphs it does not matter if the test class and
 package already exist or if they need to be added. Creating and placing new
 tests can be facilitated either by letting the user quickly specify existing
-test classes or by making creating new test classes easier. Another helpful
+test classes or by making the creation of new test classes easier. Another helpful
 feature is the ability to let the user create these packages, classes and tests
 together instead of individually.
 
@@ -421,7 +421,7 @@ tabs.
 A big advantage of this system is that users can create favorites by not closing
 important tabs. Through this they can switch back and forth between methods and
 tests. A slight drawback is that the user has to close unneeded tabs from time
-to time to quicker find the currently important ones. In most cases the use of
+to time to more quickly find the currently important ones. In most cases the use of
 these tabs will be smooth enough to allow the programmer to switch uninterrupted
 between classes and their tests.
 
@@ -540,7 +540,7 @@ Apart from this Nautilus also has the History Navigator which allows fast access
 to all recently viewed methods and classes. The History Navigator can be seen in
 the middle right in \autoref{fig:Locking}. It can be used to switch between
 method and test in a way that is comparable to Eclipse's tabs of recently opened
-classes. The drawback here is that only a certain amount of those recently
+classes. The drawback here is that only a certain number of those recently
 accessed classes and methods is stored and if the user looks at different
 methods and classes it is quickly necessary to reopen the previous tests and
 methods to put them back in the History Navigator.
@@ -628,7 +628,7 @@ Eclipse's and Nautilus's way of adding new tests are very comparable. A case
 could be made for both versions of this feature. Eclipse's version is more
 customizable but only supports the user when creating a new test class while
 Nautilus's version is faster and supports the user with each new test but is
-less flexible. An easy way to create multiple tests for one method is not
+less flexible. An easy way to create multiple tests for one method is
 provided by neither Nautilus nor Eclipse.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -684,7 +684,7 @@ editor. Only methods of interest are shown there and the user does not have to
 manage what should be displayed. This is possible due to the fact that some
 assumptions can be made about what code the user wants to see if this code
 editor is only used during unit testing. The left code editor will be displaying
-the in the file hierarchy selected method and the right code editor will show
+the method selected in the file hierarchy and the right code editor will show
 the corresponding tests.
 
 Which test is currently shown can be changed through the drop down list that can be
@@ -692,16 +692,17 @@ seen in \autoref{fig:Nautilus window with two code editors} just below of the
 Nautilus History Navigator.
 
 This approach combines the convenience of Eclipse's ability to show code side by
-side with limited but more focused contend in the right code editor. This
-results in an easy to use support for whitebox testing. Since it is not possible
+side with limited but more focused content in the right code editor. 
+Being able to view method and test side by side results in an easy to use help for whitebox testing. 
+Since it is not possible
 to view multiple methods in one Nautilus window at the same time this is a
 notable improvement.
 
 \section{Test Search}
 \label{sec:TVtestsearch}
-As a direct consequence of the heavily selected content of the second code
-editor it became necessary to use a test search. Without this it would be
-impossible to show a relevant selection. As discussed in \autoref{subsec:Test
+Since the additional code editor introduced by the plugin is only supposed to shows tests
+ it became necessary to use a test search. Without this it would be
+impossible to show a relevant selection of corresponding tests. As discussed in \autoref{subsec:Test
 Search} the test search that Nautilus provides is very restrictive and only
 finds at most one test per method. In order to find better results the TestView
 Plugin uses its own test search implementation.
@@ -711,6 +712,13 @@ corresponding tests for a certain method are found. The plugin uses a
 hierarchical search with two stages. First the TestView Plugin searches all test
 classes of the currently selected class and then inside of these test
 classes all test methods of the currently selected method.
+
+Our test search expects test classes to inherit from ``\emph{TestCase}'' and to have a similar name as 
+the class that they are testing. The user is able to manually add or remove test classes 
+from the search results. A test method has to either have a similar name as the method under test 
+or directly call a method with the same name as the method under test. 
+
+How exactly the test class search and test method search work will be discussed in \autoref{subsec:CorrTestClasses} and \autoref{subsec:CorrTestMethods}.
 
 This search is performed every time a method is selected through Nautilus. This makes
 it possible that the additional code panel introduced by the plugin always shows
@@ -784,12 +792,13 @@ selected class is used as a key each linking or unlinking of a class only counts
 for the currently selected class.
 
 \subsection{Corresponding Test Methods}
+\label{subsec:CorrTestMethods}
 
 After some possible test classes have been identified using the criteria
 described in \autoref{subsec:CorrTestClasses} the resulting classes will be
 searched for corresponding test methods of the currently selected method.
 
-Similar as the name criterion for test classes described in
+Similar to the name criterion for test classes described in
 \autoref{subsec:CorrTestClasses} the test methods have to contain the full name
 of the selected method (without colons) as well as the string ``test''. Examples
 can be found in \autoref{tab:testNameCrit}.
@@ -809,16 +818,17 @@ can be found in \autoref{tab:testNameCrit}.
 	\label {tab:testNameCrit}
 \end{table}
 
-The substring search works similar as described in \autoref{subsec:CorrTestClasses}.
+The substring search works as described in \autoref{subsec:CorrTestClasses}.
 A test method name has to contain both the full name of the selected method
 as well as ``test''. Both of these substrings have to be contained separately \ie 
 they can not overlap. If both substring checks are successful the method is a 
 test for the selected method.
 
 The second criterion besides the name criterion is that the test contains a
-method invocation with the same selector as the selected method. If either of
-those criteria is fulfilled the method is considered a test for the selected
-method.
+method invocation with the same selector as the selected method. In other words
+the test has to directly call a method with the same name as the selected method to fulfill this criterion.
+A method is considered a test if it either fulfills the naming criterion or directly calls a method with the same name
+as the method that it is supposed to test.
 
 How many of those criteria are met is used to order the found tests in the
 drop down list that can be seen in
@@ -853,7 +863,7 @@ test that does not yet have a fitting test class.  The easiest way to do this is
 to let the users write the new test and later determine where this test will be
 placed. With this the user is encouraged to immediately start writing a test as
 soon as a method is created. The new test class option is activated by having
-the topmost element ``new Test'' from the drop down list of found tests as show in
+the topmost element ``new Test'' from the drop down list of found tests as shown in
 \autoref{fig:newTest}.
 
 \begin{figure}[h!]
@@ -1119,7 +1129,7 @@ should be a quick option to run all the found tests.
 If making the plugin stand out more is really necessary is debatable since this
 was only wished by people who did not see the plugin. While this certainly
 would help users to discover the plugin, other users that already know about it
-could possibly be annoyed by it standing out to much.
+could possibly be annoyed by it standing out too much.
 
 A quick option to run all the found tests would certainly be a useful addition
 to the plugin. Luckily there is already the Nautilus
@@ -1134,7 +1144,7 @@ that has corresponding tests. Sadly it is quite possible that not all tests get 
 this since as described in \autoref{subsec:Test Search} only one corresponding test per method
 or class is found by Nautilus.
 So while implementing a functionality to run tests through the TestView Plugin might be an option,
-enhancing the existing tools would to keep the number of required tools low.
+enhancing the existing tools would keep the number of required tools low.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Conclusion and Future Work %%%%%%%%%%%%%%%%%%%%%
@@ -1269,7 +1279,8 @@ You can use the \textbf{``Link Class''} and \textbf{``Unlink Class'' buttons} if
 the found tests for the method you selected in the Nautilus window are
 incomplete or show methods that are not tests for what you selected. You can use
 both these buttons to influence the automated test search that gets performed
-whenever you select a different method in the Nautilus class hierarchy.
+whenever you select a different method in the Nautilus class hierarchy. Your changes
+to the search results will be stored in your Pharo image.
 
 With the ``Link Class'' button you can specify a test class that is not found by
 the automated test search. The plugin will then redo the test search and include
@@ -1286,7 +1297,7 @@ an existing test class}.
 \subsection{Installation and Activation}
 	\label{subsec:Installation and activation}
 
-To install and activate the TVPlugin follow the steps listed bellow:
+To install and activate the TVPlugin follow the steps listed below:
 
 \begin{enumerate}
 \item To download the necessary packages simply execute the following lines in a
@@ -1458,16 +1469,16 @@ your new test is there as can be seen in \autoref{fig:newTestCheck}.
 \subsection{Linking an Existing Test Class}
 	\label{subsec:Linking an existing test class}
 
-When the TVPlugin does not find tests that you have created then this might be
-because it does not recognize the your test class as a possible source for tests
-for the class of the method that you currently have selected in the Nautilus
-class hierarchy. Here you find a step by step list of how to add your test class
+When the TVPlugin does not find some test methods then it might be because their test 
+class is not considered to be a test class to the currently in Nautilus selected method. All 
+test methods in this missing test class will not be found and thus not be shown in the 
+found tests drop list. Here you find step by step instructions of how to add your test class
 to the considered test classes.
 
 \begin{enumerate}
 
-\item First in the Nautilus class hierarchy select the method that is
-missing tests in the found tests drop down list.
+\item Make sure that in the Nautilus class hierarchy you have selected the method 
+which is missing tests in the found tests drop down list.
 
 \item Click the ``Link class'' button highlighted in \autoref{fig:linkClassButton}.
 
@@ -1497,7 +1508,7 @@ verify if it now works by opening the found tests dropview.
 	\label{subsec:Unlinking an existing test class}
 
 In case the TVPlugin shows you tests from a test class that you do not recognize
-as a test class for the currently selected class you can remove this class from
+as a test class for the currently selected method you can remove this class from
 consideration by using the ``Unlink class'' button.
 
 \begin{enumerate}
@@ -1566,7 +1577,7 @@ list to the selected method}.
 \subsubsection{Tests That Do Not Test the Currently Selected Method Are Shown}
 		\label{subsubsec:Tests that do not test the currently selected method are shown}
 
-If the classes that contains these wrongly identified tests do not contain any
+If the classes that contain these wrongly identified tests do not contain any
 tests for the currently selected class then you can simply unlink these classes.
 Follow the steps outlined in \autoref{subsec:Unlinking an existing test class}.
 All the tests from these classes should now be gone from the found tests
