@@ -692,12 +692,9 @@ seen in \autoref{fig:Nautilus window with two code editors} just below of the
 Nautilus History Navigator.
 
 This approach combines the convenience of Eclipse's ability to show code side
-by side with limited but more focused content in the right code editor.
-\ugh{Being able to view method and test side by side results in an easy to use
-help for whitebox testing.}\brs{this does not address Oscar's comment. HOW does
-it help? By providing the developer with the method implementation to inform
-decisions while writing tests or something. Also, ``easy to use help'' is not a
-good formulation} Since it is not possible to view multiple methods in one
+by side with limited but more focused content in the right code editor. Through this
+additional code editor the user always has quick access to a method's inner workings.
+This is especially useful during unit testing. Since it is not possible to view multiple methods in one
 Nautilus window at the same time this is a notable improvement.
 
 \section{Test Search}
@@ -1472,15 +1469,15 @@ your new test is there as can be seen in \autoref{fig:newTestCheck}.
 	\label{subsec:Linking an existing test class}
 
 When the TVPlugin does not find some test methods then it might be because
-their test class is not considered to be a test class \chg{to}{for} the
-currently \del{in Nautilus} selected method. All test methods in this missing
+their test class is not considered to be a test class for the
+currently selected method. All test methods in this missing
 test class will not be found and thus not be shown in the found tests drop
-list. Here you find step by step instructions \chg{of}{on} how to add
-\chg{your}{a missing} test class to the considered test classes.
+list. Here you find step by step instructions on how to add
+a missing test class to the considered test classes.
 
 \begin{enumerate}
 
-\item Make sure that\ins{,} in the Nautilus class hierarchy\ins{,} you have
+\item Make sure that, in the Nautilus class hierarchy, you have
 selected the method which is missing tests in the found tests drop down list.
 
 \item Click the ``Link class'' button highlighted in \autoref{fig:linkClassButton}.
