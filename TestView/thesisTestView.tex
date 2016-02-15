@@ -449,7 +449,7 @@ it is possible to find all tests that reference the currently selected method.
 
 Sadly this feature is very badly documented. The requirements for a test to
 be associated with a certain method seem to include that the test class
-extends ``TestCase'' and that the test name starts with ``test''. The ``@Test''
+extends ``\emph{TestCase}'' and that the test name starts with ``test''. The ``@Test''
 annotations are ignored by this function. It seems like this test search does
 not yet support JUnit 4 standards.
 
@@ -565,7 +565,7 @@ suffix ``Test'' and the name of the test method has to have the prefix ``test''.
 Also tests have no parameters and thus lack all colons in their name.  If
 anything more is part of the test name then it will not be found by Nautilus's
 test search. The test classes also have to inherit from
-\emph{TestCase} in order to be found by the test search. Examples of
+``\emph{TestCase}'' in order to be found by the test search. Examples of
 tests corresponding to certain methods can be found in
 \autoref{tab:correspondingMethods}.
 
@@ -886,9 +886,9 @@ For example if the method under test is contained in a class called ``Queue''
 within a package ``Collections'' then the proposed names for the test class and
 the test package will be ``QueueTest'' and ``Collections-Tests''
 respectively. The new test class will also automatically subclass
-TestCase.
+``\emph{TestCase}''.
 
-These names and the inheritance from TestCase is also what Nautilus's test
+These names and the inheritance from ``\emph{TestCase}'' is also what Nautilus's test
 search expects and thus this does not break existing conventions. Even though
 default names are provided the user can still ignore them and specify different
 ones.
@@ -1556,10 +1556,10 @@ tests from a test class where already some tests are found then continue with
 \autoref{subsubsec:Add and remove individual tests from the corresponding test
 list to the selected method}.
 
-First make sure that your test classes are subclasses of ``TestCase''. If they
+First make sure that your test classes are subclasses of ``\emph{TestCase}''. If they
 are not the plugin will not consider them to be test classes. Simply go to the
 definition of your test classes and if necessary change the first line to
-``[YourClassName] subclass: \#TestCase''. Check again if the tests from your
+``\emph{[YourClassName] subclass: \#TestCase}''. Check again if the tests from your
 test classes are found now by selecting the method for which some tests were not
 found.
 
